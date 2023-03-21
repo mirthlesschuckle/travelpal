@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :destinations, only: [ :index, :show ] do
+    member do
+      post 'toggle_favorite', to: 'destinations#toggle_favorite'
+    end
     resources :activities, only: [ :index, :show ]
   end
 
