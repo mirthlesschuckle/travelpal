@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "cleaning the database"
+Destination.destroy_all
+puts "creating destinations"
+Destination.create(name: "lisbon")
+Destination.create(name: "milan")
+Destination.create(name: "paris")
+Destination.create(name: "porto")
+Destination.create(name: "london")
+Destination.create(name: "madrid")
