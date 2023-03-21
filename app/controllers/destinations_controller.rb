@@ -8,6 +8,14 @@ class DestinationsController < ApplicationController
     else
       @destinations = Destination.all
     end
+
+    @markers = (@destinations.geocoded.map do |destination|
+      {
+        lat: destination.latitude,
+        lng: destination.longitude
+      }
+    end)
+
   end
 
   def show
@@ -20,5 +28,7 @@ class DestinationsController < ApplicationController
     @destination = Destination.find(params[:id])
     current_user.favorited?(@destination) ? current_user.unfavorite(@destination) : current_user.favorite(@destination)
   end
+
+
 
 end

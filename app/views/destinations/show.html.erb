@@ -11,7 +11,7 @@
   <% @activities.each do |activity| %>
     <div class="activity-card" style="margin: 20px; border: 1px solid black; max-width: 600px">
       <p><%= "Name: #{activity.name}" %></p>
-      <p><%= "Type: #{activity.type}" %></p>
+      <p><%= "Type: #{activity.activity_type}" %></p>
       <p><%= "Description: #{activity.description}" %></p>
       <%# <p><%= "Date: #{activity.date}" %>
       <%# <p><%= "Destination ID: #{activity.destination.id}" %>
