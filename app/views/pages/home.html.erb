@@ -3,11 +3,14 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-8">
-      <div id="destinations">
-        <% @destinations.each do |destination| %>
-          <h4><%= destination.title %></h4>
-          <p><%= destination.synopsis %></p>
-        <% end %>
+      <%= form_with url: destinations_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a destination"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
       </div>
     </div>
   </div>
