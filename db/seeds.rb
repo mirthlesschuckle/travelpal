@@ -1,4 +1,16 @@
+
 # SEED FILE
+
+# puts "cleaning the database"
+# Destination.destroy_all
+# puts "creating destinations"
+# Destination.create(name: "lisbon")
+# Destination.create(name: "milan")
+# Destination.create(name: "paris")
+# Destination.create(name: "porto")
+# Destination.create(name: "london")
+# Destination.create(name: "madrid")
+
 puts 'cleaning the database...'
 User.destroy_all
 Destination.destroy_all
