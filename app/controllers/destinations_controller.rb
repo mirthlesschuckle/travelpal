@@ -11,5 +11,7 @@ class DestinationsController < ApplicationController
 
   def show
     @destination = Destination.find(params[:id])
+    @activities = Activity.where(destination_id: @destination.id)
   end
+
 end

@@ -1,10 +1,22 @@
 <div class="container">
 
   <h1>Destination/show</h1>
+  <div class="destination-card" style="margin: 20px; border: 1px solid black; max-width: 600px">
+    <p><%= "Name: #{@destination.name}" %></p>
+    <p><%= "Address: #{@destination.address}" %></p>
+    <p><%= "Description: #{@destination.description}" %></p>
+  </div>
+  <h2>Destination/activities</h2>
 
-  <p><%= "Name: #{@destination.name}" %></p>
-  <p><%= "Address: #{@destination.address}" %></p>
-  <p><%= "Description: #{@destination.description}" %></p>
+  <% @activities.each do |activity| %>
+    <div class="activity-card" style="margin: 20px; border: 1px solid black; max-width: 600px">
+      <p><%= "Name: #{activity.name}" %></p>
+      <p><%= "Type: #{activity.type}" %></p>
+      <p><%= "Description: #{activity.description}" %></p>
+      <%# <p><%= "Date: #{activity.date}" %>
+      <%# <p><%= "Destination ID: #{activity.destination.id}" %>
+    </div>
+  <% end %>
 
   <%= link_to "Back to Destinations", destinations_path %>
 
