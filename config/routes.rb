@@ -3,15 +3,15 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
 
-  resources :trips
+  resources :trips, only: [ :index, :show, :edit, :update, :destroy ]
 
   resources :destinations, only: [ :index, :show ] do
     member do
       post 'toggle_favorite', to: 'destinations#toggle_favorite'
     end
     resources :activities, only: [ :index, :show ]
+    resources :trips, only: [ :new, :create ]
   end
-
 
   get "/profile", to: "users#profile", as: :profile
 
