@@ -1,11 +1,14 @@
 class TripsController < ApplicationController
   def new
+    @destination = Destination.find(params[:destination_id])
     @trip = Trip.new # Needed to instantiate the form_with
   end
 
   def create
     @trip = Trip.new(trip_params)
-    @trip.save # Will raise ActiveModel::ForbiddenAttributesError
+    @trip.user = current_user
+    @destination = Destination.find(params[:destination_id])
+    @trip.save
   end
 
   private
