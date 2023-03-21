@@ -3,15 +3,22 @@ class DestinationsController < ApplicationController
   before_action :authenticate_user!, only: :toggle_favorite
 
   def index
-    @destinations = Destination.all
+    if params[:query].present?
+      @destinations = Destination.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @destinations = Destination.all
+    end
   end
 
   def show
     @destination = Destination.find(params[:id])
+    @activities = Activity.where(destination_id: @destination.id)
   end
+
 
   def toggle_favorite
     @destination = Destination.find(params[:id])
     current_user.favorited?(@destination) ? current_user.unfavorite(@destination) : current_user.favorite(@destination)
   end
+
 end
