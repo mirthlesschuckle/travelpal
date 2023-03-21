@@ -4,7 +4,7 @@ class DestinationsController < ApplicationController
 
   def index
     if params[:query].present?
-      @destinations = Destination.where("name ILIKE ?", "%#{params[:query]}%")
+      @destinations = Destination.where("name ILIKE :query OR country ILIKE :query OR area ILIKE :query", query: "#{params[:query]}%")
     else
       @destinations = Destination.all
     end

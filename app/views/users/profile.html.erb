@@ -1,15 +1,24 @@
 <div class="container">
-  <h1 style="text-align: center;">Profile Page</h1>
-  <h2>User Information</h2>
-  <%# <p>Name: <%=current_user.first_name current_user.last.name%>
-  <p>Email: <%=current_user.email%></p>
 
-  <h2>Favorite Destinations</h2>
-  <% if current_user.all_favorited.empty? %>
-    <p>You have no favorite destinations.</p>
-  <% else %>
-    <% current_user.all_favorited.each do |destination| %>
-      <p><%= link_to destination.name, destination_path(destination) %></p>
-    <% end %>
-  <% end %>
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <h1>Profile Page</h1>
+      <h2>User Information</h2>
+      <%# <p>Name: <%=current_user.first_name current_user.last.name%>
+      <p>Email: <%=current_user.email%></p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <h2>Favorite Destinations</h2>
+      <% if current_user.all_favorited.empty? %>
+        <p>You have no favorite destinations.</p>
+      <% else %>
+        <% current_user.all_favorited.each do |destination| %>
+          <p><%= link_to destination.name, destination_path(destination) %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

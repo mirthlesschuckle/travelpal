@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+# Faker
+gem 'faker'
+
+# Geocoder
+gem "geocoder"
+
 # add acts_as_favoritor
 gem 'acts_as_favoritor'
 
