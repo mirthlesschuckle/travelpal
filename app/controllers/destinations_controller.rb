@@ -2,7 +2,11 @@ class DestinationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @destinations = Destination.all
+    if params[:query].present?
+      @destinations = Destination.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @destinations = Destination.all
+    end
   end
 
   def show
