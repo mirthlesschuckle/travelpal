@@ -1,5 +1,7 @@
 <div class="container">
-  <h1 style="text-align: center;">My Dashboard</h1>
+
+  <h1 style="text-align: center;"><%= "#{current_user.first_name}'s Dashboard" %></h1>
+
   <h2>User Information</h2>
   <p>Name: <%=@user.first_name%> <%= @user.last_name %></p>
   <p>Email: <%=@user.email%></p>
