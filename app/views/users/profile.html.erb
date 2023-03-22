@@ -39,6 +39,10 @@
               <p class="card-text">Start Date: <%= trip.start_date %></p>
               <p class="card-text">End Date: <%= trip.end_date %></p>
               <%= link_to "Edit", edit_trip_path(trip), style: "background-color: #2156af; border-radius: 20px; border: none; color: #FFFFFF; font-size: 20px; font-weight: bold; padding: 10px 20px; text-decoration: none; transition: all 0.3s ease-in-out;" %>
+              <%= form_with url: matches_path, method: :post do |form| %>
+                <%= form.hidden_field :trip_id, value: trip.id %>
+                <%= form.submit "Find Matches", class: "btn btn-primary" %>
+              <% end %>
             </div>
           </div>
         </div>

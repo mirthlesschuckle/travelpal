@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-
   resources :trips
 
   resources :destinations, only: [ :index, :show ] do
@@ -15,4 +14,5 @@ Rails.application.routes.draw do
 
   get "/profile", to: "users#profile", as: :profile
 
+  resources :matches, only: [:index, :create]
 end

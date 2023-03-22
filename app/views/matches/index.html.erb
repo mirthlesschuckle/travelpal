@@ -1,0 +1,13 @@
+<h1>Your Matches</h1>
+
+<% if @matches.any? %>
+  <ul>
+    <% @matches.each do |match| %>
+      <li>
+        <strong><%= match.trip.user.first_name %></strong> is also traveling to <%= match.trip.destination.name %> from <%= match.trip.start_date %> to <%= match.trip.end_date %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No matches found.</p>
+<% end %>
