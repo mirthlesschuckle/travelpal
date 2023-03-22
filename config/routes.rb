@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :trips, only: [ :new, :create ]
   end
 
-  get "/profile", to: "users#profile", as: :profile
+  get "/dashboard", to: "users#dashboard", as: :dashboard
 
   resources :matches, only: [:create]
 end
