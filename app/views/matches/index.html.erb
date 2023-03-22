@@ -12,9 +12,9 @@
               </div>
             </div>
             <div class="card-body">
-              <img src="<%= %>" alt="<%= match.trip.user.first_name %>'s avatar" class="rounded-circle" width="80" height="80" style="position: absolute; top: 150px; left: 50%; margin-left: -40px; border: 4px solid black;">
+              <img src="<%= %>" alt="<%= current_user == match.trip.user ? match.user.first_name : match.trip.user.first_name %>'s avatar" class="rounded-circle" width="80" height="80" style="position: absolute; top: 150px; left: 50%; margin-left: -40px; border: 4px solid black;">
               <div class="text-center mt-4">
-                <h6 class="card-title"><%= match.trip.user.first_name %></h6>
+                <h6 class="card-title"><%= current_user == match.trip.user ? match.user.first_name : match.trip.user.first_name %></h6>
                 <p class="card-text">Traveling from <%= match.trip.start_date %> to <%= match.trip.end_date %></p>
                 <div class="row text-center mt-2">
                   <div class="col">
@@ -26,7 +26,7 @@
                     <p class="card-text"></p>
                   </div>
                   <div class="col">
-                    <%= link_to "Send Match Request", "#", method: :post, class: "btn btn-primary" %>
+                    <%= link_to "Send Chat Request", "#", method: :post, class: "btn btn-primary" %>
                   </div>
                 </div>
               </div>

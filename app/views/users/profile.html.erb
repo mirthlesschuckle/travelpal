@@ -27,12 +27,6 @@
 
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Upcoming Trips</h2>
-    <% if @user.trips.any? %>
-      <%= form_with url: matches_path, method: :post, class: "find-buddies-form" do |form| %>
-        <%= form.hidden_field :trip_id, value: @user.trips.first.id %>
-        <%= form.submit "Find Buddies", class: "btn btn-primary" %>
-      <% end %>
-    <% end %>
   </div>
   <% if @user.trips.empty? %>
     <p>You have no upcoming trips.</p>
@@ -47,6 +41,12 @@
               <p class="card-text">Start Date: <%= trip.start_date %></p>
               <p class="card-text">End Date: <%= trip.end_date %></p>
               <%= link_to "Edit", edit_trip_path(trip), style: "background-color: #2156af; border-radius: 20px; border: none; color: #FFFFFF; font-size: 20px; font-weight: bold; padding: 10px 20px; text-decoration: none; transition: all 0.3s ease-in-out;" %>
+              <% if @user.trips.any? %>
+                <%= form_with url: matches_path, method: :post, class: "find-buddies-form" do |form| %>
+                  <%= form.hidden_field :trip_id, value: trip.id %>
+                  <%= form.submit "Find Buddies", class: "btn btn-primary" %>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>

@@ -1,6 +1,9 @@
 class MatchesController < ApplicationController
   def index
-    @matches = current_user.matches.includes(:trip, :user)
+    @matches = current_user.matches
+    @trip = Trip.find(params[:trip_id])
+    @matches = @matches.select { |match| match.trip.destination == @trip.destination }
+    # raise
   end
 
   def create
@@ -14,7 +17,7 @@ class MatchesController < ApplicationController
 
       match = Match.create(user: current_user, trip: other_trip) # Use current_user instead of other_trip.user
     end
-    redirect_to matches_path
+    redirect_to trip_matches_path(params[:trip_id])
   end
 
 
