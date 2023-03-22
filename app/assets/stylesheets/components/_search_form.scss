@@ -1,0 +1,28 @@
+.search-form {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.search-form .btn-primary {
+  background-color: #00aa6c;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.search-form .form-control-lg {
+  flex-grow: 1;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
+  outline: none;
+  width: auto !important;
+}
