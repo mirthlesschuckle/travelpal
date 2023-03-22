@@ -1,29 +1,44 @@
 <div class="container">
 
-  <h1>Destination/show</h1>
-  <div class="destination-card" style="margin: 20px; border: 1px solid black; max-width: 600px">
-    <p><%= "Name: #{@destination.name}" %></p>
-    <p><%= "Address: #{@destination.address}" %></p>
-    <p><%= "Description: #{@destination.description}" %></p>
-  </div>
-  <h2>Destination/activities</h2>
-
-  <% @activities.each do |activity| %>
-    <div class="activity-card" style="margin: 20px; border: 1px solid black; max-width: 600px">
-      <p><%= "Name: #{activity.name}" %></p>
-      <p><%= "Type: #{activity.type}" %></p>
-      <p><%= "Description: #{activity.description}" %></p>
-      <%# <p><%= "Date: #{activity.date}" %>
-      <%# <p><%= "Destination ID: #{activity.destination.id}" %>
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <h1>Destinations#show</h1>
+      <p>Find me in app/views/destinations/show.html.erb</p>
+      <div class="destination-card" style="margin: 20px; border: 1px solid black; max-width: 600px">
+        <p><%= "Name: #{@destination.name}" %></p>
+        <p><%= "Address: #{@destination.address}" %></p>
+        <p><%= "Description: #{@destination.description}" %></p>
+      </div>
+      <div>
+        <%= link_to toggle_favorite_destination_path(@destination), remote: true, data: {turbo_method: :post} do %>
+          <%= render "destinations/like_button", destination: @destination %>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= link_to toggle_favorite_destination_path(@destination), remote: true, data: {turbo_method: :post} do %>
-      <%= render "destinations/like_button", destination: @destination %>
-    <% end %>
   </div>
 
-  <%= link_to "Back to Destinations", destinations_path %>
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <h2>Activities</h2>
+      <% @activities.each do |activity| %>
+        <div class="activity-card" style="margin: 20px; border: 1px solid black; max-width: 600px">
+          <p><%= "Name: #{activity.name}" %></p>
+          <p><%= "Type: #{activity.activity_type}" %></p>
+          <p><%= "Description: #{activity.description}" %></p>
+          <%# <p><%= "Date: #{activity.date}" %>
+          <%# <p><%= "Destination ID: #{activity.destination.id}" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <%= link_to "Back to Search", destinations_path %>
+    </div>
+    <div class="col-sm-8">
+      <%= link_to  "New Search", root_path %>
+    </div>
+  </div>
 
 </div>
