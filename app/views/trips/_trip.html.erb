@@ -1,6 +1,15 @@
 <div class="trip">
-  <h2><%= trip.destination.name %></h2>
-  <p>Start date: <%= trip.start_date %></p>
-  <p>End date: <%= trip.end_date %></p>
-  <%= link_to "View trip", trip_path(trip) %>
+<% if @trips.any? %>
+  <% @trips.each do |trip| %>
+    <div class="trip">
+      <h2><%= trip.destination.name %></h2>
+      <p>Start date: <%= trip.start_date %></p>
+      <p>End date: <%= trip.end_date %></p>
+      <%= link_to "View trip", trip_path(trip) %>
+      <%= button_to "Delete trip", trip_path(trip), method: :delete, data: { confirm: "Are you sure you want to delete this trip?" }, class: "btn btn-danger" %>
+    </div>
+  <% end %>
+<% else %>
+  <p>You have no upcoming trips.</p>
+<% end %>
 </div>

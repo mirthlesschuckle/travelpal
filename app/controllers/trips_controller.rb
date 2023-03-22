@@ -9,8 +9,12 @@ class TripsController < ApplicationController
   end
 
   def new
-    @destination = Destination.find(params[:destination_id])
-    @trip = Trip.new
+    if params[:destination_id]
+      @destination = Destination.find(params[:destination_id])
+      @trip = Trip.new(destination: @destination)
+    else
+      @trip = Trip.new
+    end
   end
 
   def edit
@@ -28,9 +32,11 @@ class TripsController < ApplicationController
   end
 
   def create
-    @destination = Destination.find(params[:destination_id])
     @trip = current_user.trips.new(trip_params)
-    @trip.destination = @destination
+    if params[:destination_id]
+      @destination = Destination.find(params[:destination_id])
+      @trip.destination = @destination
+    end
     if @trip.save
       redirect_to trip_path(@trip), notice: "Trip successfully created!"
     else
@@ -48,6 +54,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:start_date, :end_date)
+    params.require(:trip).permit(:start_date, :end_date, :destination_id)
   end
 end
