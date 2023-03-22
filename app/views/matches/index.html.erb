@@ -1,13 +1,41 @@
-<h1>Your Matches</h1>
+<h1>Buddies list</h1>
 
 <% if @matches.any? %>
-  <ul>
-    <% @matches.each do |match| %>
-      <li>
-        <strong><%= match.trip.user.first_name %></strong> is also traveling to <%= match.trip.destination.name %> from <%= match.trip.start_date %> to <%= match.trip.end_date %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="container">
+    <div class="row">
+      <% @matches.each do |match| %>
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-img-top" style="background-image: url(''); height: 200px; background-position: center; background-size: cover;">
+              <div class="card-img-overlay d-flex align-items-start justify-content-center">
+                <h5 class="card-title text-white bg-dark p-2 rounded"><%= match.trip.destination.name %></h5>
+              </div>
+            </div>
+            <div class="card-body">
+              <img src="<%= %>" alt="<%= match.trip.user.first_name %>'s avatar" class="rounded-circle" width="80" height="80" style="position: absolute; top: 150px; left: 50%; margin-left: -40px; border: 4px solid black;">
+              <div class="text-center mt-4">
+                <h6 class="card-title"><%= match.trip.user.first_name %></h6>
+                <p class="card-text">Traveling from <%= match.trip.start_date %> to <%= match.trip.end_date %></p>
+                <div class="row text-center mt-2">
+                  <div class="col">
+                    <p class="card-text"><strong>Reviews</strong></p>
+                    <p class="card-text"></p>
+                  </div>
+                  <div class="col">
+                    <p class="card-text"><strong>Rating</strong></p>
+                    <p class="card-text"></p>
+                  </div>
+                  <div class="col">
+                    <%= link_to "Send Match Request", "#", method: :post, class: "btn btn-primary" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 <% else %>
-  <p>No matches found.</p>
+  <p>No buddies found.</p>
 <% end %>

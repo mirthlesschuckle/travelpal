@@ -14,7 +14,7 @@ class MatchesController < ApplicationController
 
       match = Match.create(user: current_user, trip: other_trip) # Use current_user instead of other_trip.user
     end
-    redirect_to matches_path, notice: "Matches sent!"
+    redirect_to matches_path
   end
 
 
