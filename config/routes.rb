@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
 
-  resources :trips, only: [ :index, :show, :edit, :update, :destroy ]
+  resources :trips
 
   resources :destinations, only: [ :index, :show ] do
     member do

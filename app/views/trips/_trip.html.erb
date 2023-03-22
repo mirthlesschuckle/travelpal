@@ -1,0 +1,6 @@
+<div class="trip">
+  <h2><%= trip.destination.name %></h2>
+  <p>Start date: <%= trip.start_date %></p>
+  <p>End date: <%= trip.end_date %></p>
+  <%= link_to "View trip", trip_path(trip) %>
+</div>

@@ -1,6 +1,7 @@
 <h2> Select your travel dates </h2>
-<%= simple_form_for(trip) do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit "Submit dates", class: "btn btn-primary" %>
+<%= simple_form_for [@destination, @trip] do |f| %>
+  <%# f.input :destination_id, collection: Destination.all, label: "Destination", include_blank: false %>
+  <%= f.input :start_date, label: "Start date" %>
+  <%= f.input :end_date, label: "End date" %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
