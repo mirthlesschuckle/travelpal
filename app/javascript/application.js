@@ -1,4 +1,27 @@
-// Entry point for the build script in your package.json
-import "@hotwired/turbo-rails"
-import "./controllers"
-import "bootstrap"
+import "@hotwired/turbo-rails";
+import "./controllers";
+import "bootstrap";
+
+document.addEventListener("turbo:load", function () {
+  // Initialize the carousel
+  const carousel = $("#cardCarousel");
+  carousel.carousel({ interval: false });
+
+  // Add click event listeners to the carousel controls
+  const carouselControls = document.querySelectorAll(
+    "#cardCarousel .carousel-control-prev, #cardCarousel .carousel-control-next"
+  );
+
+  carouselControls.forEach(function (control) {
+    control.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (event.target.closest(".carousel-control-prev")) {
+        carousel.carousel("prev");
+      } else if (event.target.closest(".carousel-control-next")) {
+        carousel.carousel("next");
+      }
+    });
+  });
+});
