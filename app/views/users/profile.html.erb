@@ -1,24 +1,25 @@
 <div class="container">
+  <h1 style="text-align: center;">Profile Page</h1>
+  <h2>User Information</h2>
+  <p>Name: <%=@user.first_name%> <%= @user.last_name %></p>
+  <p>Email: <%=@user.email%></p>
 
-  <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <h1>Profile Page</h1>
-      <h2>User Information</h2>
-      <%# <p>Name: <%=current_user.first_name current_user.last.name%>
-      <p>Email: <%=current_user.email%></p>
-    </div>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <h2>Favorite Destinations</h2>
-      <% if current_user.all_favorited.empty? %>
-        <p>You have no favorite destinations.</p>
-      <% else %>
-        <% current_user.all_favorited.each do |destination| %>
-          <p><%= link_to destination.name, destination_path(destination) %></p>
-        <% end %>
+  <h2>Favorite Destinations</h2>
+  <% if @user.all_favorited.empty? %>
+    <p>You have no favorite destinations.</p>
+  <% else %>
+    <div class="row">
+      <% @user.all_favorited.each do |destination| %>
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to destination.name, destination_path(destination) %></h5>
+              <%= link_to "Create a trip", new_destination_trip_path(destination_id: destination.id), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
-  </div>
+  <% end %>
 </div>
