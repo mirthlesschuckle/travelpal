@@ -1,0 +1,60 @@
+<div class="container" style="margin-bottom: 50px;">
+
+  <h1 style="text-align: center;"><%= "#{current_user.first_name}'s Dashboard" %></h1>
+
+  <h2>User Information</h2>
+  <p>Name: <%=@user.first_name%> <%= @user.last_name %></p>
+  <p>Email: <%=@user.email%></p>
+
+  <h2>Favorite Destinations</h2>
+  <% if @user.all_favorited.empty? %>
+    <p>You have no favorite destinations.</p>
+  <% else %>
+    <div class="row">
+      <% @user.all_favorited.each do |destination| %>
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <img src="<%= asset_path(destination.image_path) %>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to destination.name, destination_path(destination) %></h5>
+              <%= link_to "Create a new trip", new_destination_trip_path(destination_id: destination.id), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Upcoming Trips</h2>
+  </div>
+  <% if @user.trips.empty? %>
+    <p>You have no upcoming trips.</p>
+  <% else %>
+
+    <div class="row">
+      <% @user.trips.each do |trip| %>
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem; height: 420px !important;">
+            <img src="<%= asset_path(trip.destination.image_path) %>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to trip.destination.name, destination_path(trip.destination) %></h5>
+              <p class="card-text">Start Date: <%= trip.start_date %></p>
+              <p class="card-text">End Date: <%= trip.end_date %></p>
+              <div class="d-flex justify-content-between">
+                <%= link_to "Edit", edit_trip_path(trip), class: "btn btn-primary" %>
+                <% if @user.trips.any? %>
+                  <%= form_with url: matches_path, method: :post, class: "find-buddies-form" do |form| %>
+                    <%= form.hidden_field :trip_id, value: trip.id %>
+                    <%= form.submit "Find Buddies", class: "btn btn-primary" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>

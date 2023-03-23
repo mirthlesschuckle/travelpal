@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_111302) do
     t.float "longitude"
     t.string "country"
     t.string "area"
+    t.string "image_path"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -55,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_111302) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
+
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "content"
@@ -62,6 +64,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_111302) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+    
+  create_table "matches", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_matches_on_trip_id"
+    t.index ["user_id"], name: "index_matches_on_user_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -92,6 +103,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_111302) do
 
   add_foreign_key "activities", "destinations"
   add_foreign_key "reviews", "users"
+  add_foreign_key "matches", "trips"
+  add_foreign_key "matches", "users"
   add_foreign_key "trips", "destinations"
   add_foreign_key "trips", "users"
 end
