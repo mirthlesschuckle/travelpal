@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#dashboard", as: :dashboard
 
   resources :matches, only: [:create]
+
+  get '/users/:id/profile', to: 'users#profile', as: 'user_profile'
 end
