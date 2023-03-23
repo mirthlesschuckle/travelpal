@@ -13,7 +13,7 @@ class DestinationsController < ApplicationController
         lat: destination.latitude,
         lng: destination.longitude,
         marker_html: render_to_string(partial: "marker"),
-        info_window: render_to_string(partial: "info_window")
+        info_window: render_to_string(partial: "info_window", locals: {destination: destination})
       }
     end
   end
@@ -21,11 +21,12 @@ class DestinationsController < ApplicationController
   def show
     @destination = Destination.find(params[:id])
     @activities = Activity.where(destination_id: @destination.id)
+    is_liked = user_signed_in? ? current_user.favorited?(@destination) : false
     @markers = [{
       lat: @destination.latitude,
       lng: @destination.longitude,
-      marker_html: render_to_string(partial: "marker"),
-      info_window: render_to_string(partial: "info_window")}
+      marker_html: render_to_string(partial: "marker", locals: { is_liked: is_liked }),
+      info_window: render_to_string(partial: "info_window", locals: {destination: @destination})}
     ]
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_120126) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_23_111302) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_120126) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "content"
+    t.float "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+    
   create_table "matches", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "trip_id", null: false
@@ -92,6 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_120126) do
   end
 
   add_foreign_key "activities", "destinations"
+  add_foreign_key "reviews", "users"
   add_foreign_key "matches", "trips"
   add_foreign_key "matches", "users"
   add_foreign_key "trips", "destinations"

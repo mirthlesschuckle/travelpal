@@ -14,9 +14,15 @@ Rails.application.routes.draw do
     resources :trips, only: [ :new, :create ]
   end
 
+
+  resources :users do
+    resources :reviews, only: [:create, :new, :show, :index]
+  end
+
   get "/dashboard", to: "users#dashboard", as: :dashboard
 
   resources :matches, only: [:create]
+
 
   get '/users/:id/profile', to: 'users#profile', as: 'user_profile'
 end
