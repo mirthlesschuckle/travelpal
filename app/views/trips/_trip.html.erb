@@ -1,6 +1,15 @@
 <div class="trip">
-  <h2><%= trip.destination.name %></h2>
-  <p>Start date: <%= trip.start_date %></p>
-  <p>End date: <%= trip.end_date %></p>
-  <%= link_to "View trip", trip_path(trip) %>
+<% if @trips.any? %>
+  <% @trips.each do |trip| %>
+    <div class="trip">
+      <h2><%= trip.destination.name %></h2>
+      <p>Start date: <%= trip.start_date %></p>
+      <p>End date: <%= trip.end_date %></p>
+      <%= link_to "View trip", trip_path(trip) %>
+      <%= link_to "Delete", trip_path(trip), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "background-color: #2156af; border-radius: 20px; border: none; color: #FFFFFF; font-size: 20px; font-weight: bold; padding: 10px 20px; text-decoration: none; transition: all 0.3s ease-in-out;" %>
+    </div>
+  <% end %>
+<% else %>
+  <p>You have no upcoming trips.</p>
+<% end %>
 </div>
