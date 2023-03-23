@@ -1,12 +1,15 @@
 .banner {
-  background-image: url('https://www.findcelebrityjobs.com/uploads/9/6/9/5/9695336/hire-a-senior-travel-companion_orig.png');
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1)
+  ), url('https://www.findcelebrityjobs.com/uploads/9/6/9/5/9695336/hire-a-senior-travel-companion_orig.png');
   background-size: cover;
   background-position: center;
-  height: 600px;
+  height: 550px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #ffffff;
-  text-shadow: 2px 2px 4px #000000;
+  text-shadow: 3px 3px 5px #000000;
 }
