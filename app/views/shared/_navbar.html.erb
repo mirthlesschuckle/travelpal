@@ -18,6 +18,9 @@
             <%= link_to "My Profile", user_profile_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item d-flex align-items-center">
+            <%= link_to "My Buddies", my_buddies_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item d-flex align-items-center">
             <%= link_to "#{current_user.first_name}", dashboard_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
