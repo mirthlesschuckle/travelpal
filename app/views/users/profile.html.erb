@@ -2,3 +2,11 @@
 <p>Email: <%= @user.email %></p>
 <p>Average rating: </p>
 <p>Reviews: </p>
+
+<p><strong>Reviews</strong></p>
+<ul class="list-group">
+  <% @user.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %></li>
+  <% end %>
+</ul>
+<hr>
