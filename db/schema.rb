@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_03_22_021030) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_021030) do
     t.float "longitude"
     t.string "country"
     t.string "area"
+    t.string "image_path"
   end
 
   create_table "favorites", force: :cascade do |t|

@@ -1,7 +1,9 @@
-<h1>My Trips</h1>
+<div class="container" style="margin-top: 50px; margin-bottom: 50px; min-height: 910px;">
+  <h1>My Trips</h1>
 
-<% @trips.each do |trip| %>
-  <%= render partial: "trips/trip", locals: { trip: trip } %>
-<% end %>
+  <% @trips.each do |trip| %>
+    <%= render partial: "trips/trip", locals: { trip: trip } %>
+  <% end %>
 
-<%#= link_to "New trip", new_trip_path %>
+  <%#= link_to "New trip", new_trip_path %>
+</div>
