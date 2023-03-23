@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_120126) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_22_021030) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +57,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_120126) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_matches_on_trip_id"
+    t.index ["user_id"], name: "index_matches_on_user_id"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
@@ -83,6 +93,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_120126) do
   end
 
   add_foreign_key "activities", "destinations"
+  add_foreign_key "matches", "trips"
+  add_foreign_key "matches", "users"
   add_foreign_key "trips", "destinations"
   add_foreign_key "trips", "users"
 end
