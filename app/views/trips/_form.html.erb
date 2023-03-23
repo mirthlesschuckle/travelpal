@@ -1,9 +1,20 @@
 <h2> Select your travel dates </h2>
-<%= simple_form_for [@destination, @trip] do |f| %>
+<%#= simple_form_for([@destination, @trip], data: { controller: 'flatpickr' }) do |f| %>
+  <%# if @destination.nil? %>
+    <%#= f.association :destination, collection: Destination.order(:name), label: "Destination", include_blank: false %>
+  <%# end %>
+  <%#= f.input :start_date, as: :date, label: "Start date", input_html: { data: { flatpickr_target: "startTime" } } %>
+  <%#= f.input :end_date, as: :date, label: "End date", input_html: { data: { flatpickr_target: "endTime" } } %>
+  <%#= f.submit "Submit", class: "btn btn-primary" %>
+<%# end %>
+
+<%= form_with(model: [@destination, @trip], local: true, data: { controller: 'flatpickr' }) do |form| %>
   <% if @destination.nil? %>
-  <%= f.association :destination, collection: Destination.order(:name), label: "Destination", include_blank: false %>
+    <%= form.collection_select :destination_id, Destination.order(:name), :id, :name, { label: "Destination", include_blank: false } %>
   <% end %>
-  <%= f.input :start_date, label: "Start date" %>
-  <%= f.input :end_date, label: "End date" %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= form.label :start_date, "Start date" %>
+  <%= form.date_field :start_date, data: { flatpickr_target: "startTime" } %>
+  <%= form.label :end_date, "End date" %>
+  <%= form.date_field :end_date, data: { flatpickr_target: "endTime" } %>
+  <%= form.submit "Submit", class: "btn btn-primary" %>
 <% end %>
