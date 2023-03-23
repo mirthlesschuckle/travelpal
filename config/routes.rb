@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :trips, only: [ :new, :create ]
   end
 
+  resources :users
   get "/profile", to: "users#profile", as: :profile
 
 end
