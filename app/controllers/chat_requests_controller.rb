@@ -9,7 +9,7 @@ class ChatRequestsController < ApplicationController
     if @chat_request.save
       redirect_to my_buddies_path, notice: 'Chat request sent.'
     else
-      redirect_to trip_matches_path(params[:chat_request][:trip_id]), alert: 'Could not send chat request.'
+      redirect_to trip_matches_path(params[:chat_request][:trip_id]), alert: 'Chat Request has already been sent.'
     end
   end
 
