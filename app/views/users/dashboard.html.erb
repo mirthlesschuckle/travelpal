@@ -7,10 +7,10 @@
   <% if @user.all_favorited.empty? %>
     <p>You have no favorite destinations.</p>
   <% else %>
-    <div class="row" style="margin: 30px;">
+    <div class="row">
       <% @user.all_favorited.each do |destination| %>
         <div class="col-3">
-          <div class="card" style="width: 16rem; style=margin: 30px;">
+          <div class="card" style="width: 16rem; margin: 30px;">
             <img src="<%= asset_path(destination.image_path) %>" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%= link_to destination.name, destination_path(destination) %></h5>
@@ -29,10 +29,10 @@
     <p>You have no upcoming trips.</p>
   <% else %>
 
-    <div class="row" style="margin: 30px;">
+    <div class="row">
       <% @user.trips.each do |trip| %>
         <div class="col-3">
-          <div class="card" style="width: 16rem; height: 400px !important;">
+          <div class="card" style="width: 16rem; height: 400px !important; margin: 30px;">
             <img src="<%= asset_path(trip.destination.image_path) %>" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%= link_to trip.destination.name, destination_path(trip.destination) %></h5>

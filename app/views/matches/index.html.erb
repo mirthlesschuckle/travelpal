@@ -7,7 +7,7 @@
         <% @matches.each do |match| %>
           <div class="col-md-4">
             <div class="card mb-3">
-              <div class="card-img-top" style="background-image: url(''); height: 200px; background-position: center; background-size: cover;">
+              <div class="card-img-top" style="background-image: url(<%= asset_path(match.trip.destination.image_path) %>); height: 200px; background-position: center; background-size: cover;">
                 <div class="card-img-overlay d-flex align-items-start justify-content-center">
                   <h5 class="card-title text-white bg-dark p-2 rounded"><%= match.trip.destination.name %></h5>
                 </div>
