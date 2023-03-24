@@ -26,4 +26,8 @@ Rails.application.routes.draw do
 
 
   get '/users/:id/profile', to: 'users#profile', as: 'user_profile'
+
+  get '/my_buddies', to: 'users#my_buddies', as: 'my_buddies'
+  resources :chat_requests, only: [:create, :update], constraints: { id: /\d+/ }, via: [:post, :put, :get]
+
 end

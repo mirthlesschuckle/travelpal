@@ -1,0 +1,12 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title"><%= match.trip.destination.name %></h5>
+    <p class="card-text">Traveling from <%= match.trip.start_date %> to <%= match.trip.end_date %></p>
+    <p class="card-text"><%= match.user.first_name %> <%= match.user.last_name %></p>
+    <% if match.awaiting_approval? && current_user == match.user %>
+      <%= button_to "Awaiting Approval", confirm_match_path(match), method: :put, class: "btn btn-primary" %>
+    <% else %>
+      <p class="card-text"><%= match.status.humanize %></p>
+    <% end %>
+  </div>
+</div>
