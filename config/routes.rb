@@ -24,6 +24,10 @@ Rails.application.routes.draw do
 
   resources :matches, only: [:create]
 
+  resources :chatrooms, only: [:index, :show, :new, :create] do
+    resources :messages, only: :create
+  end
+
 
   get '/users/:id/profile', to: 'users#profile', as: 'user_profile'
 
