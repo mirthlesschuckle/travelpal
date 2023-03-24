@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     resources :trips, only: [ :new, :create ]
   end
 
-
   resources :users do
     resources :reviews, only: [:create, :new, :show, :index]
   end
@@ -23,6 +22,6 @@ Rails.application.routes.draw do
 
   resources :matches, only: [:create]
 
-
   get '/users/:id/profile', to: 'users#profile', as: 'user_profile'
+  get '/user/edit', to: 'users#edit', as: 'edit_current_user'
 end

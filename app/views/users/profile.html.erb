@@ -1,4 +1,5 @@
 <h1><%= @user.first_name %> <%= @user.last_name %>'s Profile</h1>
+<%= cl_image_tag current_user.photo.key, height: 100, width: 100, crop: :fill, radius: "max" %>
 <p>Email: <%= @user.email %></p>
 <p>Average rating: </p>
 <p>Reviews: </p>
