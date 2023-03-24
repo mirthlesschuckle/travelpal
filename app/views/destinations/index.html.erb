@@ -28,12 +28,21 @@
   <div class="row justify-content-center">
     <div class="col-sm-8">
       <% if @destinations.any? %>
+
         <h3>Destinations:</h3>
-        <% @destinations.each do |destination| %>
-          <p>
-            <%= link_to destination.name, destination_path(destination), class: "text-decoration-none", style: "color: black;" %>
-          </p>
-        <% end %>
+        <div class="row" style="margin: 30px;">
+          <% @destinations.each do |destination| %>
+            <div class="col-3">
+              <%= link_to destination_path(destination), class: "text-decoration-none", style: "color: black;" do %>
+                <div class="card" style="height: 10rem; padding: 20px; margin-bottom: 20px;">
+                  <img class="card-img-top" src="<%= asset_path(destination.image_path) %>" alt="Card image cap">
+                  <p>
+                    <%= destination.name %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
       <% else %>
         <p></p>
       <% end %>

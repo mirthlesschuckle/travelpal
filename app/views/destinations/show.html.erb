@@ -1,8 +1,9 @@
 <div class="container" style="margin-bottom: 50px;">
 
   <h1 style="text-align: center;"><%= @destination.name %></h1>
-  <div style="text-align: center;">
-    <%= link_to toggle_favorite_destination_path(@destination), remote: true, data: {turbo_method: :post} do %>
+  <div style="display: flex; align-items: flex-start; justify-content: center;">
+    <p style="font-size: 14px; margin-right: 10px; margin-top: 0; padding-top: 2px;">Add to favourites</p>
+    <%= link_to toggle_favorite_destination_path(@destination), remote: true, data: {turbo_method: :post}, style: "margin-top: 0;" do %>
       <%= render "destinations/like_button", destination: @destination %>
     <% end %>
   </div>
