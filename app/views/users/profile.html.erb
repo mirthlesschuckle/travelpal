@@ -1,6 +1,7 @@
 <div class="container" style="margin-top: 35px; margin-bottom: 35px;">
 
   <h1 style="text-align: center;"><%= "#{current_user.first_name}'s Profile" %></h1>
+  <%= cl_image_tag current_user.photo.key, height: 100, width: 100, crop: :fill, radius: "max" %>
   <p>Email: <%= @user.email %></p>
   <p>Average rating: </p>
   <p>Reviews: </p>
@@ -18,4 +19,3 @@
 </div>
 </ul>
 <p><%= link_to "add review", new_user_review_path(@user) %></p>
-

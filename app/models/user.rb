@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   acts_as_favoritor
 
+  has_one_attached :photo
   has_many :trips, dependent: :destroy
 
   has_many :matches, dependent: :destroy
