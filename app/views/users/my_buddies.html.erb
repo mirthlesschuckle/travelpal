@@ -35,7 +35,7 @@
           <h5 class="card-title"><%= match.trip.destination.name %></h5>
           <p class="card-text">Traveling from <%= match.trip.start_date %> to <%= match.trip.end_date %></p>
           <p class="card-text"><%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %></p>
-          <%= link_to "Let's chat", "#", class: "btn btn-primary" %>
+          <%= link_to "Let's chat", chatrooms_path, class: "btn btn-primary" %>
         </div>
       </div>
       <% end %>
