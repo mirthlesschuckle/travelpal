@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :reviews, only: [:create, :new, :show, :index]
   end
+  resources :reviews, only: [:destroy]
 
   get "/dashboard", to: "users#dashboard", as: :dashboard
 
@@ -29,4 +30,8 @@ Rails.application.routes.draw do
 
 
   get '/users/:id/profile', to: 'users#profile', as: 'user_profile'
+
+  get '/my_buddies', to: 'users#my_buddies', as: 'my_buddies'
+  resources :chat_requests, only: [:create, :update], constraints: { id: /\d+/ }, via: [:post, :put, :get]
+
 end

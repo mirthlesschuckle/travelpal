@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_03_24_113104) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +30,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_113104) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+  
+  create_table "chat_requests", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.bigint "trip_id", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_chat_requests_on_receiver_id"
+    t.index ["sender_id"], name: "index_chat_requests_on_sender_id"
+    t.index ["trip_id"], name: "index_chat_requests_on_trip_id"
+
   end
 
   create_table "destinations", force: :cascade do |t|
@@ -71,6 +85,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_113104) do
     t.index ["user_id"], name: "index_matches_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_matches_on_trip_id"
+    t.index ["user_id"], name: "index_matches_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "chatroom_id", null: false
@@ -80,6 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_113104) do
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
+
 
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -121,6 +145,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_113104) do
   add_foreign_key "matches", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "chat_requests", "trips"
+  add_foreign_key "chat_requests", "users", column: "receiver_id"
+  add_foreign_key "chat_requests", "users", column: "sender_id"
+  add_foreign_key "matches", "trips"
+  add_foreign_key "matches", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "trips", "destinations"
   add_foreign_key "trips", "users"

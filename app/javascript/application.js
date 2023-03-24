@@ -1,3 +1,6 @@
+//= require jquery
+//= require jquery_ujs
+
 import "@hotwired/turbo-rails";
 import "./controllers";
 import "bootstrap";
@@ -22,6 +25,14 @@ document.addEventListener("turbo:load", function () {
       } else if (event.target.closest(".carousel-control-next")) {
         carousel.carousel("next");
       }
+    });
+  });
+});
+
+document.addEventListener('turbo:load', () => {
+  $(function() {
+    $('a[data-method="delete"]').on('ajax:success', function(event) {
+      $(this).closest('div').fadeOut();
     });
   });
 });
