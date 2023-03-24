@@ -5,16 +5,25 @@ class DestinationsController < ApplicationController
   def index
     if params[:query].present?
       @destinations = Destination.where("name ILIKE :query OR country ILIKE :query OR area ILIKE :query", query: "#{params[:query]}%")
+      @markers = @destinations.geocoded.map do |destination|
+        {
+          lat: destination.latitude,
+          lng: destination.longitude,
+          marker_html: render_to_string(partial: "marker"),
+          info_window: render_to_string(partial: "info_window", locals: {destination: destination})
+        }
+      end
     else
       @destinations = Destination.all
-    end
-    @markers = @destinations.geocoded.map do |destination|
-      {
-        lat: destination.latitude,
-        lng: destination.longitude,
-        marker_html: render_to_string(partial: "marker"),
-        info_window: render_to_string(partial: "info_window", locals: {destination: destination})
-      }
+      @markers = @destinations.geocoded.map do |destination|
+        {
+          lat: destination.latitude,
+          lng: destination.longitude,
+          marker_html: render_to_string(partial: "marker"),
+          info_window: render_to_string(partial: "info_window", locals: {destination: destination})
+        }
+      end
+      # puts "No results found"
     end
   end
 
