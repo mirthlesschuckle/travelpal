@@ -22,18 +22,12 @@ Destination.create(name: "Bangkok", country: "Thailand", address: "Bangkok", des
 Destination.create(name: "Dubai", country: "UAE", address: "Dubai", description: "The city of luxury and innovation.", image_path: "dubai.jpg")
 Destination.create(name: "Cape Town", country: "South Africa", address: "Cape Town", description: "The city of natural beauty and adventure.", image_path: "cape-town.jpg")
 Destination.create(name: "Havana", country: "Cuba", address: "Havana", description: "The city of vintage cars and vibrant music.", image_path: "havana.jpg")
-
+Destination.create(name: "Santorini", country: "Greece", address: "Santorini", description: "The island of stunning sunsets and white-washed houses.", image_path: "santorini.jpg")
+Destination.create(name: "Marrakech", country: "Morocco", address: "Marrakech", description: "The city of markets and Moroccan architecture.", image_path: "marrakech.jpg")
 
 puts 'creating activities...'
 
 destinations = Destination.all
-
-# destinations.each do |destination|
-#   Activity.create(name: "Tower Climbing", activity_type: "Adventure", description: "Climb the famous tower.", destination_id: destination.id)
-#   Activity.create(name: "Guided City Tour", activity_type: "Culture", description: "See all of this amazing city.", destination_id: destination.id)
-#   Activity.create(name: "Museums", activity_type: "History", description: "Visit famous museums.", destination_id: destination.id)
-# end
-
 
 # New York
 Activity.create(name: "Broadway Show", activity_type: "Entertainment", description: "Experience the excitement of a live Broadway show in the heart of New York City.", destination_id: Destination.find_by(name: "New York").id)
@@ -85,7 +79,15 @@ Activity.create(name: "Vintage Car Tour", activity_type: "Historical Tour", desc
 Activity.create(name: "Cigar Rolling Workshop", activity_type: "Art and Culture", description: "Learn how to roll your own Cuban cigars from expert cigar makers and take home your handmade creations.", destination_id: Destination.find_by(name: "Havana").id)
 Activity.create(name: "Havana Music Tour", activity_type: "Entertainment", description: "Experience the vibrant music scene of Havana, with live performances by local musicians in clubs and bars throughout the city.", destination_id: Destination.find_by(name: "Havana").id)
 Activity.create(name: "Old Havana Walking Tour", activity_type: "Historical Tour", description: "Discover the rich history of Old Havana on a guided walking tour, with visits to historic sites and landmarks.", destination_id: Destination.find_by(name: "Havana").id)
-
-
+# Santorini
+Activity.create(name: "Santorini Sunset Cruise", activity_type: "Boat Tour", description: "Watch the sunset over the Aegean Sea while cruising along the Santorini coast.", destination_id: Destination.find_by(name: "Santorini").id)
+Activity.create(name: "Ancient Thira Ruins Tour", activity_type: "Historical Site", description: "Explore the ruins of Ancient Thira and learn about the island's history and culture.", destination_id: Destination.find_by(name: "Santorini").id)
+Activity.create(name: "Wine Tasting Tour", activity_type: "Food Tour", description: "Sample some of Santorini's famous wines while touring the island's wineries.", destination_id: Destination.find_by(name: "Santorini").id)
+Activity.create(name: "Black Sand Beach Tour", activity_type: "Outdoor Activity", description: "Relax on the unique black sand beaches of Santorini and take in the stunning volcanic landscapes.", destination_id: Destination.find_by(name: "Santorini").id)
+# Marrakech
+Activity.create(name: "Marrakech Medina Tour", activity_type: "Sightseeing", description: "Explore the vibrant markets and historical landmarks of Marrakech's Medina.", destination_id: Destination.find_by(name: "Marrakech").id)
+Activity.create(name: "Atlas Mountains Hike", activity_type: "Outdoor Activity", description: "Hike through the stunning Atlas Mountains and take in breathtaking views of the surrounding landscape.", destination_id: Destination.find_by(name: "Marrakech").id)
+Activity.create(name: "Moroccan Cooking Class", activity_type: "Food Tour", description: "Learn to cook traditional Moroccan dishes with a local chef.", destination_id: Destination.find_by(name: "Marrakech").id)
+Activity.create(name: "Jardin Majorelle Visit", activity_type: "Sightseeing", description: "Discover the beautiful Jardin Majorelle and its colorful gardens and buildings.", destination_id: Destination.find_by(name: "Marrakech").id)
 
 puts 'COMPLETED!'
