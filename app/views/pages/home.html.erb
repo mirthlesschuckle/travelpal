@@ -1,80 +1,124 @@
 <head>
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+
 </head>
 
-<div class="banner">
-  <div style="display: flex; align-items: center;">
-    <h1 style="margin-top: 0; font-size: 90px; line-height: 80px;">TravelPal&nbsp;</h1>
-    <%= image_tag 'plane-logo-test.png', width: 120, height: 120 %>
-  </div>
-  <h3 style="">Discover the World, Share the Experience</h3>
-  <div class="row justify-content-center" style="width: 1000px; margin-top: 150px;">
-    <div class="col-sm-8">
-      <%= form_with url: destinations_path, method: :get, class: "search-form" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Find a destination",
-          input_html: {data: {address_autocomplete_target: "address"}},
-          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
+<body>
+
+  <div class="banner">
+    <div style="display: flex; align-items: center;">
+      <h1 style="margin-top: 0; font-size: 90px; line-height: 80px;">TravelPal&nbsp;</h1>
+      <%= image_tag 'plane-logo-test.png', width: 120, height: 120 %>
+    </div>
+    <h3 style="">Discover the World, Share the Experience</h3>
+    <div class="row justify-content-center" style="width: 1000px; margin-top: 150px;">
+      <div class="col-sm-8">
+        <%= form_with url: destinations_path, method: :get, class: "search-form" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a destination",
+            input_html: {data: {address_autocomplete_target: "address"}},
+            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container" style="padding: 40px">
-  <h2 class="row justify-content-center">Our top destination picks...</h2>
-</div>
+  <div class="container" style="padding: 40px;">
+    <h2 class="row justify-content-center" style="font-weight: bolder;">Our top destination picks...</h2>
+  </div>
 
-<div class="container" style="padding: 0 100px 100px">
-  <div class="row">
-    <div class="home-card col-sm-6">
+  <div class="container" style="padding: 0 100px 40px">
+    <div class="row">
+      <div class="home-card col-sm-6">
 
-      <div id="cardCarousel" class="carousel slide">
-        <div class="carousel-inner">
-          <% @destinations.each_with_index do |destination, index| %>
-            <div class="carousel-item <%= index == 0 ? "active" : "" %>">
-              <%= link_to destination_path(destination), class: "text-dark text-decoration-none" do %>
-                <div class="row card-container">
-                  <div class="col-md-12">
-                    <div class="card card-sm mb-3">
-                      <img class="card-img-top" src="<%= asset_path(destination.image_path) %>" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title"><%= destination.name %></h5>
-                        <p class="card-text"><%= destination.description %></p>
+        <div id="cardCarousel" class="carousel slide">
+          <div class="carousel-inner">
+            <% @destinations.each_with_index do |destination, index| %>
+              <div class="carousel-item <%= index == 0 ? "active" : "" %>">
+                <%= link_to destination_path(destination), class: "text-dark text-decoration-none" do %>
+                  <div class="row card-container">
+                    <div class="col-md-12">
+                      <div class="card card-sm mb-3">
+                        <img class="card-img-top" src="<%= asset_path(destination.image_path) %>" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= destination.name %></h5>
+                          <p class="card-text"><%= destination.description %></p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <a class="carousel-control-prev" href="#cardCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#cardCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <a class="carousel-control-prev" href="#cardCarousel" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#cardCarousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+
       </div>
 
-    </div>
-
-    <div class="home-card col-sm-6">
-      <div class="col-md-12">
-        <div class="map-container"
-          <div style="width: 100%; height: 337px; border-radius: 10px;"
-            data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
-            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      <div class="home-card col-sm-6">
+        <div class="col-md-12">
+          <div class="map-container">
+            <div style="width: 100%; height: 337px; border-radius: 10px;"
+              data-controller="map"
+              data-map-markers-value="<%= @markers.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="video-wrapper">
+    <div class="video-container">
+      <video width="100%" height="100%" autoplay loop muted playsinline>
+        <source src="https://lonelyplanetstatic.imgix.net/marketing/2023/BIT/videos/LOOPING%20VIDEOS/MAIN%20PAGE/NewMexico_3.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay">
+        <h1 class="video-text" style="font-size: 120px; margin-bottom:80px;">TravelPal</h1>
+        <h1 class="video-text" style="font-size: 70px;">Best in Travel</h1>
+        <h1 class="video-text" style="font-size: 70px; margin-bottom:180px;">2023</h1>
+        <h1 class="video-text" style="font-size: 20px;">Explore this year's expert-approved list of must-see destinations and unforgettable activities with the perfect travel buddy by your side.</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding: 20px; margin-top: 40px;">
+    <h2 class="row justify-content-center" style="font-weight: bolder;">Recommended for you</h2>
+  </div>
+
+  <div class="container" style="padding: 40px; margin-bottom:40px;">
+    <div class="image-grid">
+      <div class="image-container">
+        <img src="https://a.loveholidays.com/sunrise/public/Images/beach.jpg?auto=avif%2Cwebp&quality=45&dpr=2&optimize=high&fit=bounds&width=225&height=225" class="image">
+        <img src="https://a.loveholidays.com/sunrise/public/Images/palm-tree.jpg?auto=avif%2Cwebp&quality=45&dpr=2&optimize=high&fit=bounds&width=225&height=225" class="image">
+      </div>
+      <div class="image-container" style="margin-top: 80px;">
+        <img src="https://a.loveholidays.com/sunrise/public/Images/ocean-bay.jpg?auto=avif%2Cwebp&quality=45&dpr=2&optimize=high&fit=bounds&width=225&height=225" class="image">
+        <img src="https://a.loveholidays.com/sunrise/public/Images/blue-chairs.jpg?auto=avif%2Cwebp&quality=45&dpr=2&optimize=high&fit=bounds&width=225&height=225" class="image">
+      </div>
+      <div class="image-container">
+        <img src="https://i.pinimg.com/736x/c9/82/b1/c982b11fb4aaea7ed414a8cf2ada63d3.jpg" class="image">
+        <img src="https://i.icanvas.com/list-square/cascade-range-COL32.jpg" class="image">
+      </div>
+      <div class="image-container" style="margin-top: 80px;">
+        <img src="https://assets.simpleviewinc.com/simpleview/image/upload/crm/whitemountainsnh/WV-Town-Square_49EC151A-5056-A36A-0B9FB351B59B141C-49ec126e5056a36_49ec1cb4-5056-a36a-0bdead71f98eabca.jpg" class="image">
+        <img src="https://img.freepik.com/premium-photo/matterhorn-with-stellisee-lake-zermatt_1339-38355.jpg?w=2000" class="image">
+      </div>
+    </div>
 
   </div>
-</div>
+
+</body>
