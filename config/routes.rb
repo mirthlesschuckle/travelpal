@@ -33,6 +33,14 @@ Rails.application.routes.draw do
 
 
   get '/my_buddies', to: 'users#my_buddies', as: 'my_buddies'
+
+  resources :chat_requests do
+    member do
+      patch :confirm
+      patch :confirm_reject
+    end
+  end
+
   resources :chat_requests, only: [:create, :update], constraints: { id: /\d+/ }, via: [:post, :put, :get] do
     resources :chatrooms, only: [:create]
   end

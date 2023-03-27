@@ -17,8 +17,7 @@
                   <img src="<%= %>" alt="<%= current_user == match.trip.user ? match.user.first_name : match.trip.user.first_name %>'s avatar" class="rounded-circle" width="80" height="80" style="position: absolute; top: 150px; left: 50%; margin-left: -40px; border: 4px solid black;">
                 <% end %>
                 <div class="text-center mt-4">
-                  <h6 class="card-title"><%= current_user == match.trip.user ? match.user.first_name : match.trip.user.first_name %></h6>
-                  <p class="card-text">Traveling from <%= match.trip.start_date %> to <%= match.trip.end_date %></p>
+                  <p class="card-text">Great news, <strong><%= current_user == match.trip.user ? match.user.first_name : match.trip.user.first_name %></strong> is heading to <%= match.trip.destination.name %> at the same time as you! Connect now to plan your trip together.</p>
                   <div class="row text-center mt-2">
                     <div class="col">
                       <p class="card-text"><strong>Reviews</strong></p>
@@ -29,7 +28,11 @@
                       <p class="card-text"></p>
                     </div>
                     <div class="col">
-                      <%= link_to "Send Chat Request", chat_requests_path("chat_request[sender_id]": current_user.id, "chat_request[receiver_id]": (current_user == match.trip.user ? match.user.id : match.trip.user.id), "chat_request[trip_id]": match.trip.id), data: {turbo_method: :post}, class: "btn btn-primary" %>
+                      <% if ChatRequest.where(sender: current_user).where(receiver: current_user == match.trip.user ? match.user.id : match.trip.user.id).first || ChatRequest.where(receiver: current_user).where(sender: current_user == match.trip.user ? match.user.id : match.trip.user.id).first%>
+                        <%= link_to "Check Status", my_buddies_path, class: "btn btn-primary" %>
+                      <% else %>
+                        <%= link_to "Send Chat Request", chat_requests_path("chat_request[sender_id]": current_user.id, "chat_request[receiver_id]": (current_user == match.trip.user ? match.user.id : match.trip.user.id), "chat_request[trip_id]": match.trip.id), data: {turbo_method: :post}, class: "btn btn-primary" %>
+                      <% end %>
                     </div>
                   </div>
                 </div>
