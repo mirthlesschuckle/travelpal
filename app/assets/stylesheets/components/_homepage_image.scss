@@ -29,6 +29,10 @@
   justify-content: center;
 }
 
+.image:hover {
+  transform: translateY(-5px);
+}
+
 .city-name {
   font-size: 30px;
   font-weight: bold;
