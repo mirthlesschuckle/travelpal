@@ -2,7 +2,7 @@
   <h1>My Buddies</h1>
   <div class="row">
     <div class="col-md-4">
-      <h3>Pending Approval</h3>
+      <h3>Sent Requests</h3>
       <% @pending_approval_matches.each do |match| %>
         <div class="card mb-3">
           <div class="card-body">
@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <div class="col-md-4">
-      <h3>Awaiting Approval</h3>
+      <h3>Received Requests</h3>
       <% @awaiting_approval_matches.each do |match| %>
       <div class="card mb-3">
         <div class="card-body">
@@ -35,7 +35,7 @@
           <h5 class="card-title"><%= match.trip.destination.name %></h5>
           <p class="card-text">Traveling from <%= match.trip.start_date %> to <%= match.trip.end_date %></p>
           <p class="card-text"><%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %></p>
-          <%= link_to "Let's chat", "#", class: "btn btn-primary" %>
+          <%= link_to "Let's chat", chatrooms_path, class: "btn btn-primary" %>
         </div>
       </div>
       <% end %>
