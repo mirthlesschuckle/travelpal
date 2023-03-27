@@ -1,13 +1,6 @@
 class ChatroomsController < ApplicationController
   def index
-    @chatrooms = Chatroom.all
-    @users_in_chatrooms = {}
-    @chatrooms.each do |chatroom|
-      subquery = chatroom.messages.select(:user_id).distinct.where.not(user_id: current_user.id)
-      users = User.where(id: subquery)
-      @users_in_chatrooms[chatroom.id] = users.map(&:first_name)
-    end
-    @chatroom = Chatroom.new
+    @chatrooms = Chatroom.all.select { |chatroom| chatroom.chat_request.sender == current_user } + Chatroom.all.select { |chatroom| chatroom.chat_request.receiver == current_user }
   end
 
   def show
@@ -20,17 +13,15 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    @chatroom = Chatroom.new(chatroom_params)
+    @chatroom = Chatroom.new
+    @chatroom_request = ChatRequest.find(params[:chat_request_id])
+    @chatroom.chat_request = @chatroom_request
+    @chatroom.name = @chatroom_request.trip.destination.name
+
     if @chatroom.save
       redirect_to chatrooms_path, notice: "Chatroom created successfully"
     else
-      render :new
+      redirect_to my_buddies_path
     end
-  end
-
-  private
-
-  def chatroom_params
-    params.require(:chatroom).permit(:name)
   end
 end
