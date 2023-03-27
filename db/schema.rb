@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_03_27_124933) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -129,6 +130,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_124933) do
     t.float "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "receiver_id", null: false
+    t.index ["receiver_id"], name: "index_reviews_on_receiver_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -170,6 +173,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_124933) do
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "users", column: "receiver_id"
   add_foreign_key "trips", "destinations"
   add_foreign_key "trips", "users"
 end

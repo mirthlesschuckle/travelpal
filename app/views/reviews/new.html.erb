@@ -1,6 +1,8 @@
-<h1>New review</h1>
-
-<%= simple_form_for [@user, @review] do |f| %>
+<div class="container-form">
+  <h1>New review</h1>
+  <%= simple_form_for [@user, @review] do |f| %>
   <%= f.input :content %>
+  <%= f.association :receiver, selected: params[:receiver_id], wrapper_html:{hidden: true} %>
   <%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
+ <% end %>
+</div>
