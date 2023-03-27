@@ -3,21 +3,9 @@
   <ul>
     <% @chatrooms.each do |chatroom| %>
       <li>
-        <%= link_to "#{chatroom.name}", chatroom_path(chatroom) %>:
-        <% if @users_in_chatrooms[chatroom.id].present? %>
-          <%= @users_in_chatrooms[chatroom.id].join(', ') %>
-        <% else %>
-          No users
-        <% end %>
+        <%= link_to "#{chatroom.name}", chatroom_path(chatroom) %>
       </li>
     <% end %>
   </ul>
 
-  <div class="container" style="padding-right: 800px;">
-    <h1>Make a new chat</h1>
-    <%= simple_form_for @chatroom do |f| %>
-      <%= f.input :name, label: "Chatroom name" %>
-      <%= f.button :submit, "Create", class: "btn btn-primary" %>
-    <% end %>
-  </div>
 </div>

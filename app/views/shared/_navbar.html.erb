@@ -11,6 +11,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
+          <li class="nav-item d-flex align-items-center" style="width: 500px; margin-right: 150px;">
+            <% if !(current_page?(root_path) || current_page?(destinations_path)) %>
+              <%= form_with url: destinations_path, method: :get, class: "search-form" do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Find a destination",
+                  input_html: {data: {address_autocomplete_target: "address"}},
+                  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+                <%= submit_tag "Search", class: "btn btn-primary" %>
+              <% end %>
+            <% else %>
+            <p class="" style="width: 500px; font-size: 16px; margin-top: 15px; margin-left: 18px; margin-right: 0px; font-style: italic;">Discover the World, Share the Experience<i style="margin-left: 8px;" class="fas fa-globe-americas ml-2"></i></p>
+            <% end %>
+          </li>
           <li class="nav-item d-flex align-items-center">
             <%= link_to "Destinations", destinations_path, class: "nav-link" %>
           </li>
@@ -23,7 +38,7 @@
           <li class="nav-item d-flex align-items-center">
             <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
           </li>
-          <li class="nav-item d-flex align-items-center">
+          <li class="nav-item name d-flex align-items-center">
             <p style="margin-top: 15px; margin-right: 5px; margin-left: 5px;"><%= current_user.first_name %></p>
           </li>
           <li class="nav-item dropdown">

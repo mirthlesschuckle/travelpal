@@ -50,7 +50,13 @@
               <div class="card-body">
                 <h5 class="card-title"><%= match.trip.destination.name %></h5>
                 <p class="card-text"> Congratulations! <strong><%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %></strong> has accepted your chat request. You can now connect with them and start planning your trip to <%= match.trip.destination.name %></p>
-                <%= link_to "Let's chat", chatrooms_path, class: "btn btn-primary" %>
+                <% request = match.trip.chat_requests.find_by(sender: current_user) || match.trip.chat_requests.find_by(receiver: current_user) %>
+                <p class="card-text"><%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %></p>
+                <% if request.chatroom %>
+                  <%= link_to "Let's chat", chatroom_path(request.chatroom), class: "btn btn-primary" %>
+                <% else %>
+                  <%= link_to "Let's chat", chat_request_chatrooms_path(request), data: { turbo_method: :post }, class: "btn btn-primary" %>
+                <% end %>
               </div>
             </div>
           <% end %>
