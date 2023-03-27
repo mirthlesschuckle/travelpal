@@ -2,7 +2,7 @@ class MatchesController < ApplicationController
   def index
     @matches = current_user.matches
     @trip = Trip.find(params[:trip_id])
-    @matches = @matches.select { |match| match.trip.destination == @trip.destination }
+    @matches = @trip.matches
     @chat_requests = current_user.sent_chat_requests + current_user.received_chat_requests
     # raise
   end
@@ -20,6 +20,5 @@ class MatchesController < ApplicationController
     end
     redirect_to trip_matches_path(params[:trip_id])
   end
-
 
 end

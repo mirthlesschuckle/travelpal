@@ -19,7 +19,10 @@ class UsersController < ApplicationController
 
     sent_confirmed = current_user.sent_chat_requests.accepted.includes(:receiver, :trip)
     received_confirmed = current_user.received_chat_requests.accepted.includes(:sender, :trip)
-    @confirmed_matches = sent_confirmed + received_confirmed
+
+    sent_reject_confirmed = current_user.sent_chat_requests.declined.includes(:receiver, :trip)
+    received_reject_confirmed = current_user.received_chat_requests.declined.includes(:sender, :trip)
+    @confirmed_matches = sent_confirmed + received_confirmed + sent_reject_confirmed + received_reject_confirmed
   end
 
 

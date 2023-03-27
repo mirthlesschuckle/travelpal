@@ -3,41 +3,58 @@
   <div class="row">
     <div class="col-md-4">
       <h3>Sent Requests</h3>
-      <% @pending_approval_matches.each do |match| %>
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title"><%= match.trip.destination.name %></h5>
-            <p class="card-text">Traveling from <%= match.trip.start_date %> to <%= match.trip.end_date %></p>
-            <p class="card-text"><%= match.receiver.first_name %> <%= match.receiver.last_name %></p>
-            <p class="card-text"><%= match.status.humanize %></p>
+      <% if @pending_approval_matches.empty? %>
+        <p>You have no sent requests.</p>
+      <% else %>
+        <% @pending_approval_matches.each do |match| %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <p class="card-text">You have sent a chat request to <strong><%= match.receiver.first_name %> <%= match.receiver.last_name %></strong> for the trip to <%= match.trip.destination.name %>. Please check back later.</p>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
     <div class="col-md-4">
       <h3>Received Requests</h3>
-      <% @awaiting_approval_matches.each do |match| %>
-      <div class="card mb-3">
-        <div class="card-body">
-          <h5 class="card-title"><%= match.trip.destination.name %></h5>
-          <p class="card-text">Traveling from <%= match.trip.start_date %> to <%= match.trip.end_date %></p>
-          <p class="card-text"><%= match.sender.first_name %> <%= match.sender.last_name %></p>
-          <%= button_to "Awaiting Approval", chat_request_path(match, confirm: 'yes'), method: :patch, class: "btn btn-primary" %>
-        </div>
-      </div>
+      <% if @awaiting_approval_matches.empty? %>
+        <p>You have no received requests.</p>
+      <% else %>
+        <% @awaiting_approval_matches.each do |match| %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <p class="card-text">Good news! You have received a chat request from <strong><%= match.sender.first_name %> <%= match.sender.last_name %></strong> who is traveling to <%= match.trip.destination.name %> at the same time as you! Please have a look at their profile below. </p>
+              <%= button_to "#{match.sender.first_name}'s Profile", user_profile_path(current_user == match.trip.user ? match.user : match.trip.user) %>
+              <%= button_to "Accept Request", chat_request_path(match, confirm: 'yes'), method: :patch, class: "btn btn-primary" %>
+              <%= button_to "Reject Request", chat_request_path(match, confirm: 'no'), method: :patch, class: "btn btn-danger" %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="col-md-4">
-      <h3>Confirmed Requests</h3>
-      <% @confirmed_matches.each do |match| %>
-      <div class="card mb-3">
-        <div class="card-body">
-          <h5 class="card-title"><%= match.trip.destination.name %></h5>
-          <p class="card-text">Traveling from <%= match.trip.start_date %> to <%= match.trip.end_date %></p>
-          <p class="card-text"><%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %></p>
-          <%= link_to "Let's chat", chatrooms_path, class: "btn btn-primary" %>
-        </div>
-      </div>
+      <h3>Accepted/Rejected Requests</h3>
+      <% if @confirmed_matches.empty? %>
+        <p>You have no accepted/rejected requests.</p>
+      <% else %>
+        <% @confirmed_matches.each do |match| %>
+          <% if match.status == "declined" %>
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title"><%= match.trip.destination.name %></h5>
+                <p class="card-text"> Sorry <%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %> seems want to travel solo, maybe you could find another buddy instead.</p>
+              </div>
+            </div>
+          <% else %>
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title"><%= match.trip.destination.name %></h5>
+                <p class="card-text"> Congratulations! <strong><%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %></strong> has accepted your chat request. You can now connect with them and start planning your trip to <%= match.trip.destination.name %></p>
+                <%= link_to "Let's chat", chatrooms_path, class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   </div>

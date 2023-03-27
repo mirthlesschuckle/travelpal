@@ -10,4 +10,5 @@ class ChatRequest < ApplicationRecord
   scope :declined, -> { where(status: :declined) }
 
   validates :sender_id, uniqueness: { scope: [:receiver_id, :trip_id], message: "has already sent a chat request for this trip to the selected user" }
+
 end
