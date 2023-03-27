@@ -27,11 +27,13 @@ Rails.application.routes.draw do
   get '/users/:id/profile', to: 'users#profile', as: 'user_profile'
   get '/user/edit', to: 'users#edit', as: 'edit_current_user'
 
-  resources :chatrooms, only: [:index, :show, :new, :create] do
+  resources :chatrooms, only: [:index, :show] do
     resources :messages, only: :create
   end
 
 
   get '/my_buddies', to: 'users#my_buddies', as: 'my_buddies'
-  resources :chat_requests, only: [:create, :update], constraints: { id: /\d+/ }, via: [:post, :put, :get]
+  resources :chat_requests, only: [:create, :update], constraints: { id: /\d+/ }, via: [:post, :put, :get] do
+    resources :chatrooms, only: [:create]
+  end
 end
