@@ -23,4 +23,16 @@
   object-fit: cover;
   border-radius: 10px;
   margin-top: 40px;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.city-name {
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }

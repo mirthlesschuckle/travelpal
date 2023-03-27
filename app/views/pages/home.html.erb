@@ -7,21 +7,29 @@
 <body>
 
   <div class="banner">
-    <div style="display: flex; align-items: center;">
-      <h1 style="margin-top: 0; font-size: 90px; line-height: 80px;">TravelPal&nbsp;</h1>
-      <%= image_tag 'plane-logo-test.png', width: 120, height: 120 %>
-    </div>
-    <h3 style="">Discover the World, Share the Experience</h3>
-    <div class="row justify-content-center" style="width: 1000px; margin-top: 150px;">
-      <div class="col-sm-8">
-        <%= form_with url: destinations_path, method: :get, class: "search-form" do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Find a destination",
-            input_html: {data: {address_autocomplete_target: "address"}},
-            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
+    <div class="row banner-content" style="margin-left:40px;">
+      <div class="col-md-9 text-center">
+        <h1 class="banner-title" style="margin-bottom:60px;">TravelPal</h1>
+        <h2 class="banner-subtitle" style="margin-bottom:60px; font-size: 30px;">Discover the World, Share the Experience</h2>
+        <p class="search-bar-slogan">Discover your next dream destination and exciting activities to experience!</p>
+        <div class="search-form-container" style="display: flex; justify-content: center; align-items: center;">
+          <%= form_with url: destinations_path, method: :get, class: "banner-search-form" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a destination",
+              input_html: {data: {address_autocomplete_target: "address"}},
+              wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-2 text-center" style="display: flex; align-items: end; justify-content: center;">
+        <p class="image-slogan" style="margin-bottom: 0rem;">Ready to explore? Craft your journey and connect with travel buddies now!</p>
+      </div>
+      <div class="col-md-1 text-center" style="display: flex; align-items: end; justify-content: center;">
+        <%= link_to new_trip_path, class: "banner-image-link" do %>
+          <%= image_tag 'boarding-pass.png', class: 'boarding-pass-image' %>
         <% end %>
       </div>
     </div>
@@ -102,20 +110,52 @@
   <div class="container" style="padding: 40px; margin-bottom:40px;">
     <div class="image-grid">
       <div class="image-container">
-        <img src="https://a.loveholidays.com/sunrise/public/Images/beach.jpg?auto=avif%2Cwebp&quality=45&dpr=2&optimize=high&fit=bounds&width=225&height=225" class="image">
-        <img src="https://a.loveholidays.com/sunrise/public/Images/palm-tree.jpg?auto=avif%2Cwebp&quality=45&dpr=2&optimize=high&fit=bounds&width=225&height=225" class="image">
+        <a href="<%= destination_path(Destination.find_by(name: "New York")) %>" style="text-decoration: none;">
+          <div class="image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('<%= asset_path(Destination.find_by(name: "New York").image_path) %>')">
+            <h3 class="city-name"><%= Destination.find_by(name: "New York").name %></h3>
+          </div>
+        </a>
+        <a href="<%= destination_path(Destination.find_by(name: "Paris")) %>" style="text-decoration: none;">
+          <div class="image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('<%= asset_path(Destination.find_by(name: "Paris").image_path) %>')">
+            <h3 class="city-name"><%= Destination.find_by(name: "Paris").name %></h3>
+          </div>
+        </a>
       </div>
       <div class="image-container" style="margin-top: 80px;">
-        <img src="https://a.loveholidays.com/sunrise/public/Images/ocean-bay.jpg?auto=avif%2Cwebp&quality=45&dpr=2&optimize=high&fit=bounds&width=225&height=225" class="image">
-        <img src="https://a.loveholidays.com/sunrise/public/Images/blue-chairs.jpg?auto=avif%2Cwebp&quality=45&dpr=2&optimize=high&fit=bounds&width=225&height=225" class="image">
+        <a href="<%= destination_path(Destination.find_by(name: "London")) %>" style="text-decoration: none;">
+          <div class="image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('<%= asset_path(Destination.find_by(name: "London").image_path) %>')">
+            <h3 class="city-name"><%= Destination.find_by(name: "London").name %></h3>
+          </div>
+        </a>
+        <a href="<%= destination_path(Destination.find_by(name: "Dubai")) %>" style="text-decoration: none;">
+          <div class="image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('<%= asset_path(Destination.find_by(name: "Dubai").image_path) %>')">
+            <h3 class="city-name"><%= Destination.find_by(name: "Dubai").name %></h3>
+          </div>
+        </a>
       </div>
       <div class="image-container">
-        <img src="https://i.pinimg.com/736x/c9/82/b1/c982b11fb4aaea7ed414a8cf2ada63d3.jpg" class="image">
-        <img src="https://i.icanvas.com/list-square/cascade-range-COL32.jpg" class="image">
+        <a href="<%= destination_path(Destination.find_by(name: "Hong Kong")) %>" style="text-decoration: none;">
+          <div class="image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('<%= asset_path(Destination.find_by(name: "Hong Kong").image_path) %>')">
+            <h3 class="city-name"><%= Destination.find_by(name: "Hong Kong").name %></h3>
+          </div>
+        </a>
+        <a href="<%= destination_path(Destination.find_by(name: "Rome")) %>" style="text-decoration: none;">
+          <div class="image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('<%= asset_path(Destination.find_by(name: "Rome").image_path) %>')">
+            <h3 class="city-name"><%= Destination.find_by(name: "Rome").name %></h3>
+          </div>
+        </a>
       </div>
       <div class="image-container" style="margin-top: 80px;">
-        <img src="https://assets.simpleviewinc.com/simpleview/image/upload/crm/whitemountainsnh/WV-Town-Square_49EC151A-5056-A36A-0B9FB351B59B141C-49ec126e5056a36_49ec1cb4-5056-a36a-0bdead71f98eabca.jpg" class="image">
-        <img src="https://img.freepik.com/premium-photo/matterhorn-with-stellisee-lake-zermatt_1339-38355.jpg?w=2000" class="image">
+        <a href="<%= destination_path(Destination.find_by(name: "Beijing")) %>" style="text-decoration: none;">
+          <div class="image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('<%= asset_path(Destination.find_by(name: "Beijing").image_path) %>')">
+            <h3 class="city-name"><%= Destination.find_by(name: "Beijing").name %></h3>
+          </div>
+        </a>
+        <a href="<%= destination_path(Destination.find_by(name: "Vienna")) %>" style="text-decoration: none;">
+          <div class="image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('<%= asset_path(Destination.find_by(name: "Vienna").image_path) %>')">
+            <h3 class="city-name"><%= Destination.find_by(name: "Vienna").name %></h3>
+          </div>
+        </a>
       </div>
     </div>
 
