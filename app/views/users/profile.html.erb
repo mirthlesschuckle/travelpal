@@ -8,18 +8,49 @@
           <% end %>
   <p>Email: <%= @user.email %></p>
   <p>Average rating: </p>
-  <p>Reviews: </p>
   <div class="row">
-    <p><strong>Reviews</strong></p>
+    <p><strong>Buddies reviews:</strong></p>
     <ul class="list-group">
-      <% @user.reviews.each do |review| %>
-        <li class="list-group-item"><%= review.content %>
-        <%= link_to "Delete",
+      <% @user.received_reviews.each do |review| %>
+        <li class="list-group-item"><%= review.content %> <%= review.user.first_name %>
+        <% link_to "Delete",
         review_path(review),
         data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
       %>
     </li>
   <% end %>
 </div>
-</ul>
+  <p><strong>My reviews:</strong></p>
+  <ul class="list-group">
+    <% @user.reviews.each do |review| %>
+        <li class="list-group-item"><%= review.content %> <%= review.user.first_name %>
+        <%= link_to "Delete",
+        review_path(review),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    </li>
+  <% end %>
+  </ul>
+    </ul>
 </div>
+<ul>
+  <p><strong>Old Buddies</strong></p>
+<%@buddies.each do |buddie| %>
+<nav class="menu-bar">
+  <div class="group">
+    <%if buddie.sender == @user%>
+      <%= buddie.receiver.first_name%>
+      <%=buddie.trip.destination.name%>
+    <% else %>
+      <%=buddie.sender.first_name%>
+      <%=buddie.trip.destination.name%>
+    <% end %>
+    <p><%= link_to "add review", new_user_review_path(@user, receiver_id: buddie.sender.id) %></p>
+  </div>
+<% end %>
+
+</ul>
+  </div>
+  <div class="group">
+  </div>
+</nav>

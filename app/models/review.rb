@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :user
+  belongs_to :receiver, class_name: 'User'
   validates :content, presence: true
 
   # def created_at_cannot_be_in_the_past
