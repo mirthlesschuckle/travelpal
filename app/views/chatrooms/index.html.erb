@@ -4,11 +4,6 @@
     <% @chatrooms.each do |chatroom| %>
       <li>
         <%= link_to "#{chatroom.name}", chatroom_path(chatroom) %>
-        <% if chatroom.users.any? %>
-          <%= chatroom.users.map(&:first_name).join(", ") %>
-        <% else %>
-          No users
-        <% end %>
       </li>
     <% end %>
   </ul>
