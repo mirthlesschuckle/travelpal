@@ -47,13 +47,21 @@
 }
 
 .boarding-pass-image {
-  width: 130px;
+  width: 100px;
   height: auto;
   transition: transform 0.3s;
 }
 
-.boarding-pass-image:hover {
-  transform: scale(1.1);
+#banner-image {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  text-decoration: none;
+  color:white;
+}
+
+#banner-image:hover {
+  transform: translateY(-5px);
 }
 
 .banner-search-form {
