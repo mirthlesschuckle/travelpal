@@ -14,7 +14,7 @@
               </div>
               <div class="card-body">
                 <%= link_to user_profile_path(current_user == match.trip.user ? match.user : match.trip.user) do %>
-                  <img src="<%= %>" alt="<%= current_user == match.trip.user ? match.user.first_name : match.trip.user.first_name %>'s avatar" class="rounded-circle" width="80" height="80" style="position: absolute; top: 150px; left: 50%; margin-left: -40px; border: 4px solid black;">
+                  <%= cl_image_tag(current_user == match.trip.user ? match.user.photo.key : match.trip.user.photo.key, class: "rounded-circle", width: 130, height: 130, style: "position: absolute; top: 100px; left: 50%; margin-left: -65px; border: 1px solid #dfdede;") %>
                 <% end %>
                 <div class="text-center mt-4">
                   <p class="card-text">Great news, <strong><%= current_user == match.trip.user ? match.user.first_name : match.trip.user.first_name %></strong> is heading to <%= match.trip.destination.name %> at the same time as you! Connect now to plan your trip together.</p>
