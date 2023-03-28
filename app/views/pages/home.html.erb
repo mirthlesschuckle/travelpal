@@ -4,12 +4,6 @@
 </head>
 
 <body>
-  <% if current_user.photo.blank? %>
-      <%= image_tag "https://w7.pngwing.com/pngs/527/663/png-transparent-logo-person-user-person-icon-rectangle-photography-computer-wallpaper.png", height: 200, width: 200, crop: :fill, radius: "max" %>
-    <% else %>
-      <%= cl_image_tag current_user.photo.key %>
-  <% end %>
-
   <div class="banner">
     <div class="row banner-content" style="margin-left:40px;">
       <div class="col-md-9 text-center">
