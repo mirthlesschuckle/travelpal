@@ -9,7 +9,7 @@
   <p>Email: <%= @user.email %></p>
   <p>Average rating: </p>
   <div class="row">
-    <p><strong>Buddies reviews:</strong></p>
+    <p><strong>Received reviews:</strong></p>
     <ul class="list-group">
       <% @user.received_reviews.each do |review| %>
         <li class="list-group-item"><%= review.content %> <%= review.user.first_name %>
@@ -20,7 +20,7 @@
     </li>
   <% end %>
 </div>
-  <p><strong>My reviews:</strong></p>
+  <p><strong>Sendet reviews:</strong></p>
   <ul class="list-group">
     <% @user.reviews.each do |review| %>
         <li class="list-group-item"><%= review.content %> <%= review.user.first_name %>
@@ -45,7 +45,7 @@
       <%=buddie.sender.first_name%>
       <%=buddie.trip.destination.name%>
     <% end %>
-    <p><%= link_to "add review", new_user_review_path(@user, receiver_id: buddie.sender.id) %></p>
+    <p><%= link_to "add review", new_user_review_path(@user, receiver_id: buddie.sender.id == @user.id ? buddie.receiver.id : buddie.sender.id) %></p>
   </div>
 <% end %>
 
