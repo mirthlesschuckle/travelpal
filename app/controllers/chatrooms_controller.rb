@@ -1,6 +1,7 @@
 class ChatroomsController < ApplicationController
   def index
     @chatrooms = Chatroom.all.select { |chatroom| chatroom.chat_request.sender == current_user } + Chatroom.all.select { |chatroom| chatroom.chat_request.receiver == current_user }
+
   end
 
   def show

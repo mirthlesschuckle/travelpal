@@ -1,25 +1,39 @@
-<div class="container chatroom">
-  <h1 style="text-align: center;">Chatroom name: <%= @chatroom.name %> (Chatroom id: <%= @chatroom.id %>)</h1>
+<div class="container align-items-center" style="margin-top: 20px; margin-bottom: 20px;">
+  <div class="container chatroom">
+    <h1 style="text-align: center;">
+      <% if @chatroom.chat_request.sender == current_user %>
+        <%= @chatroom.chat_request.receiver.first_name %>
+      <% elsif @chatroom.chat_request.receiver == current_user %>
+        <%= @chatroom.chat_request.sender.first_name %>
+      <% end %>
+    </h1>
+    <p style="text-align: center;">You connected on your <strong><%= @chatroom.name %></strong> trip</p>
 
-  <div class="messages">
-    <% @chatroom.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.user.first_name %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
-      </div>
+    <div class="messages">
+      <% @chatroom.messages.each do |message| %>
+        <div class="row">
+          <div class="col-1">
+            <%= cl_image_tag message.user.photo.key, style: "height: 47px; width: 47px; border-radius: 50%;" %>
+          </div>
+          <div class="col-9" id="message-<%= message.id %>">
+            <small>
+              <strong><%= message.user.first_name %></strong>
+              <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+            </small>
+            <p><%= message.content %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= simple_form_for [@chatroom, @message],
+      html: {class: "d-flex"} do |f|
+    %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Type a message...",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
     <% end %>
   </div>
-  <%= simple_form_for [@chatroom, @message],
-    html: {class: "d-flex"} do |f|
-  %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Type a message...",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
 </div>

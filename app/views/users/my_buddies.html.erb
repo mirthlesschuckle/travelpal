@@ -7,8 +7,8 @@
         <p>You have no sent requests.</p>
       <% else %>
         <% @pending_approval_matches.each do |match| %>
-          <div class="card mb-3">
-            <div class="card-body">
+          <div class="card mb-3" style="height: 250px;">
+            <div class="card-body" style="height: 250px;">
               <p class="card-text">You have sent a chat request to <strong><%= match.receiver.first_name %> <%= match.receiver.last_name %></strong> for the trip to <%= match.trip.destination.name %>. Please check back later.</p>
             </div>
           </div>
@@ -21,8 +21,8 @@
         <p>You have no received requests.</p>
       <% else %>
         <% @awaiting_approval_matches.each do |match| %>
-          <div class="card mb-3">
-            <div class="card-body">
+          <div class="card mb-3" style="height: 250px;">
+            <div class="card-body" style="height: 250px;">
               <p class="card-text">Good news! You have received a chat request from <strong><%= match.sender.first_name %> <%= match.sender.last_name %></strong> who is traveling to <%= match.trip.destination.name %> at the same time as you! Please have a look at their profile below. </p>
               <%= button_to user_profile_path(current_user == match.trip.user ? match.user : match.trip.user), method: :get, class: "button" do %>
                 Check Profile
@@ -41,15 +41,15 @@
       <% else %>
         <% @confirmed_matches.each do |match| %>
           <% if match.status == "declined" %>
-            <div class="card mb-3">
-              <div class="card-body">
+            <div class="card mb-3" style="height: 250px;">
+              <div class="card-body" style="height: 250px;">
                 <h5 class="card-title"><%= match.trip.destination.name %></h5>
                 <p class="card-text"> Apologies, but it seems you were unable to connect with <%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %> at this time. Perhaps you can seek out new connections and embark on a different adventure..</p>
               </div>
             </div>
           <% else %>
-            <div class="card mb-3">
-              <div class="card-body">
+            <div class="card mb-3" style="height: 250px;">
+              <div class="card-body" style="height: 250px;">
                 <h5 class="card-title"><%= match.trip.destination.name %></h5>
                 <p class="card-text"> Fantastic news! You and <strong><%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %></strong> have successfully connected! Get ready to embark on an unforgettable adventure to the beautiful city of <%= match.trip.destination.name %>. Let the planning begin!</p>
                 <% request = match.trip.chat_requests.find_by(sender: current_user) || match.trip.chat_requests.find_by(receiver: current_user) %>

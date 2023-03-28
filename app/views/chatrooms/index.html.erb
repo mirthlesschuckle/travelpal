@@ -1,11 +1,30 @@
 <div class="container" style="margin-top: 35px; margin-bottom: 35px;">
-  <h1>Chatrooms</h1>
-  <ul>
-    <% @chatrooms.each do |chatroom| %>
-      <li>
-        <%= link_to "#{chatroom.name}", chatroom_path(chatroom) %>
-      </li>
-    <% end %>
-  </ul>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <h1>Messages</h1>
+      <div class="row" style="margin: 30px;">
+
+        <% @chatrooms.each do |chatroom| %>
+          <div class="col-3">
+            <%= link_to chatroom_path(chatroom), class: "text-decoration-none", style: "color: black;" do %>
+              <div class="card" style="height: 15rem; padding: 20px; margin-bottom: 20px;">
+                <% if chatroom.chat_request.sender == current_user %>
+                  <%= cl_image_tag chatroom.chat_request.receiver.photo.key, style: "height: 135px; width: 135px;" %>
+                  <h5 style="padding-top: 6px; font-size: 24px;"><%= chatroom.chat_request.receiver.first_name %></h5>
+                  <p style="font-size: 12px;"><%= "You connected on your #{chatroom.name} trip" %></p>
+                <% elsif chatroom.chat_request.receiver == current_user %>
+                  <%= cl_image_tag chatroom.chat_request.sender.photo.key, style: "height: 135px; width: 135px;" %>
+                  <h5 style="padding-top: 6px; font-size: 24px;"><%= chatroom.chat_request.sender.first_name %></h5>
+                  <p style="font-size: 12px;"><%= "You connected on your #{chatroom.name} trip" %></p>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
 
 </div>
