@@ -17,20 +17,20 @@
     <% end %>
   </div>
   <div class="d-flex align-items-center">
-    <% if current_user.photo.blank? %>
+    <% if @user.photo.blank? %>
       <%= image_tag "https://w7.pngwing.com/pngs/527/663/png-transparent-logo-person-user-person-icon-rectangle-photography-computer-wallpaper.png", height: 200, width: 200, crop: :fill, radius: "max" %>
     <% else %>
-      <%= cl_image_tag current_user.photo.key, height: 200, width: 200, crop: :fill, radius: "max" %>
+      <%= cl_image_tag @user.photo.key, height: 200, width: 200, crop: :fill, radius: "max" %>
     <% end %>
-    <h2 style="text-align: center; margin-left: 30px; margin-right 30px; "><%= "#{current_user.first_name}'s Profile" %></h2>
+    <h2 style="text-align: center; margin-left: 30px; margin-right 30px; "><%= "#{@user.first_name}'s Profile" %></h2>
   </div>
 
   <div class="card" style="overflow: unset; height: fit-content; position: relative; top: 20px;">
     <div class="container d-flex flex-column card-body" style="background-color: #FFFEFE; padding: 75px;">
       <h4 class="card-title mb-5" ">Average rating </h4>
       <h4 class="card-title" ">Bio</h4>
-      <% if current_user.bio.present? %>
-        <p class="card-text mb-5" style="padding: 5px;"><%= current_user.bio %></p>
+      <% if @user.bio.present? %>
+        <p class="card-text mb-5" style="padding: 5px;"><%= @user.bio %></p>
       <% else %>
         <p class="card-text mb-5" style="padding: 5px;">No bio added yet.</p>
       <% end %>
@@ -50,12 +50,7 @@
         </ul>
       </div>
 
-    </div>
-  </div>
-</div>
-
-
-  <div class="row">
+        <div class="row">
     <p><strong>Received reviews:</strong></p>
     <ul class="list-group">
       <% @user.received_reviews.each do |review| %>
@@ -67,7 +62,7 @@
     </li>
   <% end %>
 </div>
-  <p><strong>Sendet reviews:</strong></p>
+  <p><strong>Sent reviews:</strong></p>
   <ul class="list-group">
     <% @user.reviews.each do |review| %>
         <li class="list-group-item"><%= review.content %> <%= review.user.first_name %>
@@ -81,7 +76,8 @@
     </ul>
 </div>
 <ul>
-  <p><strong>Old Buddies</strong></p>
+
+
 <%@buddies.each do |buddie| %>
 <nav class="menu-bar">
   <div class="group">
@@ -101,3 +97,9 @@
   <div class="group">
   </div>
 </nav>
+
+
+    </div>
+  </div>
+</div>
+
