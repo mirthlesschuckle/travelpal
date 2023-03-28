@@ -23,6 +23,9 @@ Rails.application.routes.draw do
 
   resources :matches, only: [:create]
 
+  resources :users do
+    patch 'update_bio'
+  end
 
   get '/users/:id/profile', to: 'users#profile', as: 'user_profile'
   get '/user/edit', to: 'users#edit', as: 'edit_current_user'

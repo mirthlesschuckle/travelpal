@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(params[:id])
+    @bio = @user.bio
   end
 
   def show
@@ -22,5 +23,20 @@ class UsersController < ApplicationController
     @confirmed_matches = sent_confirmed + received_confirmed
   end
 
+  def update_bio
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = "Bio updated successfully."
+      redirect_to user_profile_path(@user)
+    else
+      flash[:error] = "Failed to update bio."
+      render :profile
+    end
+  end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:bio)
+  end
 end
