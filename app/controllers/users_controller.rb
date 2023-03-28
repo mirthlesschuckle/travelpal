@@ -7,9 +7,12 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(params[:id])
+    @bio = @user.bio
+
     sent_confirmed = current_user.sent_chat_requests.accepted.includes(:receiver, :trip)
     received_confirmed = current_user.received_chat_requests.accepted.includes(:sender, :trip)
     @buddies = sent_confirmed + received_confirmed
+
   end
 
   def show
@@ -28,5 +31,20 @@ class UsersController < ApplicationController
     @confirmed_matches = sent_confirmed + received_confirmed + sent_reject_confirmed + received_reject_confirmed
   end
 
+  def update_bio
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = "Bio updated successfully."
+      redirect_to user_profile_path(@user)
+    else
+      flash[:error] = "Failed to update bio."
+      render :profile
+    end
+  end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:bio)
+  end
 end

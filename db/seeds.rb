@@ -24,6 +24,24 @@ Destination.create(name: "Cape Town", country: "South Africa", address: "Cape To
 Destination.create(name: "Havana", country: "Cuba", address: "Havana", description: "The city of vintage cars and vibrant music.", image_path: "havana.jpg")
 Destination.create(name: "Santorini", country: "Greece", address: "Santorini", description: "The island of stunning sunsets and white-washed houses.", image_path: "santorini.jpg")
 Destination.create(name: "Marrakech", country: "Morocco", address: "Marrakech", description: "The city of markets and Moroccan architecture.", image_path: "marrakech.jpg")
+Destination.create(name: "London", country: "United Kingdom", address: "London", description: "The city of iconic landmarks and royal heritage.", image_path: "london.jpg")
+Destination.create(name: "Rome", country: "Italy", address: "Rome", description: "The city of ancient ruins and mouth-watering cuisine.", image_path: "rome.jpg")
+Destination.create(name: "Barcelona", country: "Spain", address: "Barcelona", description: "The city of art and architecture, with a beach vibe.", image_path: "barcelona.jpg")
+Destination.create(name: "Amsterdam", country: "Netherlands", address: "Amsterdam", description: "The city of canals, bicycles and unique cultural experiences.", image_path: "amsterdam.jpg")
+Destination.create(name: "Hong Kong", country: "China", address: "Hong Kong", description: "The city of bustling markets, stunning skyline and delicious food.", image_path: "hong-kong.jpg")
+Destination.create(name: "Berlin", country: "Germany", address: "Berlin", description: "The city of history, culture and vibrant nightlife.", image_path: "berlin.jpg")
+Destination.create(name: "Dublin", country: "Ireland", address: "Dublin", description: "The city of friendly locals, lively pubs and literary heritage.", image_path: "dublin.jpg")
+Destination.create(name: "Prague", country: "Czech Republic", address: "Prague", description: "The city of fairy-tale castles, ornate bridges and beer.", image_path: "prague.jpg")
+Destination.create(name: "Budapest", country: "Hungary", address: "Budapest", description: "The city of thermal baths, grand architecture and rich history.", image_path: "budapest.jpg")
+Destination.create(name: "Venice", country: "Italy", address: "Venice", description: "The city of romantic gondola rides, charming canals and elegant palaces.", image_path: "venice.jpg")
+Destination.create(name: "Edinburgh", country: "United Kingdom", address: "Edinburgh", description: "The city of medieval history, stunning scenery and whisky.", image_path: "edinburgh.jpg")
+Destination.create(name: "Vienna", country: "Austria", address: "Vienna", description: "The city of classical music, coffee houses and imperial architecture.", image_path: "vienna.jpg")
+Destination.create(name: "Seoul", country: "South Korea", address: "Seoul", description: "The city of cutting-edge technology, vibrant street food and ancient palaces.", image_path: "seoul.jpg")
+Destination.create(name: "Krakow", country: "Poland", address: "Krakow", description: "The city of historic squares, medieval castles and Polish traditions.", image_path: "krakow.jpg")
+Destination.create(name: "Vancouver", country: "Canada", address: "Vancouver", description: "The city of natural beauty, multiculturalism and outdoor adventure.", image_path: "vancouver.jpg")
+Destination.create(name: "San Francisco", country: "United States", address: "San Francisco", description: "The city of stunning hills, iconic bridges and diverse culture.", image_path: "san-francisco.jpg")
+Destination.create(name: "Copenhagen", country: "Denmark", address: "Copenhagen", description: "The city of Scandinavian design, cycling culture and hygge.", image_path: "copenhagen.jpg")
+Destination.create(name: "Beijing", country: "China", address: "Beijing", description: "The city of imperial palaces, the Great Wall and rich history.", image_path: "beijing.jpg")
 
 puts 'creating activities...'
 
@@ -89,5 +107,95 @@ Activity.create(name: "Marrakech Medina Tour", activity_type: "Sightseeing", des
 Activity.create(name: "Atlas Mountains Hike", activity_type: "Outdoor Activity", description: "Hike through the stunning Atlas Mountains and take in breathtaking views of the surrounding landscape.", destination_id: Destination.find_by(name: "Marrakech").id)
 Activity.create(name: "Moroccan Cooking Class", activity_type: "Food Tour", description: "Learn to cook traditional Moroccan dishes with a local chef.", destination_id: Destination.find_by(name: "Marrakech").id)
 Activity.create(name: "Jardin Majorelle Visit", activity_type: "Sightseeing", description: "Discover the beautiful Jardin Majorelle and its colorful gardens and buildings.", destination_id: Destination.find_by(name: "Marrakech").id)
+# London
+Activity.create(name: "London Eye Ride", activity_type: "Sightseeing", description: "Take a ride on the London Eye, the world's tallest observation wheel, and enjoy breathtaking views of the city.", destination_id: Destination.find_by(name: "London").id)
+Activity.create(name: "London Walking Tour", activity_type: "Historical Tour", description: "Explore the historic streets of London on a guided walking tour.", destination_id: Destination.find_by(name: "London").id)
+Activity.create(name: "London Pub Crawl", activity_type: "Entertainment", description: "Enjoy a night out in London's lively pub scene with a guided pub crawl.", destination_id: Destination.find_by(name: "London").id)
+Activity.create(name: "London Food Tour", activity_type: "Food Tour", description: "Sample some of London's best food on a guided food tour.", destination_id: Destination.find_by(name: "London").id)
+# Rome
+Activity.create(name: "Colosseum Tour", activity_type: "Historical Tour", description: "Explore the Colosseum, one of the world's most famous landmarks, and learn about its history and architecture.", destination_id: Destination.find_by(name: "Rome").id)
+Activity.create(name: "Vatican Museums Tour", activity_type: "Historical Tour", description: "Explore the Vatican Museums, home to some of the world's most famous works of art.", destination_id: Destination.find_by(name: "Rome").id)
+Activity.create(name: "Rome Food Tour", activity_type: "Food Tour", description: "Sample some of Rome's best food on a guided food tour.", destination_id: Destination.find_by(name: "Rome").id)
+Activity.create(name: "Rome Walking Tour", activity_type: "Historical Tour", description: "Explore the historic streets of Rome on a guided walking tour.", destination_id: Destination.find_by(name: "Rome").id)
+# Barcelona
+Activity.create(name: "Sagrada Familia", activity_type: "Sightseeing", description: "Visit the awe-inspiring basilica designed by renowned architect Antoni Gaudí.", destination_id: Destination.find_by(name: "Barcelona").id)
+Activity.create(name: "Boqueria Market Tour", activity_type: "Food Tour", description: "Experience the sights, smells and tastes of one of Europe's most famous markets.", destination_id: Destination.find_by(name: "Barcelona").id)
+Activity.create(name: "Camp Nou Stadium Tour", activity_type: "Sports Tour", description: "Get behind the scenes access to one of the world's most iconic football stadiums.", destination_id: Destination.find_by(name: "Barcelona").id)
+Activity.create(name: "Gothic Quarter Walking Tour", activity_type: "Walking Tour", description: "Explore the winding streets of the historic Gothic Quarter and discover the city's medieval past.", destination_id: Destination.find_by(name: "Barcelona").id)
+# Amsterdam
+Activity.create(name: "Van Gogh Museum", activity_type: "Art Museum", description: "Discover the life and work of one of the world's most famous artists.", destination_id: Destination.find_by(name: "Amsterdam").id)
+Activity.create(name: "Canal Cruise", activity_type: "Boat Tour", description: "See Amsterdam from a different perspective on a relaxing canal cruise.", destination_id: Destination.find_by(name: "Amsterdam").id)
+Activity.create(name: "Rijksmuseum", activity_type: "Art Museum", description: "Explore the world-class collection of Dutch art and history at the Rijksmuseum.", destination_id: Destination.find_by(name: "Amsterdam").id)
+Activity.create(name: "Anne Frank House", activity_type: "Historic Site", description: "Learn about the inspiring story of Anne Frank and her family during World War II.", destination_id: Destination.find_by(name: "Amsterdam").id)
+# Hong Kong
+Activity.create(name: "Victoria Peak Tram Ride", activity_type: "Sightseeing", description: "Take a scenic tram ride to the top of Victoria Peak for panoramic views of Hong Kong.", destination_id: Destination.find_by(name: "Hong Kong").id)
+Activity.create(name: "Tian Tan Buddha", activity_type: "Sightseeing", description: "Visit the impressive bronze statue and spiritual landmark on Lantau Island.", destination_id: Destination.find_by(name: "Hong Kong").id)
+Activity.create(name: "Symphony of Lights Show", activity_type: "Entertainment", description: "Watch the spectacular light and sound show over Victoria Harbour.", destination_id: Destination.find_by(name: "Hong Kong").id)
+Activity.create(name: "Dim Sum Cooking Class", activity_type: "Cooking Class", description: "Learn how to make the famous Cantonese dish and enjoy a delicious meal.", destination_id: Destination.find_by(name: "Hong Kong").id)
+# Berlin
+Activity.create(name: "Brandenburg Gate", activity_type: "Sightseeing", description: "Visit the iconic symbol of Germany's reunification.", destination_id: Destination.find_by(name: "Berlin").id)
+Activity.create(name: "Berlin Wall Memorial", activity_type: "Historic Site", description: "Explore the history and significance of the Berlin Wall at this poignant memorial.", destination_id: Destination.find_by(name: "Berlin").id)
+Activity.create(name: "Pergamon Museum", activity_type: "Art Museum", description: "Discover the impressive collection of ancient artifacts at this world-renowned museum.", destination_id: Destination.find_by(name: "Berlin").id)
+Activity.create(name: "Berlin Beer Tour", activity_type: "Food Tour", description: "Sample some of Berlin's finest brews and learn about the city's beer-making traditions.", destination_id: Destination.find_by(name: "Berlin").id)
+# Dublin
+Activity.create(name: "Guinness Storehouse", activity_type: "Brewery Tour", description: "Learn about the history of Ireland's most famous beer and enjoy a pint with a view.", destination_id: Destination.find_by(name: "Dublin").id)
+Activity.create(name: "Trinity College Library", activity_type: "Historic Site", description: "See the stunning Long Room and the famous Book of Kells at this historic library.", destination_id: Destination.find_by(name: "Dublin").id)
+Activity.create(name: "Dublin Castle", activity_type: "Historic Site", description: "Explore the centuries-old fortress and learn about Ireland's royal past.", destination_id: Destination.find_by(name: "Dublin").id)
+Activity.create(name: "Dublin Literary Pub Crawl", activity_type: "Walking Tour", description: "Follow in the footsteps of famous Irish writers and enjoy a drink or two along the way.", destination_id: Destination.find_by(name: "Dublin").id)
+# Prague
+Activity.create(name: "Charles Bridge", activity_type: "Sightseeing", description: "Stroll across this historic bridge and enjoy stunning views of the city.", destination_id: Destination.find_by(name: "Prague").id)
+Activity.create(name: "Prague Castle", activity_type: "Historic Site", description: "Explore the largest castle complex in the world and marvel at its Gothic and Baroque architecture.", destination_id: Destination.find_by(name: "Prague").id)
+Activity.create(name: "Old Town Square", activity_type: "Sightseeing", description: "Admire the stunning architecture and lively atmosphere of this historic square.", destination_id: Destination.find_by(name: "Prague").id)
+Activity.create(name: "Prague Beer Tour", activity_type: "Food Tour", description: "Sample some of the city's best brews and learn about the history of Czech beer-making.", destination_id: Destination.find_by(name: "Prague").id)
+# Budapest
+Activity.create(name: "Buda Castle", activity_type: "Historic Site", description: "Explore the historic castle complex and enjoy breathtaking views of the city.", destination_id: Destination.find_by(name: "Budapest").id)
+Activity.create(name: "Chain Bridge", activity_type: "Sightseeing", description: "Cross the iconic suspension bridge and take in the stunning views of the Danube River.", destination_id: Destination.find_by(name: "Budapest").id)
+Activity.create(name: "Thermal Bath Experience", activity_type: "Spa Experience", description: "Relax in one of the city's famous thermal baths and soak in the healing mineral waters.", destination_id: Destination.find_by(name: "Budapest").id)
+Activity.create(name: "Hungarian Wine Tasting", activity_type: "Food Tour", description: "Sample some of Hungary's finest wines and learn about the country's wine-making traditions.", destination_id: Destination.find_by(name: "Budapest").id)
+# Venice
+Activity.create(name: "Gondola Ride", activity_type: "Sightseeing", description: "Experience the charm and romance of Venice on a classic gondola ride.", destination_id: Destination.find_by(name: "Venice").id)
+Activity.create(name: "St. Mark's Basilica", activity_type: "Historic Site", description: "Admire the stunning mosaics and architecture of this famous cathedral.", destination_id: Destination.find_by(name: "Venice").id)
+Activity.create(name: "Rialto Market Tour", activity_type: "Food Tour", description: "Explore the vibrant Rialto Market and sample some of Venice's best seafood and local produce.", destination_id: Destination.find_by(name: "Venice").id)
+Activity.create(name: "Murano Glassblowing Experience", activity_type: "Art Experience", description: "Watch skilled artisans create beautiful glass art using traditional techniques on the island of Murano.", destination_id: Destination.find_by(name: "Venice").id)
+# Edinburgh
+Activity.create(name: "Edinburgh Castle", activity_type: "Historic Site", description: "Explore this iconic castle that has been the site of many important historical events.", destination_id: Destination.find_by(name: "Edinburgh").id)
+Activity.create(name: "Whisky Tasting Tour", activity_type: "Food Tour", description: "Sample some of Scotland's finest whiskies and learn about the history of whisky making in Edinburgh.", destination_id: Destination.find_by(name: "Edinburgh").id)
+Activity.create(name: "Royal Mile Walking Tour", activity_type: "Sightseeing", description: "Stroll along this historic street and learn about the city's rich history and culture.", destination_id: Destination.find_by(name: "Edinburgh").id)
+Activity.create(name: "Arthur's Seat Hike", activity_type: "Outdoor Activity", description: "Enjoy stunning views of the city from the top of this extinct volcano.", destination_id: Destination.find_by(name: "Edinburgh").id)
+# Vienna
+Activity.create(name: "Schönbrunn Palace", activity_type: "Historic Site", description: "Explore the magnificent summer palace of the Habsburgs and its beautiful gardens.", destination_id: Destination.find_by(name: "Vienna").id)
+Activity.create(name: "Vienna State Opera", activity_type: "Entertainment", description: "Experience a world-class opera performance in one of the most famous opera houses in the world.", destination_id: Destination.find_by(name: "Vienna").id)
+Activity.create(name: "Viennese Coffeehouse Tour", activity_type: "Food Tour", description: "Indulge in some of the city's best coffee and pastries while learning about Vienna's coffeehouse culture.", destination_id: Destination.find_by(name: "Vienna").id)
+Activity.create(name: "Vienna Woods Hike", activity_type: "Outdoor Activity", description: "Escape the city and enjoy a scenic hike through the beautiful Vienna Woods.", destination_id: Destination.find_by(name: "Vienna").id)
+# Seoul
+Activity.create(name: "Gyeongbokgung Palace", activity_type: "Historic Site", description: "Explore this iconic palace and learn about Korea's rich history and culture.", destination_id: Destination.find_by(name: "Seoul").id)
+Activity.create(name: "Street Food Tour", activity_type: "Food Tour", description: "Sample some of the city's best street food and experience the vibrant local food scene.", destination_id: Destination.find_by(name: "Seoul").id)
+Activity.create(name: "Namsan Tower", activity_type: "Sightseeing", description: "Take in panoramic views of the city from the top of this iconic tower.", destination_id: Destination.find_by(name: "Seoul").id)
+Activity.create(name: "Korean Traditional Music Performance", activity_type: "Entertainment", description: "Experience a mesmerizing performance of traditional Korean music and dance.", destination_id: Destination.find_by(name: "Seoul").id)
+# Krakow
+Activity.create(name: "Wawel Castle", activity_type: "Historic Site", description: "Explore this beautiful castle that was the seat of Polish royalty for centuries.", destination_id: Destination.find_by(name: "Krakow").id)
+Activity.create(name: "Auschwitz-Birkenau Memorial and Museum", activity_type: "Historic Site", description: "Visit the former Nazi concentration camp and pay tribute to the victims of the Holocaust.", destination_id: Destination.find_by(name: "Krakow").id)
+Activity.create(name: "Pierogi Making Workshop", activity_type: "Food Tour", description: "Learn how to make traditional Polish dumplings and enjoy a delicious meal.", destination_id: Destination.find_by(name: "Krakow").id)
+Activity.create(name: "Wieliczka Salt Mine Tour", activity_type: "Sightseeing", description: "Explore this fascinating underground world and learn about the history of salt mining.", destination_id: Destination.find_by(name: "Krakow").id)
+# Vancouver
+Activity.create(name: "Stanley Park", activity_type: "Outdoor Activity", description: "Explore this beautiful park that offers stunning views of the city and the sea.", destination_id: Destination.find_by(name: "Vancouver").id)
+Activity.create(name: "Granville Island Public Market", activity_type: "Food Tour", description: "Indulge in delicious food and browse through unique artisanal products at this vibrant market.", destination_id: Destination.find_by(name: "Vancouver").id)
+Activity.create(name: "Capilano Suspension Bridge", activity_type: "Sightseeing", description: "Cross this thrilling suspension bridge and enjoy breathtaking views of the surrounding nature.", destination_id: Destination.find_by(name: "Vancouver").id)
+Activity.create(name: "Whale Watching Tour", activity_type: "Outdoor Activity", description: "Experience the thrill of spotting majestic whales and other marine wildlife in their natural habitat.", destination_id: Destination.find_by(name: "Vancouver").id)
+# San Francisco
+Activity.create(name: "Golden Gate Bridge", activity_type: "Sightseeing", description: "Take in the iconic views of this famous bridge that spans the Golden Gate strait.", destination_id: Destination.find_by(name: "San Francisco").id)
+Activity.create(name: "Alcatraz Island Tour", activity_type: "Historic Site", description: "Visit the infamous prison island that was once home to some of America's most notorious criminals.", destination_id: Destination.find_by(name: "San Francisco").id)
+Activity.create(name: "Fisherman's Wharf", activity_type: "Food Tour", description: "Indulge in fresh seafood and explore the lively atmosphere of this popular waterfront district.", destination_id: Destination.find_by(name: "San Francisco").id)
+Activity.create(name: "San Francisco Cable Car Ride", activity_type: "Sightseeing", description: "Experience the charm of this historic cable car ride and enjoy panoramic views of the city.", destination_id: Destination.find_by(name: "San Francisco").id)
+# Copenhagen
+Activity.create(name: "Tivoli Gardens", activity_type: "Amusement Park", description: "Enjoy the rides, attractions and beautiful gardens of this famous amusement park in the heart of Copenhagen.", destination_id: Destination.find_by(name: "Copenhagen").id)
+Activity.create(name: "Nyhavn", activity_type: "Sightseeing", description: "Take a stroll along the picturesque harbor, lined with colorful buildings and boats.", destination_id: Destination.find_by(name: "Copenhagen").id)
+Activity.create(name: "The Little Mermaid Statue", activity_type: "Sightseeing", description: "Visit the iconic statue inspired by Hans Christian Andersen's fairy tale.", destination_id: Destination.find_by(name: "Copenhagen").id)
+Activity.create(name: "Smørrebrød Tasting", activity_type: "Food Tour", description: "Sample the traditional Danish open-faced sandwiches and learn about their history and preparation.", destination_id: Destination.find_by(name: "Copenhagen").id)
+# Beijing
+Activity.create(name: "Forbidden City", activity_type: "Historic Site", description: "Explore the impressive palace complex that served as the imperial palace for almost 500 years.", destination_id: Destination.find_by(name: "Beijing").id)
+Activity.create(name: "Great Wall of China", activity_type: "Sightseeing", description: "Visit one of the world's most iconic landmarks and walk along the ancient wall that stretches for thousands of miles.", destination_id: Destination.find_by(name: "Beijing").id)
+Activity.create(name: "Temple of Heaven", activity_type: "Historic Site", description: "Marvel at the beautiful architecture and learn about the religious rituals that took place in this historic temple complex.", destination_id: Destination.find_by(name: "Beijing").id)
+Activity.create(name: "Peking Duck Dinner", activity_type: "Food Tour", description: "Taste the famous crispy duck dish that originated in Beijing and enjoy a delicious Chinese feast.", destination_id: Destination.find_by(name: "Beijing").id)
 
 puts 'COMPLETED!'
