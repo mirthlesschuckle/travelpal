@@ -13,7 +13,7 @@
           <div class="card" style="width: 16rem; margin: 30px;">
             <img src="<%= asset_path(destination.image_path) %>" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title"><%= link_to destination.name, destination_path(destination) %></h5>
+              <h5 class="card-title"><%= link_to destination.name, destination_path(destination), class: "text-decoration-none", style: "color: black;" %></h5>
               <%= link_to "Create a new trip", new_destination_trip_path(destination_id: destination.id), class: "btn btn-primary" %>
             </div>
           </div>
@@ -35,7 +35,7 @@
           <div class="card" style="width: 16rem; height: 400px !important; margin: 30px;">
             <img src="<%= asset_path(trip.destination.image_path) %>" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title"><%= link_to trip.destination.name, destination_path(trip.destination) %></h5>
+              <h5 class="card-title"><%= link_to trip.destination.name, destination_path(trip.destination), class: "text-decoration-none", style: "color: black;" %></h5>
               <p class="card-text">Start Date: <%= trip.start_date %></p>
               <p class="card-text">End Date: <%= trip.end_date %></p>
               <div class="d-flex justify-content-between">

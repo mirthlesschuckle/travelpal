@@ -1,6 +1,6 @@
-<div class="container" style="margin-top: 35px; margin-bottom: 35px;">
+<div class="container" style="margin-top: 5px; margin-bottom: 20px;">
 
-  <h1 style="margin-bottom: 50px; text-align: center;">Your trips</h1>
+  <h1 style="margin-bottom: 50px; text-align: center;">Your trip to <%= @trip.destination.name %></h1>
   <%= link_to "Check My Dashboard", dashboard_path, style: "background-color: #2156af; border: none; color: #FFFFFF; font-size: 20px; font-weight: bold; padding: 10px 20px; text-decoration: none; transition: all 0.3s ease-in-out;" %>
 
 
@@ -9,8 +9,8 @@
       <div class="card" style="width: 18rem; height: 460px !important;">
         <img src="<%= asset_path(@trip.destination.image_path) %>" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title"><p><strong>Destination:</strong> <%= @trip.destination.name %></p></h5>
-          <p><strong>Description:</strong> <%= @trip.destination.description %></p>
+          <h5 class="card-title"><p><strong><%= @trip.destination.name %></strong></p></h5>
+          <p><em><%= @trip.destination.description %></em></p>
           <p class="card-text">Start Date: <%= @trip.start_date %></p>
           <p class="card-text">End Date: <%= @trip.end_date %></p>
           <div class="d-flex justify-content-between">

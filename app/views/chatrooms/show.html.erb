@@ -1,6 +1,13 @@
 <div class="container align-items-center" style="margin-top: 20px; margin-bottom: 20px;">
   <div class="container chatroom">
-    <h1 style="text-align: center;"><%= @chatroom.name %></h1>
+    <h1 style="text-align: center;">
+      <% if @chatroom.chat_request.sender == current_user %>
+        <%= @chatroom.chat_request.receiver.first_name %>
+      <% elsif @chatroom.chat_request.receiver == current_user %>
+        <%= @chatroom.chat_request.sender.first_name %>
+      <% end %>
+    </h1>
+    <p style="text-align: center;">You connected on your <strong><%= @chatroom.name %></strong> trip</p>
 
     <div class="messages">
       <% @chatroom.messages.each do |message| %>
