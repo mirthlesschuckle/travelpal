@@ -16,6 +16,12 @@
   border: 1px solid #cfcfcf;
 }
 
-.navbar-lewagon .navbar-nav .nav-link {
+
+.navbar-lewagon .nav-link {
+  border-right: 1px solid #dfdede;
   font-weight: bold;
+}
+
+.navbar-lewagon .name {
+  border-right: none;
 }
