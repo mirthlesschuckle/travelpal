@@ -5,10 +5,12 @@ Activity.destroy_all
 
 puts 'creating users...'
 
-User.create(first_name: "Michael", last_name: "Catania", email: "michael@gmail.com", password: "123456")
-User.create(first_name: "Jantine", last_name: "Derksen", email: "jantine@gmail.com", password: "123456")
-User.create(first_name: "Jianhao", last_name: "Yu", email: "jian@gmail.com", password: "123456")
-User.create(first_name: "Benjamin", last_name: "Hall", email: "ben@gmail.com", password: "123456")
+User.create(first_name: "Alex", last_name: "Johnson", email: "alex@gmail.com", password: "123456", bio: "I am a software engineer with a passion for solving complex problems. I have experience working with Ruby on Rails, React, and PostgreSQL. In my free time, I enjoy hiking and trying new restaurants in the city.")
+User.create(first_name: "Benjamin", last_name: "Hall", email: "ben@gmail.com", password: "123456", bio: "I am a graphic designer with a keen eye for detail. I have experience working with Adobe Creative Suite and have a strong understanding of typography and color theory. In my free time, I enjoy painting and playing the guitar.")
+User.create(first_name: "Jantine", last_name: "Derksen", email: "jantine@gmail.com", password: "123456", bio: "I am a marketing professional with a focus on social media and content marketing. I have experience managing campaigns on multiple platforms, including Instagram, Facebook, and Twitter. In my free time, I enjoy reading and practicing yoga.")
+User.create(first_name: "Jianhao", last_name: "Yu", email: "jian@gmail.com", password: "123456", bio: "I am a data scientist with experience in machine learning and statistical analysis. I have a strong background in Python and have worked with libraries such as TensorFlow and PyTorch. In my free time, I enjoy travelling and exploring new places.")
+User.create(first_name: "Michael", last_name: "Catania", email: "michael@gmail.com", password: "123456", bio: "I am a product manager with experience in agile methodology and user research. I have worked on projects in various industries, including healthcare and e-commerce. In my free time, I enjoy playing basketball and reading sci-fi novels.")
+User.create(first_name: "Taylor", last_name: "Lee", email: "taylor@gmail.com", password: "123456", bio: "I am a freelance writer with experience in copywriting and journalism. I have written for various publications, including the New York Times and the Guardian. In my free time, I enjoy hiking and practicing meditation.")
 
 puts 'creating destinations...'
 
@@ -218,6 +220,9 @@ Activity.create(name: "Forbidden City", activity_type: "Historic Site", descript
 Activity.create(name: "Great Wall of China", activity_type: "Sightseeing", description: "Visit one of the world's most iconic landmarks and walk along the ancient wall that stretches for thousands of miles.", destination_id: Destination.find_by(name: "Beijing").id)
 Activity.create(name: "Temple of Heaven", activity_type: "Historic Site", description: "Marvel at the beautiful architecture and learn about the religious rituals that took place in this historic temple complex.", destination_id: Destination.find_by(name: "Beijing").id)
 Activity.create(name: "Peking Duck Dinner", activity_type: "Food Tour", description: "Taste the famous crispy duck dish that originated in Beijing and enjoy a delicious Chinese feast.", destination_id: Destination.find_by(name: "Beijing").id)
+
+puts 'creating NEW activities...'
+
 # Hoi An
 Activity.create(name: "Lantern-Making Workshop", activity_type: "Art and Crafts", description: "Learn how to make traditional lanterns from bamboo and silk with local artisans in Hoi An.", destination_id: Destination.find_by(name: "Hoi An").id)
 Activity.create(name: "Bike Tour", activity_type: "Outdoor", description: "Explore the countryside around Hoi An on a leisurely bike ride, passing by rice paddies, villages, and rivers.", destination_id: Destination.find_by(name: "Hoi An").id)
@@ -304,10 +309,10 @@ Activity.create(name: "Cooking Class", activity_type: "Food and Drink", descript
 Activity.create(name: "Duomo and Baptistry Visit", activity_type: "Historical", description: "Visit the stunning Cathedral of Santa Maria del Fiore, also known as the Duomo, and the nearby Baptistry, with their intricate architecture and historical significance.", destination_id: Destination.find_by(name: "Florence").id)
 Activity.create(name: "Piazzale Michelangelo Sunset View", activity_type: "Scenic", description: "Enjoy a stunning panoramic view of Florence at sunset from the Piazzale Michelangelo, a scenic lookout on a hilltop overlooking the city.", destination_id: Destination.find_by(name: "Florence").id)
 # São Paulo
-Activity.create(name: "Street Art Tour", activity_type: "Art and Culture", description: "Explore the vibrant street art scene of São Paulo on a guided walking tour, discovering colorful murals, graffiti, and urban installations.", destination_id: Destination.find_by(name: "São Paulo").id)
-Activity.create(name: "Football Match Experience", activity_type: "Sports", description: "Experience the passion and excitement of Brazilian football with a visit to a local stadium in São Paulo, cheering on the home team with enthusiastic fans.", destination_id: Destination.find_by(name: "São Paulo").id)
-Activity.create(name: "São Paulo Museum of Art Visit", activity_type: "Art and Culture", description: "Discover the diverse collections of the São Paulo Museum of Art, including works by Brazilian and international artists, housed in a striking modernist building.", destination_id: Destination.find_by(name: "São Paulo").id)
-Activity.create(name: "Mercado Municipal Food Tour", activity_type: "Food and Drink", description: "Taste the flavors of São Paulo at the Mercado Municipal, a historic market with over 300 vendors selling a wide variety of local and international foods.", destination_id: Destination.find_by(name: "São Paulo").id)
+Activity.create(name: "Street Art Tour", activity_type: "Art and Culture", description: "Explore the vibrant street art scene of São Paulo on a guided walking tour, discovering colorful murals, graffiti, and urban installations.", destination_id: Destination.find_by(name: "Sao Paulo").id)
+Activity.create(name: "Football Match Experience", activity_type: "Sports", description: "Experience the passion and excitement of Brazilian football with a visit to a local stadium in São Paulo, cheering on the home team with enthusiastic fans.", destination_id: Destination.find_by(name: "Sao Paulo").id)
+Activity.create(name: "São Paulo Museum of Art Visit", activity_type: "Art and Culture", description: "Discover the diverse collections of the São Paulo Museum of Art, including works by Brazilian and international artists, housed in a striking modernist building.", destination_id: Destination.find_by(name: "Sao Paulo").id)
+Activity.create(name: "Mercado Municipal Food Tour", activity_type: "Food and Drink", description: "Taste the flavors of São Paulo at the Mercado Municipal, a historic market with over 300 vendors selling a wide variety of local and international foods.", destination_id: Destination.find_by(name: "Sao Paulo").id)
 # Dubrovnik
 Activity.create(name: "Old Town Walking Tour", activity_type: "Historical", description: "Discover the rich history and culture of Dubrovnik's Old Town on a guided walking tour, including landmarks such as the City Walls, the Rector's Palace, and the Stradun.", destination_id: Destination.find_by(name: "Dubrovnik").id)
 Activity.create(name: "Sea Kayaking Adventure", activity_type: "Outdoor", description: "Explore the stunning coastline of Dubrovnik on a sea kayaking excursion, with opportunities to swim, snorkel, and enjoy the scenic views.", destination_id: Destination.find_by(name: "Dubrovnik").id)
