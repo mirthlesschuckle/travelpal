@@ -13,6 +13,29 @@
   height: 336px;
 }
 
+.card-profile {
+ height: 80%;
+ overflow: auto;
+}
+
+.no-underline, a {
+  text-decoration: none;
+}
+
+.card-main-profile {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  background: rgb(233,255,250);
+  background: linear-gradient(180deg, rgba(233,255,250,1) 0%, rgba(255,242,231,1) 0%, rgba(249,238,240,1) 49%, rgba(239,246,255,1) 100%);
+  width: calc(100vw * 2/3);
+  position: absolute; left: calc(100vw * 1/6);
+  padding: 75px;
+  overflow: unset;
+  height: fit-content;
+
+}
+
+
 .card:hover {
   transform: translateY(-5px);
 }
