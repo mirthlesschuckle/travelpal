@@ -1,20 +1,13 @@
-<h2> Select your travel dates </h2>
-<%#= simple_form_for([@destination, @trip], data: { controller: 'flatpickr' }) do |f| %>
-  <%# if @destination.nil? %>
-    <%#= f.association :destination, collection: Destination.order(:name), label: "Destination", include_blank: false %>
-  <%# end %>
-  <%#= f.input :start_date, as: :date, label: "Start date", input_html: { data: { flatpickr_target: "startTime" } } %>
-  <%#= f.input :end_date, as: :date, label: "End date", input_html: { data: { flatpickr_target: "endTime" } } %>
-  <%#= f.submit "Submit", class: "btn btn-primary" %>
-<%# end %>
-
-<%= form_with(model: [@destination, @trip], local: true, data: { controller: 'flatpickr' }) do |form| %>
-  <% if @destination.nil? %>
-    <%= form.collection_select :destination_id, Destination.order(:name), :id, :name, { label: "Destination", include_blank: false } %>
+<div style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://cdn.wallpapersafari.com/21/86/fQ2xm0.jpg'); padding: 50px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); margin: 100px auto; max-width: 600px;">
+  <%= form_with(model: [@destination, @trip], local: true, data: { controller: 'flatpickr' }) do |form| %>
+    <h2 style="font-size: 36px; font-weight: 700; text-align: center; margin-top: 0; margin-bottom: 30px; color: #4F4F4F;">Select your travel dates</h2>
+    <% if @destination.nil? %>
+      <%= form.collection_select :destination_id, Destination.order(:name), :id, :name, { label: "Destination", include_blank: false }, { style: "font-size: 18px; font-weight: 600; margin-bottom: 20px; width: 100%; background-color: rgba(255, 255, 255, 0.8); border-radius: 10px; border: none; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); padding: 12px; transition: box-shadow 0.3s ease;" } %>
+    <% end %>
+    <%= form.label :start_date, "Start date", style: "font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #4F4F4F; display: block;" %>
+    <%= form.date_field :start_date, data: { flatpickr_target: "startTime" }, style: "font-size: 18px; background-color: rgba(255, 255, 255, 0.8); border-radius: 10px; border: none; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); padding: 12px; margin-bottom: 20px; width: 100%; transition: box-shadow 0.3s ease;" %>
+    <%= form.label :end_date, "End date", style: "font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #4F4F4F; display: block;" %>
+    <%= form.date_field :end_date, data: { flatpickr_target: "endTime" }, style: "font-size: 18px; background-color: rgba(255, 255, 255, 0.8); border-radius: 10px; border: none; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); padding: 12px; margin-bottom: 20px; width: 100%; transition: box-shadow 0.3s ease;" %>
+    <%= form.submit "Submit", class: "btn btn-primary", style: "background-color: #3d5085; border: none; border-radius: 10px; color: #FFFFFF; font-size: 18px; font-weight: 600; padding: 12px; width: 100%; margin-top: 10px; transition: background-color 0.3s ease, box-shadow 0.3s ease;", data: { disable_with: "Please wait..." } %>
   <% end %>
-  <%= form.label :start_date, "Start date" %>
-  <%= form.date_field :start_date, data: { flatpickr_target: "startTime" } %>
-  <%= form.label :end_date, "End date" %>
-  <%= form.date_field :end_date, data: { flatpickr_target: "endTime" } %>
-  <%= form.submit "Submit", class: "btn btn-primary" %>
-<% end %>
+</div>
