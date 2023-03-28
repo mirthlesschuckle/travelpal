@@ -1,11 +1,17 @@
-puts 'cleaning the database...'
+puts 'it cleans its database or else it gets the hose again...'
+ChatRequest.destroy_all
 User.destroy_all
 Destination.destroy_all
 Activity.destroy_all
+Trip.destroy_all
+Match.destroy_all
+Chatroom.destroy_all
+Message.destroy_all
+Review.destroy_all
 
 puts 'creating users...'
 
-User.create(first_name: "Alex", last_name: "Johnson", email: "alex@gmail.com", password: "123456", bio: "I am a software engineer with a passion for solving complex problems. I have experience working with Ruby on Rails, React, and PostgreSQL. In my free time, I enjoy hiking and trying new restaurants in the city.")
+User.create(first_name: "Alex", last_name: "Johnson", email: "alex@gmail.com", password: "123456", bio: "I am a software engineer with a passion for solving complex problems. I have experience working with Ruby on Rails, React, and PostgreSQL. In my free time, I enjoy hiking and trying new restaurants in my city.")
 User.create(first_name: "Benjamin", last_name: "Hall", email: "ben@gmail.com", password: "123456", bio: "I am a graphic designer with a keen eye for detail. I have experience working with Adobe Creative Suite and have a strong understanding of typography and color theory. In my free time, I enjoy painting and playing the guitar.")
 User.create(first_name: "Jantine", last_name: "Derksen", email: "jantine@gmail.com", password: "123456", bio: "I am a marketing professional with a focus on social media and content marketing. I have experience managing campaigns on multiple platforms, including Instagram, Facebook, and Twitter. In my free time, I enjoy reading and practicing yoga.")
 User.create(first_name: "Jianhao", last_name: "Yu", email: "jian@gmail.com", password: "123456", bio: "I am a data scientist with experience in machine learning and statistical analysis. I have a strong background in Python and have worked with libraries such as TensorFlow and PyTorch. In my free time, I enjoy travelling and exploring new places.")
@@ -49,7 +55,7 @@ Destination.create(name: "Reykjavik", country: "Iceland", address: "Reykjavik", 
 Destination.create(name: "Zanzibar", country: "Tanzania", address: "Zanzibar", description: "The island of pristine beaches and spice markets.", image_path: "zanzibar.jpg")
 Destination.create(name: "Montreal", country: "Canada", address: "Montreal", description: "The city of French-Canadian charm and culinary delights.", image_path: "montreal.jpg")
 Destination.create(name: "Cusco", country: "Peru", address: "Cusco", description: "The city of ancient Incan ruins and breathtaking Andean scenery.", image_path: "cusco.jpg")
-Destination.create(name: "Sapa", country: "Vietnam", address: "Sapa", description: "The town of rice terraces and hill tribes.", image_path: "sapa.jpg")
+Destination.create(name: "Sa Pa", country: "Vietnam", address: "Sa Pa", description: "The town of rice terraces and hill tribes.", image_path: "sapa.jpg")
 Destination.create(name: "Bali", country: "Indonesia", address: "Bali", description: "The island of tropical paradise and Hindu temples.", image_path: "bali.jpg")
 Destination.create(name: "Cairo", country: "Egypt", address: "Cairo", description: "The city of pyramids and ancient wonders.", image_path: "cairo.jpg")
 Destination.create(name: "Krabi", country: "Thailand", address: "Krabi", description: "The province of stunning limestone cliffs and turquoise waters.", image_path: "krabi.jpg")
@@ -220,9 +226,6 @@ Activity.create(name: "Forbidden City", activity_type: "Historic Site", descript
 Activity.create(name: "Great Wall of China", activity_type: "Sightseeing", description: "Visit one of the world's most iconic landmarks and walk along the ancient wall that stretches for thousands of miles.", destination_id: Destination.find_by(name: "Beijing").id)
 Activity.create(name: "Temple of Heaven", activity_type: "Historic Site", description: "Marvel at the beautiful architecture and learn about the religious rituals that took place in this historic temple complex.", destination_id: Destination.find_by(name: "Beijing").id)
 Activity.create(name: "Peking Duck Dinner", activity_type: "Food Tour", description: "Taste the famous crispy duck dish that originated in Beijing and enjoy a delicious Chinese feast.", destination_id: Destination.find_by(name: "Beijing").id)
-
-puts 'creating NEW activities...'
-
 # Hoi An
 Activity.create(name: "Lantern-Making Workshop", activity_type: "Art and Crafts", description: "Learn how to make traditional lanterns from bamboo and silk with local artisans in Hoi An.", destination_id: Destination.find_by(name: "Hoi An").id)
 Activity.create(name: "Bike Tour", activity_type: "Outdoor", description: "Explore the countryside around Hoi An on a leisurely bike ride, passing by rice paddies, villages, and rivers.", destination_id: Destination.find_by(name: "Hoi An").id)
@@ -248,11 +251,11 @@ Activity.create(name: "Machu Picchu Tour", activity_type: "Historical", descript
 Activity.create(name: "Rainbow Mountain Hike", activity_type: "Outdoor", description: "Embark on a challenging hike to the colorful Rainbow Mountain, with stunning views of the Andes along the way.", destination_id: Destination.find_by(name: "Cusco").id)
 Activity.create(name: "Peruvian Cooking Class", activity_type: "Food and Drink", description: "Learn to cook traditional Peruvian dishes using fresh ingredients at a local cooking school in Cusco.", destination_id: Destination.find_by(name: "Cusco").id)
 Activity.create(name: "Sacred Valley Tour", activity_type: "Scenic", description: "Explore the breathtaking landscapes and ancient ruins of the Sacred Valley, a region of fertile farmland and historic sites near Cusco.", destination_id: Destination.find_by(name: "Cusco").id)
-# Sapa
-Activity.create(name: "Trekking in Sapa", activity_type: "Outdoor", description: "Embark on a scenic trek through the picturesque hills and rice terraces of Sapa, meeting local ethnic communities along the way.", destination_id: Destination.find_by(name: "Sapa").id)
-Activity.create(name: "Sapa Market Visit", activity_type: "Cultural", description: "Explore the vibrant local market in Sapa, featuring colorful produce, textiles, and handicrafts made by the Hmong and other ethnic minority groups.", destination_id: Destination.find_by(name: "Sapa").id)
-Activity.create(name: "Homestay with Locals", activity_type: "Cultural", description: "Experience the warmth and hospitality of local families in Sapa by staying in a traditional homestay, sharing meals and cultural activities with your hosts.", destination_id: Destination.find_by(name: "Sapa").id)
-Activity.create(name: "Fansipan Mountain Climb", activity_type: "Adventure", description: "Take on the challenge of climbing Fansipan Mountain, the highest peak in Indochina, with stunning views of the surrounding mountains and valleys.", destination_id: Destination.find_by(name: "Sapa").id)
+# Sa pa
+Activity.create(name: "Trekking in Sapa", activity_type: "Outdoor", description: "Embark on a scenic trek through the picturesque hills and rice terraces of Sapa, meeting local ethnic communities along the way.", destination_id: Destination.find_by(name: "Sa Pa").id)
+Activity.create(name: "Sapa Market Visit", activity_type: "Cultural", description: "Explore the vibrant local market in Sapa, featuring colorful produce, textiles, and handicrafts made by the Hmong and other ethnic minority groups.", destination_id: Destination.find_by(name: "Sa Pa").id)
+Activity.create(name: "Homestay with Locals", activity_type: "Cultural", description: "Experience the warmth and hospitality of local families in Sapa by staying in a traditional homestay, sharing meals and cultural activities with your hosts.", destination_id: Destination.find_by(name: "Sa Pa").id)
+Activity.create(name: "Fansipan Mountain Climb", activity_type: "Adventure", description: "Take on the challenge of climbing Fansipan Mountain, the highest peak in Indochina, with stunning views of the surrounding mountains and valleys.", destination_id: Destination.find_by(name: "Sa Pa").id)
 # Bali
 Activity.create(name: "Surfing Lesson", activity_type: "Outdoor", description: "Learn to ride the waves with a surfing lesson at one of Bali's famous beaches, with experienced instructors and top-notch equipment.", destination_id: Destination.find_by(name: "Bali").id)
 Activity.create(name: "Ubud Rice Terraces Tour", activity_type: "Scenic", description: "Discover the natural beauty of Bali's rice terraces on a guided tour of the Ubud region, with stunning views and opportunities for hiking and photography.", destination_id: Destination.find_by(name: "Bali").id)
@@ -329,5 +332,46 @@ Activity.create(name: "Cidade Velha Historical Tour", activity_type: "Historical
 Activity.create(name: "Scuba Diving Excursion", activity_type: "Outdoor", description: "Discover the underwater world of Cape Verde with a scuba diving excursion, exploring coral reefs, shipwrecks, and colorful marine life.", destination_id: Destination.find_by(name: "Cape Verde").id)
 Activity.create(name: "Fogo Island Volcano Hike", activity_type: "Adventure", description: "Embark on a challenging but rewarding hike to the summit of Fogo Island's active volcano, with stunning views of the landscape and the chance to observe the volcano's activity.", destination_id: Destination.find_by(name: "Cape Verde").id)
 
+puts 'creating example trips...'
 
-puts 'COMPLETED!'
+Trip.create(start_date: Date.new(2023, 4, 11), end_date: Date.new(2023, 4, 18), user_id: 2, destination_id: 21)
+Trip.create(start_date: Date.new(2023, 4, 9), end_date: Date.new(2023, 4, 22), user_id: 1, destination_id: 21)
+Trip.create(start_date: Date.new(2023, 4, 11), end_date: Date.new(2023, 4, 15), user_id: 3, destination_id: 21)
+Trip.create(start_date: Date.new(2023, 4, 1), end_date: Date.new(2023, 4, 30), user_id: 4, destination_id: 21)
+Trip.create(start_date: Date.new(2023, 4, 27), end_date: Date.new(2023, 4, 30), user_id: 2, destination_id: 3)
+Trip.create(start_date: Date.new(2023, 4, 25), end_date: Date.new(2023, 5, 2), user_id: 5, destination_id: 3)
+Trip.create(start_date: Date.new(2023, 5, 1), end_date: Date.new(2023, 5, 8), user_id: 6, destination_id: 40)
+
+puts 'creating example matches...'
+
+Match.create(user_id: 1, trip_id: 1)
+Match.create(user_id: 2, trip_id: 2)
+Match.create(user_id: 3, trip_id: 1)
+Match.create(user_id: 3, trip_id: 2)
+Match.create(user_id: 2, trip_id: 3)
+Match.create(user_id: 1, trip_id: 3)
+Match.create(user_id: 4, trip_id: 1)
+Match.create(user_id: 4, trip_id: 2)
+Match.create(user_id: 4, trip_id: 3)
+Match.create(user_id: 2, trip_id: 4)
+Match.create(user_id: 5, trip_id: 5)
+Match.create(user_id: 2, trip_id: 6)
+
+puts 'creating example chat_requests...'
+
+ChatRequest.create(sender_id: 2, receiver_id: 1, trip_id: 1, status: "pending_approval")
+ChatRequest.create(sender_id: 3, receiver_id: 2, trip_id: 3, status: "pending_approval")
+ChatRequest.create(sender_id: 2, receiver_id: 4, trip_id: 1, status: "pending_approval")
+ChatRequest.create(sender_id: 2, receiver_id: 5, trip_id: 5, status: "accepted")
+
+puts 'creating example chatrooms...'
+
+Chatroom.create(name: "Sydney", chat_request_id: 4)
+
+puts 'creating example messages...'
+
+Message.create(content: "Hey, Benjamin!", chatroom_id: 1, user_id: 5)
+Message.create(content: "What are your plans in Sydney?", chatroom_id: 1, user_id: 5)
+Message.create(content: "Hey Michael! Not sure yet, but this amazing app has some great suggestions", chatroom_id: 1, user_id: 2)
+
+puts 'Well... that was exhausting! COMPLETED!'
