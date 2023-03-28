@@ -1,10 +1,14 @@
 <head>
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
-
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
 </head>
 
 <body>
+  <% if current_user.photo.blank? %>
+      <%= image_tag "https://w7.pngwing.com/pngs/527/663/png-transparent-logo-person-user-person-icon-rectangle-photography-computer-wallpaper.png", height: 200, width: 200, crop: :fill, radius: "max" %>
+    <% else %>
+      <%= cl_image_tag current_user.photo.key %>
+  <% end %>
 
   <div class="banner">
     <div class="row banner-content" style="margin-left:40px;">
