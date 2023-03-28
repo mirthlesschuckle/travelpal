@@ -8,7 +8,7 @@ class PagesController < ApplicationController
         lat: destination.latitude,
         lng: destination.longitude,
         marker_html: render_to_string(partial: "marker"),
-        info_window: render_to_string(partial: "info_window")
+        info_window: render_to_string(partial: "info_window", locals: {destination: destination})
       }
     end
   end
