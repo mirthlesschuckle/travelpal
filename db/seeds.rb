@@ -56,7 +56,7 @@ Destination.create(name: "Zanzibar", country: "Tanzania", address: "Zanzibar", d
 Destination.create(name: "Montreal", country: "Canada", address: "Montreal", description: "The city of French-Canadian charm and culinary delights.", image_path: "montreal.jpg")
 Destination.create(name: "Cusco", country: "Peru", address: "Cusco", description: "The city of ancient Incan ruins and breathtaking Andean scenery.", image_path: "cusco.jpg")
 Destination.create(name: "Sa Pa", country: "Vietnam", address: "Sa Pa", description: "The town of rice terraces and hill tribes.", image_path: "sapa.jpg")
-Destination.create(name: "Bali", country: "Indonesia", address: "Bali", description: "The island of tropical paradise and Hindu temples.", image_path: "bali.jpg")
+Destination.create(name: "Bali", country: "Indonesia", address: "Denpasar", description: "The island of tropical paradise and Hindu temples.", image_path: "bali.jpg")
 Destination.create(name: "Cairo", country: "Egypt", address: "Cairo", description: "The city of pyramids and ancient wonders.", image_path: "cairo.jpg")
 Destination.create(name: "Krabi", country: "Thailand", address: "Krabi", description: "The province of stunning limestone cliffs and turquoise waters.", image_path: "krabi.jpg")
 Destination.create(name: "Machu Picchu", country: "Peru", address: "Machu Picchu", description: "The ancient Incan citadel in the Andes.", image_path: "machu-picchu.jpg")
@@ -72,7 +72,7 @@ Destination.create(name: "Dubrovnik", country: "Croatia", address: "Dubrovnik", 
 Destination.create(name: "Munich", country: "Germany", address: "Munich", description: "The city of Oktoberfest and Bavarian charm.", image_path: "munich.jpg")
 Destination.create(name: "Cape Verde", country: "Cape Verde", address: "Cape Verde", description: "The island nation of tropical beauty and vibrant culture.", image_path: "cape-verde.jpg")
 Destination.create(name: "Banff", country: "Canada", address: "Banff", description: "The town of stunning lakes and majestic mountains.", image_path: "banff.jpg")
-Destination.create(name: "Amalfi Coast", country: "Italy", address: "Amalfi Coast", description: "The coastal area of colorful villages and picturesque landscapes.", image_path: "amalfi-coast.jpg")
+Destination.create(name: "Amalfi Coast", country: "Italy", address: "Amalfi", description: "The coastal area of colorful villages and picturesque landscapes.", image_path: "amalfi-coast.jpg")
 
 puts 'creating activities...'
 
@@ -331,6 +331,17 @@ Activity.create(name: "Sal Island Beach Day", activity_type: "Nature", descripti
 Activity.create(name: "Cidade Velha Historical Tour", activity_type: "Historical", description: "Explore the historic town of Cidade Velha, a UNESCO World Heritage Site and the former capital of Cape Verde, with landmarks such as the Pillory Square, the Nossa Senhora do Rosário Church, and the Fort Real de São Filipe.", destination_id: Destination.find_by(name: "Cape Verde").id)
 Activity.create(name: "Scuba Diving Excursion", activity_type: "Outdoor", description: "Discover the underwater world of Cape Verde with a scuba diving excursion, exploring coral reefs, shipwrecks, and colorful marine life.", destination_id: Destination.find_by(name: "Cape Verde").id)
 Activity.create(name: "Fogo Island Volcano Hike", activity_type: "Adventure", description: "Embark on a challenging but rewarding hike to the summit of Fogo Island's active volcano, with stunning views of the landscape and the chance to observe the volcano's activity.", destination_id: Destination.find_by(name: "Cape Verde").id)
+# Banff
+Activity.create(name: "Rocky Mountains Hike", activity_type: "Adventure", description: "Embark on a hike through the stunning Rocky Mountains, with breathtaking views of the surrounding landscape and a chance to see local wildlife.", destination_id: Destination.find_by(name: "Banff").id)
+Activity.create(name: "Canoeing on Lake Louise", activity_type: "Outdoor", description: "Explore the serene waters of Lake Louise by canoe, with stunning views of the surrounding mountains and glaciers.", destination_id: Destination.find_by(name: "Banff").id)
+Activity.create(name: "Skiing in Banff National Park", activity_type: "Winter Sports", description: "Hit the slopes at one of Banff's world-renowned ski resorts, with a variety of terrain for skiers and snowboarders of all levels.", destination_id: Destination.find_by(name: "Banff").id)
+Activity.create(name: "Banff Gondola Ride", activity_type: "Sightseeing", description: "Take a scenic gondola ride to the top of Sulphur Mountain, with breathtaking views of Banff National Park and the surrounding mountains.", destination_id: Destination.find_by(name: "Banff").id)
+# Amalfi
+Activity.create(name: "Boat tour of the Amalfi Coast", activity_type: "Sightseeing", description: "Take a boat tour of the Amalfi Coast and enjoy the stunning views of the colorful villages and cliffs from the sea.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
+Activity.create(name: "Hiking in Valle delle Ferriere", activity_type: "Adventure", description: "Embark on a beautiful hike in Valle delle Ferriere, a nature reserve in Amalfi with waterfalls, lush vegetation and a variety of bird species.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
+Activity.create(name: "Cooking class in Positano", activity_type: "Cultural", description: "Learn to cook traditional Italian dishes in a cooking class in Positano, a charming town on the Amalfi Coast known for its gastronomy.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
+Activity.create(name: "Visit to Pompeii and Mount Vesuvius", activity_type: "Historical", description: "Explore the ancient ruins of Pompeii and hike to the summit of Mount Vesuvius, the volcano that famously destroyed the city in 79 AD.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
+
 
 puts 'creating example trips...'
 

@@ -25,3 +25,20 @@
 .navbar-lewagon .name {
   border-right: none;
 }
+
+// NAVBAR SEARCH COLLAPSIBLE
+
+.navbar-lewagon .dropdown-toggle-no-caret {
+  border-right: 1px solid #dfdede;
+  padding: 8px;
+  margin-top: 8px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+  color: #7e7c7c;
+  text-decoration: none;
+}
+
+.dropstart .dropdown-menu {
+  padding: 0;
+  transform: translateY(7px)
+}
