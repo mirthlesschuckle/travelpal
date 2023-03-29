@@ -1,19 +1,11 @@
 <div class="container" style="margin-top: 35px; margin-bottom: 35px;">
-  <h1 style="text-align: center;">Search for a new destination</h1>
-
   <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <div style="width: 100%; height: 300px; border-top-left-radius: 10px; border-top-right-radius: 10px;"
-        data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col-8">
-      <%= form_with url: destinations_path, method: :get, class: "d-flex" do %>
+    <div class="col-6" id="index-background-image">
+      <h1 style="font-size: 51px; text-align: left; margin:5px;">NEVER STOP</h1>
+      <h1 style="font-size: 51px; text-align: left; margin:5px;">EXPLORING THE</h1>
+      <h1 style="font-size: 51px; text-align: left; margin-left: 5px; margin-top: 5px; margin-bottom: 100px;">WORLD</h1>
+      <h1 style="text-align: left; font-size: 20px;">Search for a destination</h1>
+      <%= form_with url: destinations_path, method: :get, class: "index-search-form" do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
@@ -23,22 +15,25 @@
       <% end %>
     </div>
 
+    <div class="col-6" style="margin-left:-12px;">
+      <div style="width: 100%; height: 400px; border-radius: 10px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;"
+        data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
   </div>
 
   <div class="row justify-content-center">
-    <div class="col-sm-8">
+    <div class="col-12">
       <% if @destinations.any? %>
-
-        <h3>Destinations:</h3>
+        <h3 style="text-align: center; font-size: 45px; font-weight: bold; margin-top:50px;">Destinations</h3>
         <div class="row" style="margin: 30px;">
           <% @destinations.each do |destination| %>
             <div class="col-3">
               <%= link_to destination_path(destination), class: "text-decoration-none", style: "color: black;" do %>
-                <div class="card" style="height: 10rem; padding: 20px; margin-bottom: 20px;">
-                  <img class="card-img-top" src="<%= asset_path(destination.image_path) %>" alt="Card image cap">
-                  <p>
-                    <%= destination.name %>
-                  </p>
+                <div class="destination-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('<%= asset_path(destination.image_path) %>')">
+                  <h3 class="destination-city-name"><%= destination.name %></h3>
                 </div>
               <% end %>
             </div>
