@@ -27,7 +27,6 @@
 
   <div class="card" style="overflow: unset; height: fit-content; position: relative; top: 20px;">
     <div class="container d-flex flex-column card-body" style="background-color: #FFFEFE; padding: 75px;">
-      <h4 class="card-title mb-5" ">Average rating </h4>
       <h4 class="card-title" ">Bio</h4>
       <% if @user.bio.present? %>
         <p class="card-text mb-5" style="padding: 5px;"><%= @user.bio %></p>
@@ -35,16 +34,19 @@
         <p class="card-text mb-5" style="padding: 5px;">No bio added yet.</p>
       <% end %>
 
-
-    <h4 class="card-title mb-3" ">Reviews</h4>
-
-    <ul class="list-group">
-      <% @user.received_reviews.each do |review| %>
-        <li class="list-group-item">
+    <h4 class="card-title mb-3">Reviews</h4>
+<ul class="list-group">
+  <% if @user.received_reviews.empty? %>
+    <p>No reviews yet</p>
+  <% else %>
+    <% @user.received_reviews.each do |review| %>
+      <li class="list-group-item">
         <%= review.content %>
-        <i> By <%=review.user.first_name %> </i>
-    </li>
+        <i>By <%= review.user.first_name %></i>
+      </li>
+    <% end %>
   <% end %>
+</ul>
     </div>
     </ul>
   </div>
