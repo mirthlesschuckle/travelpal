@@ -1,4 +1,4 @@
-puts 'it cleans its database or else it gets the hose again...'
+puts 'cleaning the database...'
 ChatRequest.destroy_all
 User.destroy_all
 Destination.destroy_all
