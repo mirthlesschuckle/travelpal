@@ -1,13 +1,25 @@
 <div class="container" style="margin-bottom: 50px;">
-
-  <h1 style="text-align: center;"><%= @destination.name %></h1>
-  <div style="display: flex; align-items: flex-start; justify-content: center;">
-    <p style="font-size: 14px; margin-right: 10px; margin-top: 0; padding-top: 2px;">Add to favourites</p>
-    <%= link_to toggle_favorite_destination_path(@destination), remote: true, data: {turbo_method: :post}, style: "margin-top: 0;" do %>
-      <%= render "destinations/like_button", destination: @destination %>
-    <% end %>
+  <div div class="row" style="justify-content:space-between; margin: 50px auto;">
+    <div class="col-1" style="display: flex; align-items: flex-start; margin-top: -10px;">
+      <%= content_tag :div do %>
+        <%= link_to destinations_path, class: "button_back" do %>
+          <%= content_tag :span, "<-", class: "button__text", style: "font-size: 40px; font-weight: bolder;" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-10" style="display: flex; justify-content: center; align-items: flex-start;">
+      <div>
+        <h1 style="margin-bottom: 20px; font-weight: bold; display: flex; justify-content: center;"><%= @destination.name %></h1>
+        <p style="margin-bottom: 0; display: flex; justify-content: center;"><%= @destination.description %></p>
+      </div>
+    </div>
+    <div class="col-1" style="display: flex; align-items: flex-start; margin-top: -10px;">
+      <%= link_to toggle_favorite_destination_path(@destination), remote: true, data: {turbo_method: :post}, class: "favorite-btn" do %>
+        <%= render "destinations/like_button", destination: @destination %>
+      <% end %>
+    </div>
   </div>
-  <p style="text-align: center;"><%= @destination.description %></p>
+
 
   <div class="row justify-content-center">
     <div class="col-4">
@@ -44,18 +56,22 @@
     </div>
   </div>
 
-  <h3 style="text-align: center;"><%= "Things to do in #{@destination.name}" %></h3>
+ <h3 style="text-align: center; font-weight: bold; margin: 40px auto;"><%= "Things to do in #{@destination.name}" %></h3>
   <% if @activities.empty? %>
     <p>I'm sorry we have no recommendations at this time.</p>
   <% else %>
     <div class="row">
       <% @activities.each do |activity| %>
         <div class="col-3">
-          <div class="card" style="width: 18rem; height: 20rem; padding: 20px;">
-            <h4><%= activity.name %></h4>
-            <h7><%= activity.activity_type %></h7>
-            <p><p>
-            <p><%= activity.description %></p>
+          <div class="card" style="display: flex; flex-direction: column; background: rgb(169,199,212);
+          background: linear-gradient(317deg, rgba(169,199,212,1) 0%, rgba(226,223,232,1) 0%, rgba(233,230,205,1) 100%); width: 18rem; height: 16rem; padding: 20px;">
+            <div class="top-half" style="flex: 1; display: flex; flex-direction: column; justify-content: start;">
+              <h5 style="margin-bottom: 5px; font-weight: bold;"><%= activity.name %></h5>
+              <h5 style="margin-top: 10px; color: #777; font-size: 14px;"><%= activity.activity_type %></h5>
+            </div>
+            <div class="bottom-half" style="flex: 1;">
+              <p style="margin-top: 10px; font-size: 15px;"><%= activity.description %></p>
+            </div>
           </div>
         </div>
       <% end %>
