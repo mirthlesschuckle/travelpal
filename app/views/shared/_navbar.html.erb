@@ -18,9 +18,6 @@
             <%= link_to "Destinations", destinations_path, class: "nav-link" %>
           </li>
           <li class="nav-item d-flex align-items-center">
-            <%= link_to "Profile", user_profile_path(current_user), class: "nav-link" %>
-          </li>
-          <li class="nav-item d-flex align-items-center">
             <%= link_to "My Buddies", my_buddies_path, class: "nav-link" %>
           </li>
           <li class="nav-item d-flex align-items-center">
@@ -37,7 +34,7 @@
             <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "My Trips", trips_path, class: "dropdown-item" %>
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Profile", user_profile_path(current_user), class: "dropdown-item" %>
               <%= link_to "Messages", chatrooms_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>

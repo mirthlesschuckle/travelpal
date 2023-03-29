@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = @user
     if @review.save!
-      redirect_to  user_profile_path(@user)
+      redirect_to  dashboard_path(@user)
     else
       render :new, status: :unprocessable_entity
     end

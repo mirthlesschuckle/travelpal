@@ -13,6 +13,17 @@
   height: 336px;
 }
 
+.dashboard-card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: fit-content;
+  background: #FFFF;
+  padding: 20px;
+}
+
 .card-profile {
  height: 80%;
  overflow: auto;
@@ -51,6 +62,11 @@
   padding: 1.5rem;
 }
 
+.card-body-small {
+  background-color: #f8f9fa;
+  padding: 1rem;
+}
+
 .card-title {
   font-size: 1.25rem;
   font-weight: bold;
@@ -63,8 +79,14 @@
 }
 
 .btn-primary {
-  background-color: #00aa6c;
-  border-color: #00aa6c;
+  background-color: #015997;
+  border-color: #474e91;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.buddies-btn {
+  margin-top: 10px;
 }
 
 .carousel {
