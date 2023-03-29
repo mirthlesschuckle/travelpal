@@ -3,28 +3,16 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag 'plane-logo-test.png', class: 'navbar-brand' %>
     <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item d-flex align-items-center" style="width: 500px; margin-right: 150px;">
-            <% if !(current_page?(root_path) || current_page?(destinations_path)) %>
-              <%= form_with url: destinations_path, method: :get, class: "search-form" do %>
-                <%= text_field_tag :query,
-                  params[:query],
-                  class: "form-control",
-                  placeholder: "Find a destination",
-                  input_html: {data: {address_autocomplete_target: "address"}},
-                  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-                <%= submit_tag "Search", class: "btn btn-primary" %>
-              <% end %>
-            <% else %>
-            <p class="" style="width: 500px; font-size: 16px; margin-top: 15px; margin-left: 18px; margin-right: 0px; font-style: italic;">Discover the World, Share the Experience<i style="margin-left: 8px;" class="fas fa-globe-americas ml-2"></i></p>
-            <% end %>
+          <li class="nav-item dropstart d-flex align-items-center">
+            <a class="dropdown-toggle-no-caret" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Search
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= render "shared/search_form", class: "dropdown-item" %>
+            </div>
           </li>
           <li class="nav-item d-flex align-items-center">
             <%= link_to "Destinations", destinations_path, class: "nav-link" %>
@@ -42,11 +30,11 @@
             <p style="margin-top: 15px; margin-right: 5px; margin-left: 5px;"><%= current_user.first_name %></p>
           </li>
           <li class="nav-item dropdown">
-          <% if current_user.photo.blank? %>
-          <%= image_tag "https://w7.pngwing.com/pngs/527/663/png-transparent-logo-person-user-person-icon-rectangle-photography-computer-wallpaper.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% end %>
+            <% if current_user.photo.blank? %>
+              <%= image_tag "https://w7.pngwing.com/pngs/527/663/png-transparent-logo-person-user-person-icon-rectangle-photography-computer-wallpaper.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "My Trips", trips_path, class: "dropdown-item" %>
               <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
