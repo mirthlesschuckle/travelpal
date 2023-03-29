@@ -1,14 +1,22 @@
 puts 'cleaning the database...'
+ChatRequest.destroy_all
 User.destroy_all
 Destination.destroy_all
 Activity.destroy_all
+Trip.destroy_all
+Match.destroy_all
+Chatroom.destroy_all
+Message.destroy_all
+Review.destroy_all
 
 puts 'creating users...'
 
-User.create(first_name: "Michael", last_name: "Catania", email: "michael@gmail.com", password: "123456")
-User.create(first_name: "Jantine", last_name: "Derksen", email: "jantine@gmail.com", password: "123456")
-User.create(first_name: "Jianhao", last_name: "Yu", email: "jian@gmail.com", password: "123456")
-User.create(first_name: "Benjamin", last_name: "Hall", email: "ben@gmail.com", password: "123456")
+User.create(first_name: "Alex", last_name: "Johnson", email: "alex@gmail.com", password: "123456", bio: "I am a software engineer with a passion for solving complex problems. I have experience working with Ruby on Rails, React, and PostgreSQL. In my free time, I enjoy hiking and trying new restaurants in my city.")
+User.create(first_name: "Benjamin", last_name: "Hall", email: "ben@gmail.com", password: "123456", bio: "I am a graphic designer with a keen eye for detail. I have experience working with Adobe Creative Suite and have a strong understanding of typography and color theory. In my free time, I enjoy painting and playing the guitar.")
+User.create(first_name: "Jantine", last_name: "Derksen", email: "jantine@gmail.com", password: "123456", bio: "I am a marketing professional with a focus on social media and content marketing. I have experience managing campaigns on multiple platforms, including Instagram, Facebook, and Twitter. In my free time, I enjoy reading and practicing yoga.")
+User.create(first_name: "Jianhao", last_name: "Yu", email: "jian@gmail.com", password: "123456", bio: "I am a data scientist with experience in machine learning and statistical analysis. I have a strong background in Python and have worked with libraries such as TensorFlow and PyTorch. In my free time, I enjoy travelling and exploring new places.")
+User.create(first_name: "Michael", last_name: "Catania", email: "michael@gmail.com", password: "123456", bio: "I am a product manager with experience in agile methodology and user research. I have worked on projects in various industries, including healthcare and e-commerce. In my free time, I enjoy playing basketball and reading sci-fi novels.")
+User.create(first_name: "Taylor", last_name: "Lee", email: "taylor@gmail.com", password: "123456", bio: "I am a freelance writer with experience in copywriting and journalism. I have written for various publications, including the New York Times and the Guardian. In my free time, I enjoy hiking and practicing meditation.")
 
 puts 'creating destinations...'
 
@@ -42,10 +50,31 @@ Destination.create(name: "Vancouver", country: "Canada", address: "Vancouver", d
 Destination.create(name: "San Francisco", country: "United States", address: "San Francisco", description: "The city of stunning hills, iconic bridges and diverse culture.", image_path: "san-francisco.jpg")
 Destination.create(name: "Copenhagen", country: "Denmark", address: "Copenhagen", description: "The city of Scandinavian design, cycling culture and hygge.", image_path: "copenhagen.jpg")
 Destination.create(name: "Beijing", country: "China", address: "Beijing", description: "The city of imperial palaces, the Great Wall and rich history.", image_path: "beijing.jpg")
+Destination.create(name: "Hoi An", country: "Vietnam", address: "Hoi An", description: "The city of lanterns and ancient temples.", image_path: "hoi-an.jpg")
+Destination.create(name: "Reykjavik", country: "Iceland", address: "Reykjavik", description: "The city of geothermal hot springs and northern lights.", image_path: "reykjavik.jpg")
+Destination.create(name: "Zanzibar", country: "Tanzania", address: "Zanzibar", description: "The island of pristine beaches and spice markets.", image_path: "zanzibar.jpg")
+Destination.create(name: "Montreal", country: "Canada", address: "Montreal", description: "The city of French-Canadian charm and culinary delights.", image_path: "montreal.jpg")
+Destination.create(name: "Cusco", country: "Peru", address: "Cusco", description: "The city of ancient Incan ruins and breathtaking Andean scenery.", image_path: "cusco.jpg")
+Destination.create(name: "Sa Pa", country: "Vietnam", address: "Sa Pa", description: "The town of rice terraces and hill tribes.", image_path: "sapa.jpg")
+Destination.create(name: "Bali", country: "Indonesia", address: "Denpasar", description: "The island of tropical paradise and Hindu temples.", image_path: "bali.jpg")
+Destination.create(name: "Cairo", country: "Egypt", address: "Cairo", description: "The city of pyramids and ancient wonders.", image_path: "cairo.jpg")
+Destination.create(name: "Krabi", country: "Thailand", address: "Krabi", description: "The province of stunning limestone cliffs and turquoise waters.", image_path: "krabi.jpg")
+Destination.create(name: "Machu Picchu", country: "Peru", address: "Machu Picchu", description: "The ancient Incan citadel in the Andes.", image_path: "machu-picchu.jpg")
+Destination.create(name: "Phuket", country: "Thailand", address: "Phuket", description: "The island of beaches and nightlife.", image_path: "phuket.jpg")
+Destination.create(name: "Lisbon", country: "Portugal", address: "Lisbon", description: "The city of historic charm and delicious seafood.", image_path: "lisbon.jpg")
+Destination.create(name: "Kyoto", country: "Japan", address: "Kyoto", description: "The city of traditional Japanese culture and stunning temples.", image_path: "kyoto.jpg")
+Destination.create(name: "San Diego", country: "United States", address: "San Diego", description: "The city of beaches and craft beer.", image_path: "san-diego.jpg")
+Destination.create(name: "Queenstown", country: "New Zealand", address: "Queenstown", description: "The town of adventure sports and mountain scenery.", image_path: "queenstown.jpg")
+Destination.create(name: "Kruger National Park", country: "South Africa", address: "Kruger National Park", description: "The national park of incredible wildlife and natural beauty.", image_path: "kruger-national-park.jpg")
+Destination.create(name: "Florence", country: "Italy", address: "Florence", description: "The city of Renaissance art and architecture.", image_path: "florence.jpg")
+Destination.create(name: "Sao Paulo", country: "Brazil", address: "Sao Paulo", description: "The city of vibrant culture and street art.", image_path: "sao-paulo.jpg")
+Destination.create(name: "Dubrovnik", country: "Croatia", address: "Dubrovnik", description: "The city of medieval walls and stunning Adriatic Sea views.", image_path: "dubrovnik.jpg")
+Destination.create(name: "Munich", country: "Germany", address: "Munich", description: "The city of Oktoberfest and Bavarian charm.", image_path: "munich.jpg")
+Destination.create(name: "Cape Verde", country: "Cape Verde", address: "Cape Verde", description: "The island nation of tropical beauty and vibrant culture.", image_path: "cape-verde.jpg")
+Destination.create(name: "Banff", country: "Canada", address: "Banff", description: "The town of stunning lakes and majestic mountains.", image_path: "banff.jpg")
+Destination.create(name: "Amalfi Coast", country: "Italy", address: "Amalfi", description: "The coastal area of colorful villages and picturesque landscapes.", image_path: "amalfi-coast.jpg")
 
 puts 'creating activities...'
-
-destinations = Destination.all
 
 # New York
 Activity.create(name: "Broadway Show", activity_type: "Entertainment", description: "Experience the excitement of a live Broadway show in the heart of New York City.", destination_id: Destination.find_by(name: "New York").id)
@@ -197,5 +226,163 @@ Activity.create(name: "Forbidden City", activity_type: "Historic Site", descript
 Activity.create(name: "Great Wall of China", activity_type: "Sightseeing", description: "Visit one of the world's most iconic landmarks and walk along the ancient wall that stretches for thousands of miles.", destination_id: Destination.find_by(name: "Beijing").id)
 Activity.create(name: "Temple of Heaven", activity_type: "Historic Site", description: "Marvel at the beautiful architecture and learn about the religious rituals that took place in this historic temple complex.", destination_id: Destination.find_by(name: "Beijing").id)
 Activity.create(name: "Peking Duck Dinner", activity_type: "Food Tour", description: "Taste the famous crispy duck dish that originated in Beijing and enjoy a delicious Chinese feast.", destination_id: Destination.find_by(name: "Beijing").id)
+# Hoi An
+Activity.create(name: "Lantern-Making Workshop", activity_type: "Art and Crafts", description: "Learn how to make traditional lanterns from bamboo and silk with local artisans in Hoi An.", destination_id: Destination.find_by(name: "Hoi An").id)
+Activity.create(name: "Bike Tour", activity_type: "Outdoor", description: "Explore the countryside around Hoi An on a leisurely bike ride, passing by rice paddies, villages, and rivers.", destination_id: Destination.find_by(name: "Hoi An").id)
+Activity.create(name: "Cooking Class", activity_type: "Food and Drink", description: "Discover the flavors of Vietnamese cuisine with a hands-on cooking class in Hoi An, using fresh local ingredients.", destination_id: Destination.find_by(name: "Hoi An").id)
+Activity.create(name: "My Son Sanctuary Tour", activity_type: "Historical", description: "Visit the ancient ruins of My Son Sanctuary, a UNESCO World Heritage Site dating back to the Cham Empire.", destination_id: Destination.find_by(name: "Hoi An").id)
+# Reykjavik
+Activity.create(name: "Northern Lights Tour", activity_type: "Nature", description: "Experience the natural wonder of the Aurora Borealis on a guided tour from Reykjavik.", destination_id: Destination.find_by(name: "Reykjavik").id)
+Activity.create(name: "Blue Lagoon Spa", activity_type: "Relaxation", description: "Unwind in the geothermal waters of the Blue Lagoon, a luxurious spa set against a stunning volcanic landscape.", destination_id: Destination.find_by(name: "Reykjavik").id)
+Activity.create(name: "Whale-Watching Cruise", activity_type: "Wildlife", description: "Get up close to Iceland's majestic marine mammals on a whale-watching excursion from Reykjavik.", destination_id: Destination.find_by(name: "Reykjavik").id)
+Activity.create(name: "Golden Circle Tour", activity_type: "Scenic", description: "Explore Iceland's stunning natural beauty on a tour of the Golden Circle, including geysers, waterfalls, and the Thingvellir National Park.", destination_id: Destination.find_by(name: "Reykjavik").id)
+# Zanzibar
+Activity.create(name: "Spice Tour", activity_type: "Cultural", description: "Discover the island's rich history and cultural heritage on a guided tour of Zanzibar's spice farms.", destination_id: Destination.find_by(name: "Zanzibar").id)
+Activity.create(name: "Beach Day", activity_type: "Relaxation", description: "Soak up the sun on one of Zanzibar's pristine beaches, with crystal-clear waters and powder-soft sand.", destination_id: Destination.find_by(name: "Zanzibar").id)
+Activity.create(name: "Stone Town Walking Tour", activity_type: "Historical", description: "Explore the winding alleys and historic buildings of Stone Town, a UNESCO World Heritage Site known for its Swahili and Islamic architecture.", destination_id: Destination.find_by(name: "Zanzibar").id)
+Activity.create(name: "Dhow Cruise", activity_type: "Boat Tours", description: "Sail on a traditional wooden dhow to a nearby island for a seafood barbecue and snorkeling in the coral reefs.", destination_id: Destination.find_by(name: "Zanzibar").id)
+# Montreal
+Activity.create(name: "Old Montreal Walking Tour", activity_type: "Historical", description: "Discoverthe history and architecture of Montreal's oldest neighborhood on a guided walking tour of Old Montreal.", destination_id: Destination.find_by(name: "Montreal").id)
+Activity.create(name: "Montreal Museum of Fine Arts", activity_type: "Art and Culture", description: "Explore one of Canada's largest art museums, with over 44,000 works of art spanning centuries and continents.", destination_id: Destination.find_by(name: "Montreal").id)
+Activity.create(name: "Mount Royal Park Hike", activity_type: "Outdoor", description: "Hike to the top of Mount Royal for stunning views of Montreal's skyline and the St. Lawrence River.", destination_id: Destination.find_by(name: "Montreal").id)
+Activity.create(name: "Jean-Talon Market Visit", activity_type: "Food and Drink", description: "Experience Montreal's vibrant food scene at Jean-Talon Market, with over 300 vendors offering fresh produce, baked goods, and more.", destination_id: Destination.find_by(name: "Montreal").id)
+# Cusco
+Activity.create(name: "Machu Picchu Tour", activity_type: "Historical", description: "Discover the ancient Inca citadel of Machu Picchu, a UNESCO World Heritage Site and one of the world's most iconic destinations.", destination_id: Destination.find_by(name: "Cusco").id)
+Activity.create(name: "Rainbow Mountain Hike", activity_type: "Outdoor", description: "Embark on a challenging hike to the colorful Rainbow Mountain, with stunning views of the Andes along the way.", destination_id: Destination.find_by(name: "Cusco").id)
+Activity.create(name: "Peruvian Cooking Class", activity_type: "Food and Drink", description: "Learn to cook traditional Peruvian dishes using fresh ingredients at a local cooking school in Cusco.", destination_id: Destination.find_by(name: "Cusco").id)
+Activity.create(name: "Sacred Valley Tour", activity_type: "Scenic", description: "Explore the breathtaking landscapes and ancient ruins of the Sacred Valley, a region of fertile farmland and historic sites near Cusco.", destination_id: Destination.find_by(name: "Cusco").id)
+# Sa pa
+Activity.create(name: "Trekking in Sapa", activity_type: "Outdoor", description: "Embark on a scenic trek through the picturesque hills and rice terraces of Sapa, meeting local ethnic communities along the way.", destination_id: Destination.find_by(name: "Sa Pa").id)
+Activity.create(name: "Sapa Market Visit", activity_type: "Cultural", description: "Explore the vibrant local market in Sapa, featuring colorful produce, textiles, and handicrafts made by the Hmong and other ethnic minority groups.", destination_id: Destination.find_by(name: "Sa Pa").id)
+Activity.create(name: "Homestay with Locals", activity_type: "Cultural", description: "Experience the warmth and hospitality of local families in Sapa by staying in a traditional homestay, sharing meals and cultural activities with your hosts.", destination_id: Destination.find_by(name: "Sa Pa").id)
+Activity.create(name: "Fansipan Mountain Climb", activity_type: "Adventure", description: "Take on the challenge of climbing Fansipan Mountain, the highest peak in Indochina, with stunning views of the surrounding mountains and valleys.", destination_id: Destination.find_by(name: "Sa Pa").id)
+# Bali
+Activity.create(name: "Surfing Lesson", activity_type: "Outdoor", description: "Learn to ride the waves with a surfing lesson at one of Bali's famous beaches, with experienced instructors and top-notch equipment.", destination_id: Destination.find_by(name: "Bali").id)
+Activity.create(name: "Ubud Rice Terraces Tour", activity_type: "Scenic", description: "Discover the natural beauty of Bali's rice terraces on a guided tour of the Ubud region, with stunning views and opportunities for hiking and photography.", destination_id: Destination.find_by(name: "Bali").id)
+Activity.create(name: "Cooking Class", activity_type: "Food and Drink", description: "Learn the secrets of Balinese cuisine with a hands-on cooking class, using fresh local ingredients and traditional techniques.", destination_id: Destination.find_by(name: "Bali").id)
+Activity.create(name: "Waterfall Adventure", activity_type: "Nature", description: "Explore Bali's stunning waterfalls on a guided trek, including Sekumpul Waterfall, considered one of the most beautiful in Southeast Asia.", destination_id: Destination.find_by(name: "Bali").id)
+# Cairo
+Activity.create(name: "Pyramids and Sphinx Tour", activity_type: "Historical", description: "Discover the ancient wonders of the Pyramids and Sphinx, the last surviving structures of the original Seven Wonders of the World.", destination_id: Destination.find_by(name: "Cairo").id)
+Activity.create(name: "Egyptian Museum Visit", activity_type: "Art and Culture", description: "Explore the treasures of the Egyptian Museum, including artifacts from the pharaohs and the iconic golden mask of King Tutankhamun.", destination_id: Destination.find_by(name: "Cairo").id)
+Activity.create(name: "Nile River Cruise", activity_type: "Boat Tours", description: "Experience the romance and mystery of the Nile River on a luxury cruise, with stops at ancient temples, colorful markets, and rural villages.", destination_id: Destination.find_by(name: "Cairo").id)
+Activity.create(name: "Islamic Cairo Walking Tour", activity_type: "Cultural", description: "Discover the rich history and architecture of Islamic Cairo on a guided walking tour, including the Khan el-Khalili bazaar and the Al-Azhar Mosque.", destination_id: Destination.find_by(name: "Cairo").id)
+# Krabi
+Activity.create(name: "Island Hopping Tour", activity_type: "Nature", description: "Explore the stunning islands and beaches around Krabi on a boat tour, including stops at Koh Phi Phi, Railay Beach, and more.", destination_id: Destination.find_by(name: "Krabi").id)
+Activity.create(name: "Rock Climbing Adventure", activity_type: "Outdoor", description: "Challenge yourself with a rock climbing excursion on the towering limestone cliffs of Railay Beach, with experienced guides and breathtaking views.", destination_id: Destination.find_by(name: "Krabi").id)
+Activity.create(name: "Thai Cooking Class", activity_type: "Food and Drink", description: "Learn to cook delicious Thai dishes with fresh local ingredients at a cooking school in Krabi, with options for vegetarians and other dietary restrictions.", destination_id: Destination.find_by(name: "Krabi").id)
+Activity.create(name: "Tiger Cave Temple Visit", activity_type: "Historical", description: "Climb the steep stairs to the Tiger Cave Temple, a Buddhist monastery perched on a hilltop with stunning views of the surrounding landscape.", destination_id: Destination.find_by(name: "Krabi").id)
+# Machu Picchu
+Activity.create(name: "Inca Trail Trek", activity_type: "Outdoor", description: "Embark on the legendary Inca Trail trek to Machu Picchu, a four-day journey through stunning Andean landscapes, including ancient ruins and mountain passes.", destination_id: Destination.find_by(name: "Machu Picchu").id)
+Activity.create(name: "Machu Picchu Sunrise Tour", activity_type: "Historical", description: "Experience the magical sunrise over Machu Picchu, with a guided tour of the ancient citadel and surrounding ruins.", destination_id: Destination.find_by(name: "Machu Picchu").id)
+Activity.create(name: "Peruvian Cultural Experience", activity_type: "Cultural", description: "Immerse yourself in the vibrant culture of Peru with a visit to a local community, including demonstrations of traditional weaving, music, and dance.", destination_id: Destination.find_by(name: "Machu Picchu").id)
+Activity.create(name: "Amazon Rainforest Excursion", activity_type: "Nature", description: "Explore the incredible biodiversity of the Amazon rainforest with a guided excursion, including opportunities for wildlife viewing, birdwatching, and canoeing.", destination_id: Destination.find_by(name: "Machu Picchu").id)
+# Phuket
+Activity.create(name: "Phang Nga Bay Tour", activity_type: "Nature", description: "Discover the stunning limestone cliffs and emerald waters of Phang Nga Bay on a boat tour, including a visit to the iconic James Bond Island.", destination_id: Destination.find_by(name: "Phuket").id)
+Activity.create(name: "Elephant Sanctuary Visit", activity_type: "Wildlife", description: "Interact with rescued elephants at a sanctuary in Phuket, feeding, bathing, and learning about these gentle giants in a responsible and ethical way.", destination_id: Destination.find_by(name: "Phuket").id)
+Activity.create(name: "Muay Thai Boxing Class", activity_type: "Sports", description: "Learn the art of Muay Thai, Thailand's national sport, with a training session at a local gym in Phuket, with experienced instructors and high-quality equipment.", destination_id: Destination.find_by(name: "Phuket").id)
+Activity.create(name: "Phuket Night Market Visit", activity_type: "Cultural", description: "Experience the vibrant sights, sounds, and flavors of Phuket's night markets, with street food, local crafts, and live entertainment.", destination_id: Destination.find_by(name: "Phuket").id)
+# Lisbon
+Activity.create(name: "Sintra Day Trip", activity_type: "Scenic", description: "Explore the fairy-tale castles and lush forests of Sintra, a UNESCO World Heritage Site and one of Portugal's most enchanting destinations.", destination_id: Destination.find_by(name: "Lisbon").id)
+Activity.create(name: "Fado Show and Dinner", activity_type: "Entertainment", description: "Experience the soulful sounds of Fado, Portugal's traditional music, with a live performance and dinner at a local restaurant in Lisbon.", destination_id: Destination.find_by(name: "Lisbon").id)
+Activity.create(name: "Lisbon City Tour", activity_type: "Historical", description: "Discover the rich history and architecture of Lisbon on a guided walking tour, including the Belem Tower, the Jeronimos Monastery, and the Alfama neighborhood.", destination_id: Destination.find_by(name: "Lisbon").id)
+Activity.create(name: "Pasteis de Belem Workshop", activity_type: "Food and Drink", description: "Learn the secrets of Portugal's famous pastries, Pasteis de Belem, at a hands-on workshop in Lisbon, with plenty of samples to enjoy.", destination_id: Destination.find_by(name: "Lisbon").id)
+# Kyoto
+Activity.create(name: "Arashiyama Bamboo Grove Visit", activity_type: "Nature", description: "Walk through the serene Arashiyama Bamboo Grove, a peaceful oasis just outside Kyoto city center, with stunning views and photo opportunities.", destination_id: Destination.find_by(name: "Kyoto").id)
+Activity.create(name: "Kinkaku-ji Temple Tour", activity_type: "Historical", description: "Visit the iconic Kinkaku-ji Temple, also known as the Golden Pavilion, a stunning Buddhist temple covered in gold leaf and surrounded by tranquil gardens.", destination_id: Destination.find_by(name: "Kyoto").id)
+Activity.create(name: "Kyoto Tea Ceremony", activity_type: "Cultural", description: "Experience the art and culture of the Japanese tea ceremony, or chanoyu, in a traditional teahouse in Kyoto, with an expert tea master and elegant surroundings.", destination_id: Destination.find_by(name: "Kyoto").id)
+Activity.create(name: "Gion Geisha District Walking Tour", activity_type: "Cultural", description: "Discover the fascinating history and traditions of the Gion Geisha District on a guided walking tour, with opportunities to spot geisha and maiko in their elegant attire.", destination_id: Destination.find_by(name: "Kyoto").id)
+# San Diego
+Activity.create(name: "San Diego Zoo Visit", activity_type: "Wildlife", description: "Explore one of the world's most famous zoos at the San Diego Zoo, with over 3,500 animals and a variety of exhibits and activities for all ages.", destination_id: Destination.find_by(name: "San Diego").id)
+Activity.create(name: "Balboa Park Tour", activity_type: "Scenic", description: "Discover the beauty and culture of Balboa Park, a 1,200-acre urban park in San Diego featuring gardens, museums, theaters, and more.", destination_id: Destination.find_by(name: "San Diego").id)
+Activity.create(name: "La Jolla Cove Snorkeling", activity_type: "Outdoor", description: "Experience the underwater wonders of La Jolla Cove, one of the best snorkeling spots in San Diego, with clear waters and abundant marine life.", destination_id: Destination.find_by(name: "San Diego").id)
+Activity.create(name: "Gaslamp Quarter Food Tour", activity_type: "Food and Drink", description: "Taste the flavors of San Diego's historic Gaslamp Quarter on a guided food tour, sampling dishes from top restaurants and specialty shops.", destination_id: Destination.find_by(name: "San Diego").id)
+# Queenstown
+Activity.create(name: "Milford Sound Cruise", activity_type: "Nature", description: "Experience the breathtaking beauty of Milford Sound on a boat cruise, with towering mountains, cascading waterfalls, and abundant wildlife.", destination_id: Destination.find_by(name: "Queenstown").id)
+Activity.create(name: "Skyline Gondola Ride", activity_type: "Scenic", description: "Take a scenic gondola ride to the top of Bob's Peak in Queenstown, with panoramic views of Lake Wakatipu and the surrounding mountains.", destination_id: Destination.find_by(name: "Queenstown").id)
+Activity.create(name: "Bungee Jumping Adventure", activity_type: "Adventure", description: "Get your adrenaline pumping with a bungee jumping excursion in Queenstown, with options for different levels of difficulty and stunning views.", destination_id: Destination.find_by(name: "Queenstown").id)
+Activity.create(name: "Wine Tasting Tour", activity_type: "Food and Drink", description: "Explore the famous wineries and vineyards of Central Otago on a guided wine tasting tour from Queenstown, with plenty of opportunities to sample world-class wines.", destination_id: Destination.find_by(name: "Queenstown").id)
+# Kruger National Park
+Activity.create(name: "Safari Game Drive", activity_type: "Wildlife", description: "Embark on an unforgettable game drive through Kruger National Park, one of the world's top wildlife reserves, with opportunities to spot the Big Five and other iconic African animals.", destination_id: Destination.find_by(name: "Kruger National Park").id)
+Activity.create(name: "Bush Walk with Rangers", activity_type: "Outdoor", description: "Explore the natural beauty and diversity of Kruger National Park on a guided bush walk with experienced rangers, learning about the flora and fauna of the region.", destination_id: Destination.find_by(name: "Kruger National Park").id)
+Activity.create(name: "Hot Air Balloon Safari", activity_type: "Nature", description: "Experience the thrill of a hot air balloon safari over Kruger National Park, with breathtaking views of the savannah landscape and wildlife below.", destination_id: Destination.find_by(name: "Kruger National Park").id)
+Activity.create(name: "Cultural Village Visit", activity_type: "Cultural", description: "Immerse yourself in the rich culture and traditions of the local Shangaan community with a visit to a traditional village in Kruger National Park, including a tour, a performance, and a meal.", destination_id: Destination.find_by(name: "Kruger National Park").id)
+# Florence
+Activity.create(name: "Uffizi Gallery Tour", activity_type: "Art and Culture", description: "Discover the masterpieces of the Uffizi Gallery, one of the world's top art museums, with works by Michelangelo, Leonardo da Vinci, Botticelli, and more.", destination_id: Destination.find_by(name: "Florence").id)
+Activity.create(name: "Cooking Class", activity_type: "Food and Drink", description: "Learn the secrets of Tuscan cuisine with a hands-on cooking class in Florence, using fresh local ingredients and traditional techniques.", destination_id: Destination.find_by(name: "Florence").id)
+Activity.create(name: "Duomo and Baptistry Visit", activity_type: "Historical", description: "Visit the stunning Cathedral of Santa Maria del Fiore, also known as the Duomo, and the nearby Baptistry, with their intricate architecture and historical significance.", destination_id: Destination.find_by(name: "Florence").id)
+Activity.create(name: "Piazzale Michelangelo Sunset View", activity_type: "Scenic", description: "Enjoy a stunning panoramic view of Florence at sunset from the Piazzale Michelangelo, a scenic lookout on a hilltop overlooking the city.", destination_id: Destination.find_by(name: "Florence").id)
+# São Paulo
+Activity.create(name: "Street Art Tour", activity_type: "Art and Culture", description: "Explore the vibrant street art scene of São Paulo on a guided walking tour, discovering colorful murals, graffiti, and urban installations.", destination_id: Destination.find_by(name: "Sao Paulo").id)
+Activity.create(name: "Football Match Experience", activity_type: "Sports", description: "Experience the passion and excitement of Brazilian football with a visit to a local stadium in São Paulo, cheering on the home team with enthusiastic fans.", destination_id: Destination.find_by(name: "Sao Paulo").id)
+Activity.create(name: "São Paulo Museum of Art Visit", activity_type: "Art and Culture", description: "Discover the diverse collections of the São Paulo Museum of Art, including works by Brazilian and international artists, housed in a striking modernist building.", destination_id: Destination.find_by(name: "Sao Paulo").id)
+Activity.create(name: "Mercado Municipal Food Tour", activity_type: "Food and Drink", description: "Taste the flavors of São Paulo at the Mercado Municipal, a historic market with over 300 vendors selling a wide variety of local and international foods.", destination_id: Destination.find_by(name: "Sao Paulo").id)
+# Dubrovnik
+Activity.create(name: "Old Town Walking Tour", activity_type: "Historical", description: "Discover the rich history and culture of Dubrovnik's Old Town on a guided walking tour, including landmarks such as the City Walls, the Rector's Palace, and the Stradun.", destination_id: Destination.find_by(name: "Dubrovnik").id)
+Activity.create(name: "Sea Kayaking Adventure", activity_type: "Outdoor", description: "Explore the stunning coastline of Dubrovnik on a sea kayaking excursion, with opportunities to swim, snorkel, and enjoy the scenic views.", destination_id: Destination.find_by(name: "Dubrovnik").id)
+Activity.create(name: "Cable Car Ride to Mount Srd", activity_type: "Scenic", description: "Take a cable car ride to the top of Mount Srd for breathtaking views of Dubrovnik and the surrounding Adriatic Sea, with a restaurant and souvenir shop at the summit.", destination_id: Destination.find_by(name: "Dubrovnik").id)
+Activity.create(name: "Wine Tasting in Konavle Valley", activity_type: "Food and Drink", description: "Sample the wines of the Konavle Valley, a picturesque wine-growing region near Dubrovnik, with a guided tour and tasting at a local winery.", destination_id: Destination.find_by(name: "Dubrovnik").id)
+# Munich
+Activity.create(name: "Marienplatz Walking Tour", activity_type: "Historical", description: "Explore Munich's historic city center on a guided walking tour of Marienplatz, including landmarks such as the Old Town Hall, the New Town Hall, and the Frauenkirche.", destination_id: Destination.find_by(name: "Munich").id)
+Activity.create(name: "Beer Garden Visit", activity_type: "Food and Drink", description: "Experience the authentic Bavarian beer garden culture with a visit to one of Munich's many beer gardens, enjoying a cold brew and traditional food in a convivial atmosphere.", destination_id: Destination.find_by(name: "Munich").id)
+Activity.create(name: "Bavarian Alps Day Trip", activity_type: "Nature", description: "Escape the city and explore the natural beauty of the Bavarian Alps on a day trip from Munich, with stunning scenery, hiking opportunities, and quaint villages.", destination_id: Destination.find_by(name: "Munich").id)
+Activity.create(name: "BMW Museum Visit", activity_type: "Art and Culture", description: "Discover the history and innovation of BMW cars at the BMW Museum in Munich, with exhibits and interactive displays showcasing the brand's iconic designs and technologies.", destination_id: Destination.find_by(name: "Munich").id)
+# Cape Verde
+Activity.create(name: "Sal Island Beach Day", activity_type: "Nature", description: "Relax on the white-sand beaches of Sal Island, one of the most popular destinations in Cape Verde, with turquoise waters, gentle waves, and plenty of sunshine.", destination_id: Destination.find_by(name: "Cape Verde").id)
+Activity.create(name: "Cidade Velha Historical Tour", activity_type: "Historical", description: "Explore the historic town of Cidade Velha, a UNESCO World Heritage Site and the former capital of Cape Verde, with landmarks such as the Pillory Square, the Nossa Senhora do Rosário Church, and the Fort Real de São Filipe.", destination_id: Destination.find_by(name: "Cape Verde").id)
+Activity.create(name: "Scuba Diving Excursion", activity_type: "Outdoor", description: "Discover the underwater world of Cape Verde with a scuba diving excursion, exploring coral reefs, shipwrecks, and colorful marine life.", destination_id: Destination.find_by(name: "Cape Verde").id)
+Activity.create(name: "Fogo Island Volcano Hike", activity_type: "Adventure", description: "Embark on a challenging but rewarding hike to the summit of Fogo Island's active volcano, with stunning views of the landscape and the chance to observe the volcano's activity.", destination_id: Destination.find_by(name: "Cape Verde").id)
+# Banff
+Activity.create(name: "Rocky Mountains Hike", activity_type: "Adventure", description: "Embark on a hike through the stunning Rocky Mountains, with breathtaking views of the surrounding landscape and a chance to see local wildlife.", destination_id: Destination.find_by(name: "Banff").id)
+Activity.create(name: "Canoeing on Lake Louise", activity_type: "Outdoor", description: "Explore the serene waters of Lake Louise by canoe, with stunning views of the surrounding mountains and glaciers.", destination_id: Destination.find_by(name: "Banff").id)
+Activity.create(name: "Skiing in Banff National Park", activity_type: "Winter Sports", description: "Hit the slopes at one of Banff's world-renowned ski resorts, with a variety of terrain for skiers and snowboarders of all levels.", destination_id: Destination.find_by(name: "Banff").id)
+Activity.create(name: "Banff Gondola Ride", activity_type: "Sightseeing", description: "Take a scenic gondola ride to the top of Sulphur Mountain, with breathtaking views of Banff National Park and the surrounding mountains.", destination_id: Destination.find_by(name: "Banff").id)
+# Amalfi
+Activity.create(name: "Boat tour of the Amalfi Coast", activity_type: "Sightseeing", description: "Take a boat tour of the Amalfi Coast and enjoy the stunning views of the colorful villages and cliffs from the sea.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
+Activity.create(name: "Hiking in Valle delle Ferriere", activity_type: "Adventure", description: "Embark on a beautiful hike in Valle delle Ferriere, a nature reserve in Amalfi with waterfalls, lush vegetation and a variety of bird species.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
+Activity.create(name: "Cooking class in Positano", activity_type: "Cultural", description: "Learn to cook traditional Italian dishes in a cooking class in Positano, a charming town on the Amalfi Coast known for its gastronomy.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
+Activity.create(name: "Visit to Pompeii and Mount Vesuvius", activity_type: "Historical", description: "Explore the ancient ruins of Pompeii and hike to the summit of Mount Vesuvius, the volcano that famously destroyed the city in 79 AD.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
 
-puts 'COMPLETED!'
+
+puts 'creating example trips...'
+
+Trip.create(start_date: Date.new(2023, 4, 11), end_date: Date.new(2023, 4, 18), user_id: 2, destination_id: 21)
+Trip.create(start_date: Date.new(2023, 4, 9), end_date: Date.new(2023, 4, 22), user_id: 1, destination_id: 21)
+Trip.create(start_date: Date.new(2023, 4, 11), end_date: Date.new(2023, 4, 15), user_id: 3, destination_id: 21)
+Trip.create(start_date: Date.new(2023, 4, 1), end_date: Date.new(2023, 4, 30), user_id: 4, destination_id: 21)
+Trip.create(start_date: Date.new(2023, 4, 27), end_date: Date.new(2023, 4, 30), user_id: 2, destination_id: 3)
+Trip.create(start_date: Date.new(2023, 4, 25), end_date: Date.new(2023, 5, 2), user_id: 5, destination_id: 3)
+Trip.create(start_date: Date.new(2023, 5, 1), end_date: Date.new(2023, 5, 8), user_id: 6, destination_id: 40)
+
+puts 'creating example matches...'
+
+Match.create(user_id: 1, trip_id: 1)
+Match.create(user_id: 2, trip_id: 2)
+Match.create(user_id: 3, trip_id: 1)
+Match.create(user_id: 3, trip_id: 2)
+Match.create(user_id: 2, trip_id: 3)
+Match.create(user_id: 1, trip_id: 3)
+Match.create(user_id: 4, trip_id: 1)
+Match.create(user_id: 4, trip_id: 2)
+Match.create(user_id: 4, trip_id: 3)
+Match.create(user_id: 2, trip_id: 4)
+Match.create(user_id: 5, trip_id: 5)
+Match.create(user_id: 2, trip_id: 6)
+
+puts 'creating example chat_requests...'
+
+ChatRequest.create(sender_id: 2, receiver_id: 1, trip_id: 1, status: "pending_approval")
+ChatRequest.create(sender_id: 3, receiver_id: 2, trip_id: 3, status: "pending_approval")
+ChatRequest.create(sender_id: 2, receiver_id: 4, trip_id: 1, status: "pending_approval")
+ChatRequest.create(sender_id: 2, receiver_id: 5, trip_id: 5, status: "accepted")
+
+puts 'creating example chatrooms...'
+
+Chatroom.create(name: "Sydney", chat_request_id: 4)
+
+puts 'creating example messages...'
+
+Message.create(content: "Hey, Benjamin!", chatroom_id: 1, user_id: 5)
+Message.create(content: "What are your plans in Sydney?", chatroom_id: 1, user_id: 5)
+Message.create(content: "Hey Michael! Not sure yet, but this amazing app has some great suggestions", chatroom_id: 1, user_id: 2)
+
+puts 'Well... that was exhausting! COMPLETED!'
