@@ -1,15 +1,15 @@
 <div class="container">
-  <h1>Buddies list</h1>
+  <h1 style="font-weight: bold; text-align: center; margin: 50px auto;">Buddies list</h1>
 
   <% if @matches.any? %>
     <div class="container">
       <div class="row">
         <% @matches.each do |match| %>
-          <div class="col-md-4">
-            <div class="card mb-3" style="height:425px;">
-              <div class="card-img-top" style="background-image: url(<%= asset_path(match.trip.destination.image_path) %>); height: 200px; background-position: center; background-size: cover;">
+          <div class="col-md-4 d-flex justify-content-center">
+            <div class="card mb-3" style="height:425px; width: 350px;">
+              <div class="card-img-top" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.2)),url(<%= asset_path(match.trip.destination.image_path) %>); height: 200px; background-position: center; background-size: cover;">
                 <div class="card-img-overlay d-flex align-items-start justify-content-center" style="bottom:50%;">
-                  <h5 class="card-title text-white bg-dark p-2 rounded"><%= match.trip.destination.name %></h5>
+                  <h5 class="card-title text-white" style="margin-top: 10px; font-size: 25px;"><%= match.trip.destination.name %></h5>
                 </div>
               </div>
               <div class="card-body">
@@ -17,23 +17,13 @@
                   <%= cl_image_tag(current_user == match.trip.user ? match.user.photo.key : match.trip.user.photo.key, class: "rounded-circle", width: 130, height: 130, style: "position: absolute; top: 100px; left: 50%; margin-left: -65px; border: 1px solid #dfdede;") %>
                 <% end %>
                 <div class="text-center mt-4">
-                  <p class="card-text">Great news, <strong><%= current_user == match.trip.user ? match.user.first_name : match.trip.user.first_name %></strong> is heading to <%= match.trip.destination.name %> at the same time as you! Connect now to plan your trip together.</p>
-                  <div class="row text-center mt-2">
-                    <div class="col">
-                      <p class="card-text"><strong>Reviews</strong></p>
-                      <p class="card-text"></p>
-                    </div>
-                    <div class="col">
-                      <p class="card-text"><strong>Rating</strong></p>
-                      <p class="card-text"></p>
-                    </div>
-                    <div class="col">
-                      <% if ChatRequest.where(sender: current_user).where(receiver: current_user == match.trip.user ? match.user.id : match.trip.user.id).first || ChatRequest.where(receiver: current_user).where(sender: current_user == match.trip.user ? match.user.id : match.trip.user.id).first%>
-                        <%= link_to "Check Status", my_buddies_path, class: "btn btn-primary" %>
-                      <% else %>
-                        <%= link_to "Send Chat Request", chat_requests_path("chat_request[sender_id]": current_user.id, "chat_request[receiver_id]": (current_user == match.trip.user ? match.user.id : match.trip.user.id), "chat_request[trip_id]": match.trip.id), data: {turbo_method: :post}, class: "btn btn-primary" %>
-                      <% end %>
-                    </div>
+                  <p class="card-text" style="height:50px; font-size:16px;">Great news, <strong><%= current_user == match.trip.user ? match.user.first_name : match.trip.user.first_name %></strong> is heading to <%= match.trip.destination.name %> at the same time as you! Connect now to plan your trip together.</p>
+                  <div class="col" style="margin-top: 50px;">
+                    <% if ChatRequest.where(sender: current_user).where(receiver: current_user == match.trip.user ? match.user.id : match.trip.user.id).first || ChatRequest.where(receiver: current_user).where(sender: current_user == match.trip.user ? match.user.id : match.trip.user.id).first%>
+                      <%= link_to "Check Status", my_buddies_path, class: "btn btn-primary" %>
+                    <% else %>
+                      <%= link_to "Send Chat Request", chat_requests_path("chat_request[sender_id]": current_user.id, "chat_request[receiver_id]": (current_user == match.trip.user ? match.user.id : match.trip.user.id), "chat_request[trip_id]": match.trip.id), data: {turbo_method: :post}, class: "btn btn-primary" %>
+                    <% end %>
                   </div>
                 </div>
               </div>

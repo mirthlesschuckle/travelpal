@@ -1,8 +1,17 @@
-<div class="container-form">
+<%# <div class="container-form">
   <h1>New review</h1>
   <%= simple_form_for [@user, @review] do |f| %>
-  <%= f.input :content %>
-  <%= f.association :receiver, selected: params[:receiver_id], wrapper_html:{hidden: true} %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
- <% end %>
+  <%# <%= f.input :content %>
+  <%# <%= f.association :receiver, selected: params[:receiver_id], wrapper_html:{hidden: true} %>
+  <%# <%= f.submit "Submit review", class: "btn btn-primary" %>
+ <%# <% end %>
+<%# </div> %>
+
+<div class="container" style="width:800px;">
+  <%= form_with(model: [@user, @review], local: true, data: { controller: 'flatpickr' }) do |form| %>
+    <h2 style="font-size: 36px; font-weight: 700; text-align: center; margin-top: 150px; margin-bottom: 100px; color: #4F4F4F;">Write a new review</h2>
+    <%= form.text_area :content, class: "form-control", style: "height: 200px; resize: none; margin-bottom: 20px;" %>
+    <%= form.select :receiver_id, options_for_select(User.all.map{ |u| ["#{u.first_name} #{u.last_name}", u.id] }, selected: params[:receiver_id]), {}, { class: "form-control", hidden: true } %>
+    <%= form.submit "Submit", class: "btn btn-primary", style: "background-color: #3d5085; border: none; border-radius: 10px; color: #FFFFFF; font-size: 18px; font-weight: 600; padding: 12px; width: 100%; margin-top: 10px; transition: background-color 0.3s ease, box-shadow 0.3s ease;", data: { disable_with: "Please wait..." } %>
+  <% end %>
 </div>
