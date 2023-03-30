@@ -10,9 +10,7 @@
 <div class="container" style="margin-top: 35px; margin-bottom: 35px;">
   <h1 style="text-align: center;"> Dashboard</h1>
   <div class="row">
-    <div class="m-3">
       <h3>Upcoming Trips</h3>
-    </div>
     <% if @user.trips.empty? %>
       <p>You have no upcoming trips.</p>
     <% else %>
@@ -46,12 +44,8 @@
       <% end %>
     </div>
 
-
   <div class="row">
-    <div class="row">
-      <div class="m-3">
         <h3>Favorite Destinations</h3>
-      </div>
       <% if @user.all_favorited.empty? %>
         <p>You have no favorite destinations.</p>
       <% else %>
@@ -71,30 +65,32 @@
       <% end %>
     </div>
 
+  <div class="row">
+    <h2>To Review</h2>
 
-
-    <div class="col-md-4">
-      <div class="m-3">
-        <h2>To Review</h2>
-      </div>
+<% if @buddies.empty? %>
+    <p>No one to review</p>
+<% else %>
+  <% @buddies.each do |buddie| %>
 
     <div class="dashboard-card" style="width: 30rem; justify-content: center; align-items: center; margin: 30px;">
-      <%@buddies.each do |buddie| %>
-        <div class="row">
-          <nav class="menu-bar">
-            <div class="group">
-                          <%if buddie.sender == @user%>
-                <h4><%= buddie.receiver.first_name%></h4>
-                 <p> Leave a review for <%= buddie.receiver.first_name%> for your trip to <%=buddie.trip.destination.name%> </p>
-              <% else %>
-                <h4><%= link_to buddie.sender.first_name, user_profile_path(buddie.sender) %></h4>
-                <p> Leave a review for <%=buddie.sender.first_name%> for your trip to <%=buddie.trip.destination.name%> </p>
-              <% end %>
-              <p><%= link_to "add review", new_user_review_path(@user, receiver_id: buddie.sender.id == @user.id ? buddie.receiver.id : buddie.sender.id), class: "btn btn-primary" %></p>
-            </div>
-        </div>
-      <% end %>
+      <div class="row">
+        <nav class="menu-bar">
+          <div class="group">
+            <% if buddie.sender == @user %>
+              <h4><%= buddie.receiver.first_name %></h4>
+              <p> Leave a review for <%= buddie.receiver.first_name %> for your trip to <%= buddie.trip.destination.name %> </p>
+            <% else %>
+              <h4><%= link_to buddie.sender.first_name, user_profile_path(buddie.sender) %></h4>
+              <p> Leave a review for <%= buddie.sender.first_name %> for your trip to <%= buddie.trip.destination.name %> </p>
+            <% end %>
+            <p><%= link_to "add review", new_user_review_path(@user, receiver_id: buddie.sender.id == @user.id ? buddie.receiver.id : buddie.sender.id), class: "btn btn-primary" %></p>
+          </div>
+        </nav>
+      </div>
     </div>
+  <% end %>
+<% end %>
 
     <div class="row">
         <% @user.reviews.each do |review| %>
