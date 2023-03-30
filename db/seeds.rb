@@ -342,15 +342,28 @@ Activity.create(name: "Hiking in Valle delle Ferriere", activity_type: "Adventur
 Activity.create(name: "Cooking class in Positano", activity_type: "Cultural", description: "Learn to cook traditional Italian dishes in a cooking class in Positano, a charming town on the Amalfi Coast known for its gastronomy.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
 Activity.create(name: "Visit to Pompeii and Mount Vesuvius", activity_type: "Historical", description: "Explore the ancient ruins of Pompeii and hike to the summit of Mount Vesuvius, the volcano that famously destroyed the city in 79 AD.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
 
-
 puts 'creating example trips...'
+
+Trip.create(start_date: Date.new(2023, 4, 2), end_date: Date.new(2023, 4, 29), user_id: 5, destination_id: 33)
+Trip.create(start_date: Date.new(2023, 4, 4), end_date: Date.new(2023, 4, 25), user_id: 6, destination_id: 33)
+Trip.create(start_date: Date.new(2023, 4, 9), end_date: Date.new(2023, 4, 22), user_id: 3, destination_id: 33)
 
 puts 'creating example matches...'
 
+Match.create(user_id: 5, trip_id: 2)
+Match.create(user_id: 5, trip_id: 3)
+Match.create(user_id: 6, trip_id: 1)
+Match.create(user_id: 6, trip_id: 3)
+Match.create(user_id: 3, trip_id: 1)
+Match.create(user_id: 3, trip_id: 2)
+
 puts 'creating example chat_requests...'
 
-puts 'creating example chatrooms...'
+ChatRequest.create(sender_id: 5, receiver_id: 3, trip_id: 1, status: "pending_approval")
+ChatRequest.create(sender_id: 6, receiver_id: 3, trip_id: 2, status: "pending_approval")
 
-puts 'creating example messages...'
+puts 'NOT creating example chatrooms...'
 
-puts 'Well... that was exhausting! COMPLETED!'
+puts 'NOT creating example messages...'
+
+puts 'COMPLETED!'
