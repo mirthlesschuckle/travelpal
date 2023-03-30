@@ -1,32 +1,36 @@
 <div class="container">
-  <h1>My Buddies</h1>
-  <div class="row">
+  <h1 style="text-align: center; font-weight: bold; margin:30px auto;">My Buddies</h1>
+  <div class="row justify-content-center">
     <div class="col-md-4">
-      <h3>Sent Requests</h3>
+      <h3 style="text-align: center; margin:20px auto;">Sent Requests</h3>
       <% if @pending_approval_matches.empty? %>
-        <p>You have no sent requests.</p>
+        <p style="text-align: center">You have no sent requests.</p>
       <% else %>
         <% @pending_approval_matches.each do |match| %>
-          <div class="card mb-3" style="height: 250px;">
-            <div class="card-body" style="height: 250px;">
-              <p class="card-text">You have sent a chat request to <strong><%= match.receiver.first_name %> <%= match.receiver.last_name %></strong> for the trip to <%= match.trip.destination.name %>. Please check back later.</p>
+          <div class="card mb-3 mx-auto" style="margin-bottom: 35px !important; height: 180px; width:330px; background: rgb(169,199,212);
+          background: linear-gradient(317deg, rgba(169,199,212,1) 0%, rgba(226,223,232,1) 0%, rgba(233,230,205,1) 100%);">
+            <div style="margin:20px;">
+              <p class="card-text" style="font-size: 16px;">You have sent a chat request to <strong><%= match.receiver.first_name %> <%= match.receiver.last_name %></strong> for the trip to <%= match.trip.destination.name %>. Please check back later.</p>
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
     <div class="col-md-4">
-      <h3>Received Requests</h3>
+      <h3 style="text-align: center; margin:20px auto;">Received Requests</h3>
       <% if @awaiting_approval_matches.empty? %>
-        <p>You have no received requests.</p>
+        <p style="text-align: center">You have no received requests.</p>
       <% else %>
         <% @awaiting_approval_matches.each do |match| %>
-          <div class="card mb-3" style="height: 250px;">
-            <div class="card-body" style="height: 250px;">
-              <p class="card-text">Good news! You have received a chat request from <strong><%= match.sender.first_name %> <%= match.sender.last_name %></strong> who is traveling to <%= match.trip.destination.name %> at the same time as you! Please have a look at their profile below. </p>
-              <%= button_to user_profile_path(current_user == match.trip.user ? match.user : match.trip.user), method: :get, class: "button" do %>
-                Check Profile
-              <% end %>
+          <div class="card mb-3 mx-auto" style="height: 180px; width:330px; background: rgb(169,199,212);
+            background: linear-gradient(317deg, rgba(169,199,212,1) 0%, rgba(226,223,232,1) 0%, rgba(233,230,205,1) 100%);">
+            <div style="margin:20px;">
+              <p class="card-text" style="font-size: 16px;">You have received a chat request from
+                <strong><%= link_to "#{match.sender.first_name} #{match.sender.last_name}", user_profile_path(current_user == match.trip.user ? match.user : match.trip.user), class:"link-black"%></strong>
+                who is traveling to <%= match.trip.destination.name %> at the same time as you! Please have a look at their profile.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-around;">
               <%= button_to "Accept Request", chat_request_path(match, confirm: 'yes'), method: :patch, class: "btn btn-primary" %>
               <%= button_to "Reject Request", chat_request_path(match, confirm: 'no'), method: :patch, class: "btn btn-danger" %>
             </div>
@@ -35,25 +39,24 @@
       <% end %>
     </div>
     <div class="col-md-4">
-      <h3>Accepted/Rejected Requests</h3>
+      <h3 style="text-align: center; margin:20px auto;">Accepted/Rejected Requests</h3>
       <% if @confirmed_matches.empty? %>
-        <p>You have no accepted/rejected requests.</p>
+        <p style="text-align: center">You have no accepted/rejected requests.</p>
       <% else %>
         <% @confirmed_matches.each do |match| %>
           <% if match.status == "declined" %>
-            <div class="card mb-3" style="height: 250px;">
-              <div class="card-body" style="height: 250px;">
-                <h5 class="card-title"><%= match.trip.destination.name %></h5>
-                <p class="card-text"> Apologies, but it seems you were unable to connect with <%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %> at this time. Perhaps you can seek out new connections and embark on a different adventure..</p>
+            <div class="card mb-3 mx-auto" style="height: 180px; width:330px; background: rgb(169,199,212);
+          background: linear-gradient(317deg, rgba(169,199,212,1) 0%, rgba(226,223,232,1) 0%, rgba(233,230,205,1) 100%);">
+              <div style="margin:20px;">
+                <p class="card-text;" style="font-size: 16px;"> Apologies, but it seems you were unable to connect with <%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %> at this time. Perhaps you can seek out new connections and embark on a different adventure..</p>
               </div>
             </div>
           <% else %>
-            <div class="card mb-3" style="height: 250px;">
-              <div class="card-body" style="height: 250px;">
-                <h5 class="card-title"><%= match.trip.destination.name %></h5>
-                <p class="card-text"> Fantastic news! You and <strong><%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %></strong> have successfully connected! Get ready to embark on an unforgettable adventure to the beautiful city of <%= match.trip.destination.name %>. Let the planning begin!</p>
+            <div class="card mb-3 mx-auto" style="height: 180px; width:330px; background: rgb(169,199,212);
+          background: linear-gradient(317deg, rgba(169,199,212,1) 0%, rgba(226,223,232,1) 0%, rgba(233,230,205,1) 100%);">
+              <div style="margin:20px;">
+                <p class="card-text" style="font-size: 16px;">You and <strong><%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %></strong> have successfully connected! Get ready to embark on an unforgettable adventure to the beautiful city of <strong><%= match.trip.destination.name %></strong>.</p>
                 <% request = match.trip.chat_requests.find_by(sender: current_user) || match.trip.chat_requests.find_by(receiver: current_user) %>
-                <p class="card-text"><%= match.receiver == current_user ? match.sender.first_name : match.receiver.first_name %> <%= match.receiver == current_user ? match.sender.last_name : match.receiver.last_name %></p>
                 <% if request.chatroom %>
                   <%= link_to "Let's chat", chatroom_path(request.chatroom), class: "btn btn-primary" %>
                 <% else %>
