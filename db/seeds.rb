@@ -342,47 +342,58 @@ Activity.create(name: "Hiking in Valle delle Ferriere", activity_type: "Adventur
 Activity.create(name: "Cooking class in Positano", activity_type: "Cultural", description: "Learn to cook traditional Italian dishes in a cooking class in Positano, a charming town on the Amalfi Coast known for its gastronomy.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
 Activity.create(name: "Visit to Pompeii and Mount Vesuvius", activity_type: "Historical", description: "Explore the ancient ruins of Pompeii and hike to the summit of Mount Vesuvius, the volcano that famously destroyed the city in 79 AD.", destination_id: Destination.find_by(name: "Amalfi Coast").id)
 
-
 puts 'creating example trips...'
 
-Trip.create(start_date: Date.new(2023, 4, 11), end_date: Date.new(2023, 4, 18), user_id: 2, destination_id: 21)
-Trip.create(start_date: Date.new(2023, 4, 9), end_date: Date.new(2023, 4, 22), user_id: 1, destination_id: 21)
-Trip.create(start_date: Date.new(2023, 4, 11), end_date: Date.new(2023, 4, 15), user_id: 3, destination_id: 21)
-Trip.create(start_date: Date.new(2023, 4, 1), end_date: Date.new(2023, 4, 30), user_id: 4, destination_id: 21)
-Trip.create(start_date: Date.new(2023, 4, 27), end_date: Date.new(2023, 4, 30), user_id: 2, destination_id: 3)
-Trip.create(start_date: Date.new(2023, 4, 25), end_date: Date.new(2023, 5, 2), user_id: 5, destination_id: 3)
-Trip.create(start_date: Date.new(2023, 5, 1), end_date: Date.new(2023, 5, 8), user_id: 6, destination_id: 40)
+Trip.create(start_date: Date.new(2023, 4, 2), end_date: Date.new(2023, 4, 29), user_id: 5, destination_id: 33)
+Trip.create(start_date: Date.new(2023, 4, 4), end_date: Date.new(2023, 4, 25), user_id: 6, destination_id: 33)
+Trip.create(start_date: Date.new(2023, 4, 9), end_date: Date.new(2023, 4, 22), user_id: 3, destination_id: 33)
+Trip.create(start_date: Date.new(2023, 3, 5), end_date: Date.new(2023, 3, 11), user_id: 2, destination_id: 16)
+Trip.create(start_date: Date.new(2023, 3, 6), end_date: Date.new(2023, 3, 11), user_id: 5, destination_id: 16)
+Trip.create(start_date: Date.new(2023, 3, 5), end_date: Date.new(2023, 3, 12), user_id: 4, destination_id: 16)
+Trip.create(start_date: Date.new(2023, 3, 19), end_date: Date.new(2023, 3, 25), user_id: 1, destination_id: 15)
+Trip.create(start_date: Date.new(2023, 3, 20), end_date: Date.new(2023, 3, 23), user_id: 2, destination_id: 15)
+Trip.create(start_date: Date.new(2023, 3, 19), end_date: Date.new(2023, 3, 24), user_id: 6, destination_id: 15)
 
 puts 'creating example matches...'
 
-Match.create(user_id: 1, trip_id: 1)
-Match.create(user_id: 2, trip_id: 2)
+Match.create(user_id: 5, trip_id: 2)
+Match.create(user_id: 5, trip_id: 3)
+Match.create(user_id: 6, trip_id: 1)
+Match.create(user_id: 6, trip_id: 3)
 Match.create(user_id: 3, trip_id: 1)
 Match.create(user_id: 3, trip_id: 2)
-Match.create(user_id: 2, trip_id: 3)
-Match.create(user_id: 1, trip_id: 3)
-Match.create(user_id: 4, trip_id: 1)
-Match.create(user_id: 4, trip_id: 2)
-Match.create(user_id: 4, trip_id: 3)
-Match.create(user_id: 2, trip_id: 4)
-Match.create(user_id: 5, trip_id: 5)
+Match.create(user_id: 5, trip_id: 4)
+Match.create(user_id: 4, trip_id: 4)
+Match.create(user_id: 4, trip_id: 5)
+Match.create(user_id: 2, trip_id: 5)
 Match.create(user_id: 2, trip_id: 6)
+Match.create(user_id: 5, trip_id: 6)
+Match.create(user_id: 2, trip_id: 7)
+Match.create(user_id: 6, trip_id: 7)
+Match.create(user_id: 6, trip_id: 8)
+Match.create(user_id: 1, trip_id: 8)
+Match.create(user_id: 1, trip_id: 9)
+Match.create(user_id: 2, trip_id: 9)
 
 puts 'creating example chat_requests...'
 
-ChatRequest.create(sender_id: 2, receiver_id: 1, trip_id: 1, status: "pending_approval")
-ChatRequest.create(sender_id: 3, receiver_id: 2, trip_id: 3, status: "pending_approval")
-ChatRequest.create(sender_id: 2, receiver_id: 4, trip_id: 1, status: "pending_approval")
-ChatRequest.create(sender_id: 2, receiver_id: 5, trip_id: 5, status: "accepted")
+ChatRequest.create(sender_id: 5, receiver_id: 3, trip_id: 1, status: "pending_approval")
+ChatRequest.create(sender_id: 6, receiver_id: 3, trip_id: 2, status: "pending_approval")
+ChatRequest.create(sender_id: 2, receiver_id: 4, trip_id: 4, status: "pending_approval")
+ChatRequest.create(sender_id: 2, receiver_id: 5, trip_id: 4, status: "accepted")
+ChatRequest.create(sender_id: 5, receiver_id: 4, trip_id: 5, status: "accepted")
+ChatRequest.create(sender_id: 1, receiver_id: 6, trip_id: 7, status: "accepted")
+ChatRequest.create(sender_id: 2, receiver_id: 6, trip_id: 8, status: "accepted")
 
-puts 'creating example chatrooms...'
+puts 'creating example reviews...'
 
-Chatroom.create(name: "Sydney", chat_request_id: 4)
+Review.create(user_id: 2, content: "This guy is crazy, he has a massive terrifying dog with him all the time.", receiver_id: 5)
+Review.create(user_id: 2, content: "Very cool person, relaxed vibes the whole time!", receiver_id: 6)
+Review.create(user_id: 1, content: "They were great, nice trip", receiver_id: 6)
+Review.create(user_id: 4, content: "Love his cute dog he always travels with - Definitely recommend! ", receiver_id: 5)
 
-puts 'creating example messages...'
+puts 'NOT creating example chatrooms...'
 
-Message.create(content: "Hey, Benjamin!", chatroom_id: 1, user_id: 5)
-Message.create(content: "What are your plans in Sydney?", chatroom_id: 1, user_id: 5)
-Message.create(content: "Hey Michael! Not sure yet, but this amazing app has some great suggestions", chatroom_id: 1, user_id: 2)
+puts 'NOT creating example messages...'
 
-puts 'Well... that was exhausting! COMPLETED!'
+puts 'COMPLETED!'
