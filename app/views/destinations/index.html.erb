@@ -4,7 +4,7 @@
       <h1 style="font-size: 51px; text-align: left; margin:5px;">NEVER STOP</h1>
       <h1 style="font-size: 51px; text-align: left; margin:5px;">EXPLORING THE</h1>
       <h1 style="font-size: 51px; text-align: left; margin-left: 5px; margin-top: 5px; margin-bottom: 130px;">WORLD</h1>
-      <%= form_with url: destinations_path, method: :get, class: "index-search-form", html: { style: "border-radius: 0px;" } do %>
+      <%= form_with url: destinations_path, method: :get, class: "index-search-form", html: { style: "border-radius: 5px;" } do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",

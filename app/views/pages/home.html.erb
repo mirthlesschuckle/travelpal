@@ -10,14 +10,14 @@
       <h2 class="banner-subtitle" style="display: flex; justify-content: center; align-items: center; margin-bottom:60px; font-size: 30px;">Discover the World, Share the Experience</h2>
       <p class="search-bar-slogan" style="display: flex; justify-content: center; align-items: center;">Discover your next dream destination and exciting activities to experience!</p>
       <div class="search-form-container" style="display: flex; justify-content: center; align-items: center;">
-        <%= form_with url: destinations_path, method: :get, class: "banner-search-form" do %>
+        <%= form_with url: destinations_path, method: :get, class: "banner-search-form", html: { style: "border-radius: 5px;" } do %>
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
             placeholder: "Find a destination",
             input_html: {data: {address_autocomplete_target: "address"}},
             wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
+          <%= submit_tag "Search", class: "btn btn-primary", style: "border-radius: 0px;" %>
         <% end %>
       </div>
     </div>
