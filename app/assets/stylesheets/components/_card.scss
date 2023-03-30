@@ -77,11 +77,40 @@
   margin-bottom: 1rem;
 }
 
-.btn-primary {
-  background-color: #015997;
-  border-color: #474e91;
+.btn-accept {
+  background-color: #00aa6c;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #f8f9fa;
+}
+
+.btn-accept:hover {
+  background-color: #008c5a;
+  color: #f8f9fa;
+}
+
+.btn-reject {
+  background-color: #841c05;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #f8f9fa;
+}
+
+.btn-reject:hover {
+  background-color: #460303;
+  color: #f8f9fa;
+}
+
+.btn-primary {
+  background-color: #3d5085;
+  border-color: #3d5085;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: #242953;
+  border-color: #474e91;
 }
 
 .buddies-btn {

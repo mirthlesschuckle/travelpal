@@ -33,7 +33,7 @@
                     <% if @user.trips.any? %>
                       <%= form_with url: matches_path, method: :post, class: "find-buddies-form" do |form| %>
                         <%= form.hidden_field :trip_id, value: trip.id %>
-                        <%= form.submit "Buddies", class: "btn btn-primary buddies-btn" %>
+                        <%= form.submit "Find Buddies", class: "btn btn-primary buddies-btn" %>
                       <% end %>
                     <% end %>
                   </div>
@@ -78,13 +78,14 @@
         <nav class="menu-bar">
           <div class="group">
             <% if buddie.sender == @user %>
-              <h4><%= buddie.receiver.first_name %></h4>
-              <p> Leave a review for <%= buddie.receiver.first_name %> for your trip to <%= buddie.trip.destination.name %> </p>
+              <%# <h4><%= buddie.receiver.first_name %>
+              <strong><%= link_to "#{buddie.receiver.first_name}", user_profile_path(buddie.receiver), class:"link-profile-black"%></strong>
+              <p style="margin-top:20px;"> Leave a review for <%= buddie.receiver.first_name %> for your trip to <%= buddie.trip.destination.name %> </p>
             <% else %>
               <h4><%= link_to buddie.sender.first_name, user_profile_path(buddie.sender) %></h4>
               <p> Leave a review for <%= buddie.sender.first_name %> for your trip to <%= buddie.trip.destination.name %> </p>
             <% end %>
-            <p><%= link_to "add review", new_user_review_path(@user, receiver_id: buddie.sender.id == @user.id ? buddie.receiver.id : buddie.sender.id), class: "btn btn-primary" %></p>
+            <p><%= link_to "Add Review", new_user_review_path(@user, receiver_id: buddie.sender.id == @user.id ? buddie.receiver.id : buddie.sender.id), class: "btn btn-primary" %></p>
           </div>
         </nav>
       </div>

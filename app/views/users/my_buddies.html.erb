@@ -31,8 +31,8 @@
               </p>
             </div>
             <div style="display: flex; justify-content: space-around;">
-              <%= button_to "Accept Request", chat_request_path(match, confirm: 'yes'), method: :patch, class: "btn btn-primary" %>
-              <%= button_to "Reject Request", chat_request_path(match, confirm: 'no'), method: :patch, class: "btn btn-primary" %>
+              <%= button_to "Accept", chat_request_path(match, confirm: 'yes'), method: :patch, class: "btn btn-accept" %>
+              <%= button_to "Reject", chat_request_path(match, confirm: 'no'), method: :patch, class: "btn btn-reject" %>
             </div>
           </div>
         <% end %>
