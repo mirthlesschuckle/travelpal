@@ -347,6 +347,12 @@ puts 'creating example trips...'
 Trip.create(start_date: Date.new(2023, 4, 2), end_date: Date.new(2023, 4, 29), user_id: 5, destination_id: 33)
 Trip.create(start_date: Date.new(2023, 4, 4), end_date: Date.new(2023, 4, 25), user_id: 6, destination_id: 33)
 Trip.create(start_date: Date.new(2023, 4, 9), end_date: Date.new(2023, 4, 22), user_id: 3, destination_id: 33)
+Trip.create(start_date: Date.new(2023, 3, 5), end_date: Date.new(2023, 3, 11), user_id: 2, destination_id: 16)
+Trip.create(start_date: Date.new(2023, 3, 6), end_date: Date.new(2023, 3, 11), user_id: 5, destination_id: 16)
+Trip.create(start_date: Date.new(2023, 3, 5), end_date: Date.new(2023, 3, 12), user_id: 4, destination_id: 16)
+Trip.create(start_date: Date.new(2023, 3, 19), end_date: Date.new(2023, 3, 25), user_id: 1, destination_id: 15)
+Trip.create(start_date: Date.new(2023, 3, 20), end_date: Date.new(2023, 3, 23), user_id: 2, destination_id: 15)
+Trip.create(start_date: Date.new(2023, 3, 19), end_date: Date.new(2023, 3, 24), user_id: 6, destination_id: 15)
 
 puts 'creating example matches...'
 
@@ -356,11 +362,35 @@ Match.create(user_id: 6, trip_id: 1)
 Match.create(user_id: 6, trip_id: 3)
 Match.create(user_id: 3, trip_id: 1)
 Match.create(user_id: 3, trip_id: 2)
+Match.create(user_id: 5, trip_id: 4)
+Match.create(user_id: 4, trip_id: 4)
+Match.create(user_id: 4, trip_id: 5)
+Match.create(user_id: 2, trip_id: 5)
+Match.create(user_id: 2, trip_id: 6)
+Match.create(user_id: 5, trip_id: 6)
+Match.create(user_id: 2, trip_id: 7)
+Match.create(user_id: 6, trip_id: 7)
+Match.create(user_id: 6, trip_id: 8)
+Match.create(user_id: 1, trip_id: 8)
+Match.create(user_id: 1, trip_id: 9)
+Match.create(user_id: 2, trip_id: 9)
 
 puts 'creating example chat_requests...'
 
 ChatRequest.create(sender_id: 5, receiver_id: 3, trip_id: 1, status: "pending_approval")
 ChatRequest.create(sender_id: 6, receiver_id: 3, trip_id: 2, status: "pending_approval")
+ChatRequest.create(sender_id: 2, receiver_id: 4, trip_id: 4, status: "pending_approval")
+ChatRequest.create(sender_id: 2, receiver_id: 5, trip_id: 4, status: "accepted")
+ChatRequest.create(sender_id: 5, receiver_id: 4, trip_id: 5, status: "accepted")
+ChatRequest.create(sender_id: 1, receiver_id: 6, trip_id: 7, status: "accepted")
+ChatRequest.create(sender_id: 2, receiver_id: 6, trip_id: 8, status: "accepted")
+
+puts 'creating example reviews...'
+
+Review.create(user_id: 2, content: "This guy is crazy, he has a massive terrifying dog with him all the time.", receiver_id: 5)
+Review.create(user_id: 2, content: "Very cool person, relaxed vibes the whole time!", receiver_id: 6)
+Review.create(user_id: 1, content: "They were great, nice trip", receiver_id: 6)
+Review.create(user_id: 4, content: "Love his cute dog he always travels with - Definitely recommend! ", receiver_id: 5)
 
 puts 'NOT creating example chatrooms...'
 
