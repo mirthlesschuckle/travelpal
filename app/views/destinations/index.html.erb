@@ -4,15 +4,18 @@
       <h1 style="font-size: 51px; text-align: left; margin:5px;">NEVER STOP</h1>
       <h1 style="font-size: 51px; text-align: left; margin:5px;">EXPLORING THE</h1>
       <h1 style="font-size: 51px; text-align: left; margin-left: 5px; margin-top: 5px; margin-bottom: 130px;">WORLD</h1>
-      <%= form_with url: destinations_path, method: :get, class: "index-search-form" do %>
+      <%= form_with url: destinations_path, method: :get, class: "index-search-form", html: { style: "border-radius: 0px;" } do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Find a destination"
+          placeholder: "Find a destination",
+          style: "border-radius: 5px;"
         %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%= submit_tag "Search", class: "btn btn-primary", style: "border-radius: 0px;" %>
       <% end %>
-      <%= link_to "See all destinations", destinations_path, class: "btn btn-primary" %>
+      <div style="margin-left: 120px; margin-top: 20px;">
+        <%= link_to "See all destinations", destinations_path, class: "btn btn-primary" %>
+      </div>
     </div>
 
     <div class="col-7">
