@@ -1,3 +1,7 @@
 <div class="like-icon mx-2" data-id="<%= destination.id %>">
-  <i class="fas fa-heart" style="<%= 'color: red;' if current_user.favorited?(destination) %>"></i>
+  <% if user_signed_in? && current_user.favorited?(destination) %>
+    <i class="fas fa-heart" style="color: red;"></i>
+  <% else %>
+    <i class="fas fa-heart"></i>
+  <% end %>
 </div>
